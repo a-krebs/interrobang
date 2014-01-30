@@ -1,0 +1,190 @@
+<!--Saved by Quest 5.4.4873.16527-->
+<asl version="540">
+  <include ref="English.aslx" />
+  <include ref="Core.aslx" />
+  <game name="interrobang">
+    <gameid>39702944-ce39-4243-8459-2aaad4c4d15e</gameid>
+    <version>0.0.0</version>
+    <firstpublished>2014</firstpublished>
+    <category type="string"></category>
+  </game>
+  <object name="Prototype">
+    <inherit name="editor_room" />
+    <object name="r00">
+      <inherit name="editor_room" />
+      <exit alias="east" to="r01">
+        <inherit name="eastdirection" />
+      </exit>
+      <exit alias="south" to="r10">
+        <inherit name="southdirection" />
+      </exit>
+      <exit alias="in" to="vent00">
+        <inherit name="indirection" />
+        <locked />
+        <lockmessage>It looks like it opens from the inside.</lockmessage>
+      </exit>
+    </object>
+    <object name="r01">
+      <inherit name="editor_room" />
+      <exit alias="west" to="r00">
+        <inherit name="westdirection" />
+      </exit>
+      <exit alias="east" to="r02">
+        <inherit name="eastdirection" />
+      </exit>
+      <exit alias="south" to="r11">
+        <inherit name="southdirection" />
+      </exit>
+    </object>
+    <object name="r02">
+      <inherit name="editor_room" />
+      <exit alias="west" to="r01">
+        <inherit name="westdirection" />
+      </exit>
+      <exit alias="south" to="r12">
+        <inherit name="southdirection" />
+      </exit>
+    </object>
+    <object name="r10">
+      <inherit name="editor_room" />
+      <exit alias="north" to="r00">
+        <inherit name="northdirection" />
+      </exit>
+      <exit alias="south" to="r20">
+        <inherit name="southdirection" />
+      </exit>
+      <exit alias="east" to="r11">
+        <inherit name="eastdirection" />
+      </exit>
+    </object>
+    <object name="r11">
+      <inherit name="editor_room" />
+      <exit alias="north" to="r01">
+        <inherit name="northdirection" />
+      </exit>
+      <exit alias="west" to="r10">
+        <inherit name="westdirection" />
+      </exit>
+      <exit alias="east" to="r12">
+        <inherit name="eastdirection" />
+      </exit>
+      <exit alias="south" to="r21">
+        <inherit name="southdirection" />
+      </exit>
+      <object name="player">
+        <inherit name="editor_object" />
+        <inherit name="editor_player" />
+        <maxobjects type="int">1</maxobjects>
+        <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+      </object>
+    </object>
+    <object name="r12">
+      <inherit name="editor_room" />
+      <exit alias="north" to="r02">
+        <inherit name="northdirection" />
+      </exit>
+      <exit alias="west" to="r11">
+        <inherit name="westdirection" />
+      </exit>
+      <exit alias="south" to="r22">
+        <inherit name="southdirection" />
+      </exit>
+      <exit name="finishExit" alias="east" to="finish">
+        <inherit name="eastdirection" />
+        <locked />
+        <runscript />
+        <script type="script">
+          finish
+        </script>
+      </exit>
+      <object name="cardReader">
+        <inherit name="editor_room" />
+      </object>
+    </object>
+    <object name="r20">
+      <inherit name="editor_room" />
+      <exit alias="north" to="r10">
+        <inherit name="northdirection" />
+      </exit>
+      <exit alias="east" to="r21">
+        <inherit name="eastdirection" />
+      </exit>
+      <exit name="vent20in" alias="in" to="vent20">
+        <inherit name="indirection" />
+        <locked />
+        <runscript type="boolean">false</runscript>
+        <lockmessage>The box is blocking the vent.</lockmessage>
+      </exit>
+      <object name="box">
+        <inherit name="editor_object" />
+        <push type="script">
+          UnlockExit (vent20in)
+        </push>
+      </object>
+    </object>
+    <object name="r21">
+      <inherit name="editor_room" />
+      <exit alias="north" to="r11">
+        <inherit name="northdirection" />
+      </exit>
+      <exit alias="east" to="r22">
+        <inherit name="eastdirection" />
+      </exit>
+      <exit alias="west" to="r20">
+        <inherit name="westdirection" />
+      </exit>
+    </object>
+    <object name="r22">
+      <inherit name="editor_room" />
+      <exit alias="north" to="r12">
+        <inherit name="northdirection" />
+      </exit>
+      <exit alias="west" to="r21">
+        <inherit name="westdirection" />
+      </exit>
+    </object>
+    <object name="vent">
+      <inherit name="editor_room" />
+      <object name="vent00">
+        <inherit name="editor_room" />
+        <exit alias="south" to="vent10">
+          <inherit name="southdirection" />
+        </exit>
+        <exit alias="out" to="r00">
+          <inherit name="outdirection" />
+        </exit>
+      </object>
+      <object name="vent10">
+        <inherit name="editor_room" />
+        <exit alias="north" to="vent00">
+          <inherit name="northdirection" />
+        </exit>
+        <exit alias="south" to="vent20">
+          <inherit name="southdirection" />
+        </exit>
+        <object name="keyCard">
+          <inherit name="editor_object" />
+          <alias>Key Card</alias>
+          <selfuseon type="scriptdictionary">
+            <item key="cardReader">
+              UnlockExit (finishExit)
+            </item>
+          </selfuseon>
+          <take />
+        </object>
+      </object>
+      <object name="vent20">
+        <inherit name="editor_room" />
+        <exit alias="north" to="vent10">
+          <inherit name="northdirection" />
+        </exit>
+        <exit alias="out" to="r20">
+          <inherit name="outdirection" />
+        </exit>
+      </object>
+    </object>
+    <object name="finish">
+      <inherit name="editor_room" />
+    </object>
+  </object>
+</asl>
