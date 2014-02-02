@@ -212,9 +212,21 @@
     </script>
   </command>
   <command>
-    <pattern>testit</pattern>
+    <pattern>test_changerms</pattern>
     <script>
       change_rooms
+    </script>
+  </command>
+  <command>
+    <pattern>test_clearrms</pattern>
+    <script>
+      clear_rooms
+    </script>
+  </command>
+  <command>
+    <pattern>test_grow</pattern>
+    <script>
+      grow_snake
     </script>
   </command>
   <type name="not_snake_room" />
@@ -278,6 +290,33 @@
         }
         msg ("-Head")
       }
+    }
+  </function>
+  <function name="clear_rooms">
+    // This function "clears out" all of the current room tracking and resets it all to the player's current room.
+    player.snake_rooms = NewObjectList()
+    curRoom = ObjectListItem(ListParents(player),0)
+    for (index, 0, player.length-1) {
+      list add (player.snake_rooms, curRoom)
+    }
+  </function>
+  <function name="grow_snake">
+    // This function increases the snake's length by 1 and fixes the room tracking list to add on another "slot"
+    // When the player changes rooms after they've "grown", it's like they get one room longer at the neck
+    player.length = player.length + 1
+    curRoom = ObjectListItem(ListParents(player),0)
+    // We have to do this gross thing of putting the new element in its own list so that we can combine it with
+    // the existing snake_rooms list in the correct order.
+    curRoomList = NewObjectList()
+    list add (curRoomList, curRoom)
+    player.snake_rooms = ListCombine (curRoomList, player.snake_rooms) 
+    if (player.show_debug = 1) {
+      msg ("Current rooms in this list are now: ")
+      msg ("-Tail")
+      foreach (rm, player.snake_rooms) {
+        msg ("-"+rm.name)
+      }
+      msg ("-Head")
     }
   </function>
 </asl>
