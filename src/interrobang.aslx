@@ -9,7 +9,7 @@
     <category type="string"></category>
     <gridmap />
     <start type="script">
-    // All of the initial "slots" of the snake are filled with the parent's current room
+      // All of the initial "slots" of the snake are filled with the parent's current room
       player.snake_rooms = NewObjectList()
       curRoom = ObjectListItem(ListParents(player),0)
       for (index, 0, player.length-1) {
@@ -21,7 +21,6 @@
     <inherit name="editor_room" />
     <object name="r00">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
       </exit>
@@ -36,7 +35,6 @@
     </object>
     <object name="r01">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="west" to="r00">
         <inherit name="westdirection" />
       </exit>
@@ -49,7 +47,6 @@
     </object>
     <object name="r02">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
       </exit>
@@ -59,7 +56,6 @@
     </object>
     <object name="r10">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="north" to="r00">
         <inherit name="northdirection" />
       </exit>
@@ -72,7 +68,6 @@
     </object>
     <object name="r11">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="north" to="r01">
         <inherit name="northdirection" />
       </exit>
@@ -96,7 +91,6 @@
     </object>
     <object name="r12">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
       </exit>
@@ -120,7 +114,6 @@
     </object>
     <object name="r20">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
       </exit>
@@ -142,7 +135,6 @@
     </object>
     <object name="r21">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="north" to="r11">
         <inherit name="northdirection" />
       </exit>
@@ -155,7 +147,6 @@
     </object>
     <object name="r22">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
       </exit>
@@ -165,10 +156,8 @@
     </object>
     <object name="vent">
       <inherit name="editor_room" />
-      <inherit name="snake_room" />
       <object name="vent00">
         <inherit name="editor_room" />
-        <inherit name="snake_room" />
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
         </exit>
@@ -178,7 +167,6 @@
       </object>
       <object name="vent10">
         <inherit name="editor_room" />
-        <inherit name="snake_room" />
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
         </exit>
@@ -198,7 +186,6 @@
       </object>
       <object name="vent20">
         <inherit name="editor_room" />
-        <inherit name="snake_room" />
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
         </exit>
@@ -230,7 +217,7 @@
       change_rooms
     </script>
   </command>
-  <type name="snake_room" />
+  <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
     // of the previously visited rooms, where index 0 is the snake's tail
@@ -238,9 +225,7 @@
     // TODO: add a similar function as this but for looking into adjacent rooms
     // TODO: call this function each time we attempt to do a room change, and possibly prevent the room change, instead of having it on a command
     curRoom = ObjectListItem(ListParents(player),0)
-    // TODO: Instead of checking for inheriting from "snake_room" it's easier to switch things around and check for NOT inheriting from "not_snake_room"
-    // In case we want to have any rooms where this snake mechanic doesn't apply
-    if (DoesInherit (curRoom, "snake_room")) {
+    if (not DoesInherit (curRoom, "not_snake_room")) {
       //
       // Show debug info
       if (player.show_debug = 1) {
@@ -281,7 +266,7 @@
         //
         // We hit our own body in the middle, give a game over message
         msg ("You bit your own body and now you're dead. SPOILERS.")
-        // TODO: Insert game over. 
+        // TODO: Insert game over.
       }
       //
       // Show debug info
@@ -293,6 +278,6 @@
         }
         msg ("-Head")
       }
-   }
+    }
   </function>
 </asl>
