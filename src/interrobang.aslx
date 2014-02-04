@@ -28,14 +28,23 @@
       </onexit>
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
+        <look type="script">
+          look_room (r01)
+        </look>
       </exit>
       <exit alias="south" to="r10">
         <inherit name="southdirection" />
+        <look type="script">
+          look_room (r10)
+        </look>
       </exit>
       <exit alias="in" to="vent00">
         <inherit name="indirection" />
         <locked />
         <lockmessage>It looks like it opens from the inside.</lockmessage>
+        <look type="script">
+          look_room (vent00)
+        </look>
       </exit>
     </object>
     <object name="r01">
@@ -45,12 +54,21 @@
       </onexit>
       <exit alias="west" to="r00">
         <inherit name="westdirection" />
+        <look type="script">
+          look_room (r00)
+        </look>
       </exit>
       <exit alias="east" to="r02">
         <inherit name="eastdirection" />
+        <look type="script">
+          look_room (r02)
+        </look>
       </exit>
       <exit alias="south" to="r11">
         <inherit name="southdirection" />
+        <look type="script">
+          look_room (r11)
+        </look>
       </exit>
     </object>
     <object name="r02">
@@ -60,9 +78,15 @@
       </onexit>
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
+        <look type="script">
+          look_room (r01)
+        </look>
       </exit>
       <exit alias="south" to="r12">
         <inherit name="southdirection" />
+        <look type="script">
+          look_room (r12)
+        </look>
       </exit>
     </object>
     <object name="r10">
@@ -87,15 +111,27 @@
       </onexit>
       <exit alias="north" to="r01">
         <inherit name="northdirection" />
+        <look type="script">
+          look_room (r01)
+        </look>
       </exit>
       <exit alias="west" to="r10">
         <inherit name="westdirection" />
+        <look type="script">
+          look_room (r10)
+        </look>
       </exit>
       <exit alias="east" to="r12">
         <inherit name="eastdirection" />
+        <look type="script">
+          look_room (r12)
+        </look>
       </exit>
       <exit alias="south" to="r21">
         <inherit name="southdirection" />
+        <look type="script">
+          look_room (r21)
+        </look>
       </exit>
       <object name="player">
         <inherit name="editor_object" />
@@ -113,12 +149,21 @@
       </onexit>
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
+        <look type="script">
+          look_room (r02)
+        </look>
       </exit>
       <exit alias="west" to="r11">
         <inherit name="westdirection" />
+        <look type="script">
+          look_room (r11)
+        </look>
       </exit>
       <exit alias="south" to="r22">
         <inherit name="southdirection" />
+        <look type="script">
+          look_room (r22)
+        </look>
       </exit>
       <exit name="finishExit" alias="east" to="finish">
         <inherit name="eastdirection" />
@@ -139,15 +184,24 @@
       </onexit>
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
+        <look type="script">
+          look_room (r10)
+        </look>
       </exit>
       <exit alias="east" to="r21">
         <inherit name="eastdirection" />
+        <look type="script">
+          look_room (r21)
+        </look>
       </exit>
       <exit name="vent20in" alias="in" to="vent20">
         <inherit name="indirection" />
         <locked />
         <runscript type="boolean">false</runscript>
         <lockmessage>The box is blocking the vent.</lockmessage>
+        <look type="script">
+          look_room (vent20)
+        </look>
       </exit>
       <object name="box">
         <inherit name="editor_object" />
@@ -163,12 +217,21 @@
       </onexit>
       <exit alias="north" to="r11">
         <inherit name="northdirection" />
+        <look type="script">
+          look_room (r11)
+        </look>
       </exit>
       <exit alias="east" to="r22">
         <inherit name="eastdirection" />
+        <look type="script">
+          look_room (r22)
+        </look>
       </exit>
       <exit alias="west" to="r20">
         <inherit name="westdirection" />
+        <look type="script">
+          look_room (r20)
+        </look>
       </exit>
     </object>
     <object name="r22">
@@ -178,9 +241,15 @@
       </onexit>
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
+        <look type="script">
+          look_room (r12)
+        </look>
       </exit>
       <exit alias="west" to="r21">
         <inherit name="westdirection" />
+        <look type="script">
+          look_room (r21)
+        </look>
       </exit>
       <object name="deadRat">
         <inherit name="editor_object" />
@@ -210,9 +279,15 @@
         </onexit>
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
+          <look type="script">
+            look_room (vent10)
+          </look>
         </exit>
         <exit alias="out" to="r00">
           <inherit name="outdirection" />
+          <look type="script">
+            look_room (r00)
+          </look>
         </exit>
       </object>
       <object name="vent10">
@@ -222,9 +297,15 @@
         </onexit>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
+          <look type="script">
+            look_room (vent00)
+          </look>
         </exit>
         <exit alias="south" to="vent20">
           <inherit name="southdirection" />
+          <look type="script">
+            look_room (vent20)
+          </look>
         </exit>
         <object name="keyCard">
           <inherit name="editor_object" />
@@ -244,9 +325,15 @@
         </onexit>
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
+          <look type="script">
+            look_room (vent10)
+          </look>
         </exit>
         <exit alias="out" to="r20">
           <inherit name="outdirection" />
+          <look type="script">
+            look_room (r20)
+          </look>
         </exit>
       </object>
     </object>
@@ -306,7 +393,6 @@
     // This function handles movement into a "snake room" by storing a list
     // of the previously visited rooms, where index 0 is the snake's tail
     // and index (player.length-1) is the head
-    // TODO: add a similar function as this but for looking into adjacent rooms
     curRoom = ObjectListItem(ListParents(player),0)
     if (not DoesInherit (curRoom, "not_snake_room")) {
       list_rooms
@@ -331,12 +417,40 @@
         // TODO: Stop the area transition somehow
       }
       else if (not indexHit = 0) {
-        // We hit our own body in the middle, give a game over message
+        // We hit our own body, give a game over message
         game_over_checkpoint_restart
       }
       list_rooms
     }
   </function>
+  <function name="look_room" parameters="lookRoom"><![CDATA[
+    // This function is called when we look into a room. Test if that room is in our list.
+    // indexHit corresponds to the snake's body part that we see, if we see it
+    count = 0
+    indexHit = 0
+    foreach (rm, player.snake_rooms) {
+      count = count + 1
+      if (rm.name = lookRoom.name) {
+        indexHit = count
+      }
+    }
+    if (indexHit = player.length-1) {
+      // We see our own body at the head, give a no turn back message
+      msg ("You can't go back that way, the snake is behind you.")
+    }
+    else if (indexHit > 1) {
+      // We see our own body in the middle, give a warning message
+      msg ("You see a large, scaly body stretching across that room. Who knows what it belongs to?")
+    }
+    else if (indexHit = 1) {
+      // We see our own tail, give an okay message
+      msg ("You see the tip of a scaly tail. It looks like the monster is passing through. If you're quiet you can go this way.")
+    }
+    else {
+      // No snake to see, give an all clear message
+      msg ("That way is dark, empty and quiet.")
+    }
+  ]]></function>
   <function name="clear_rooms">
     // This function "clears out" all of the current room tracking and resets it all to the player's current room.
     player.snake_rooms = NewObjectList()
@@ -368,7 +482,7 @@
       msg ("-Head")
     }
   </function>
-    <function name="set_checkpoint">
+  <function name="set_checkpoint">
     // Set a checkpoint that the player can be sent back to (coiled up) if they die
     player.checkpoint = ObjectListItem(ListParents(player),0)
   </function>
