@@ -9,18 +9,23 @@
     <category type="string"></category>
     <gridmap />
     <start type="script">
-      // All of the initial "slots" of the snake are filled with the parent's current room
+      // All of the initial "slots" of the snake are filled with the player's current room
       player.snake_rooms = NewObjectList()
       curRoom = ObjectListItem(ListParents(player),0)
       for (index, 0, player.length-1) {
         list add (player.snake_rooms, curRoom)
       }
+      // The first checkpoint is the player's current room
+      player.checkpoint = curRoom
     </start>
   </game>
   <object name="Prototype">
     <inherit name="editor_room" />
     <object name="r00">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
       </exit>
@@ -35,6 +40,9 @@
     </object>
     <object name="r01">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="west" to="r00">
         <inherit name="westdirection" />
       </exit>
@@ -47,6 +55,9 @@
     </object>
     <object name="r02">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
       </exit>
@@ -56,6 +67,9 @@
     </object>
     <object name="r10">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="north" to="r00">
         <inherit name="northdirection" />
       </exit>
@@ -68,6 +82,9 @@
     </object>
     <object name="r11">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="north" to="r01">
         <inherit name="northdirection" />
       </exit>
@@ -91,6 +108,9 @@
     </object>
     <object name="r12">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
       </exit>
@@ -114,6 +134,9 @@
     </object>
     <object name="r20">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
       </exit>
@@ -135,6 +158,9 @@
     </object>
     <object name="r21">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="north" to="r11">
         <inherit name="northdirection" />
       </exit>
@@ -147,17 +173,41 @@
     </object>
     <object name="r22">
       <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
       </exit>
       <exit alias="west" to="r21">
         <inherit name="westdirection" />
       </exit>
+      <object name="deadRat">
+        <inherit name="editor_object" />
+        <alias>dead rat</alias>
+        <alt type="stringlist">
+          <value>rat</value>
+          <value>dead rat</value>
+        </alt>
+        <take type="boolean">false</take>
+        <eat type="script">
+          grow_snake
+        </eat>
+        <consume type="script">
+          grow_snake
+        </consume>
+        <swallow type="script">
+          grow_snake
+        </swallow>
+      </object>
     </object>
     <object name="vent">
       <inherit name="editor_room" />
       <object name="vent00">
         <inherit name="editor_room" />
+        <onexit type="script">
+          change_rooms
+        </onexit>
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
         </exit>
@@ -167,6 +217,9 @@
       </object>
       <object name="vent10">
         <inherit name="editor_room" />
+        <onexit type="script">
+          change_rooms
+        </onexit>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
         </exit>
@@ -186,6 +239,9 @@
       </object>
       <object name="vent20">
         <inherit name="editor_room" />
+        <onexit type="script">
+          change_rooms
+        </onexit>
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
         </exit>
@@ -229,32 +285,34 @@
       grow_snake
     </script>
   </command>
+  <command>
+    <pattern>test_list</pattern>
+    <script>
+      list_rooms
+    </script>
+  </command>
+  <verb>
+    <property>consume</property>
+    <pattern>consume</pattern>
+    <defaultexpression>"You can't consume " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>swallow</property>
+    <pattern>swallow</pattern>
+    <defaultexpression>"You can't swallow " + object.article + "."</defaultexpression>
+  </verb>
   <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
     // of the previously visited rooms, where index 0 is the snake's tail
     // and index (player.length-1) is the head
     // TODO: add a similar function as this but for looking into adjacent rooms
-    // TODO: call this function each time we attempt to do a room change, and possibly prevent the room change, instead of having it on a command
     curRoom = ObjectListItem(ListParents(player),0)
     if (not DoesInherit (curRoom, "not_snake_room")) {
-      //
-      // Show debug info
-      if (player.show_debug = 1) {
-        msg ("We are length "+player.length)
-        msg ("Current rooms in this list are: ")
-        msg ("-Tail")
-        foreach (rm, player.snake_rooms) {
-          msg ("-"+rm.name)
-        }
-        msg ("-Head")
-        msg ("The new room will be "+curRoom.name)
-      }
-      //
+      list_rooms
       // Remove the tail room at index 0
       tailRoom = ObjectListItem(player.snake_rooms, 0)
       list remove (player.snake_rooms, tailRoom)
-      //
       // Check whether the newest room is in the list already
       // indexHit corresponds to the snake's body part that we run into, if we run into it
       count = 0
@@ -265,31 +323,18 @@
           indexHit = count
         }
       }
-      //
       // Now add in the new head room (we do this now even if we've bitten ourself)
       list add (player.snake_rooms, curRoom)
       if (indexHit = player.length-2) {
-        //
         // We hit our own body at the head, give a no turn back message
         msg ("You can't go back that way, the snake is behind you.")
         // TODO: Stop the area transition somehow
       }
       else if (not indexHit = 0) {
-        //
         // We hit our own body in the middle, give a game over message
-        msg ("You bit your own body and now you're dead. SPOILERS.")
-        // TODO: Insert game over.
+        game_over_checkpoint_restart
       }
-      //
-      // Show debug info
-      if (player.show_debug = 1) {
-        msg ("Current rooms in this list are now: ")
-        msg ("-Tail")
-        foreach (rm, player.snake_rooms) {
-          msg ("-"+rm.name)
-        }
-        msg ("-Head")
-      }
+      list_rooms
     }
   </function>
   <function name="clear_rooms">
@@ -309,14 +354,31 @@
     // the existing snake_rooms list in the correct order.
     curRoomList = NewObjectList()
     list add (curRoomList, curRoom)
-    player.snake_rooms = ListCombine (curRoomList, player.snake_rooms) 
+    player.snake_rooms = ListCombine (curRoomList, player.snake_rooms)
+    list_rooms
+  </function>
+  <function name="list_rooms">
+    // This function lists the rooms the snake's body is in from tail to head.
     if (player.show_debug = 1) {
-      msg ("Current rooms in this list are now: ")
+      msg ("Current rooms in the list are: ")
       msg ("-Tail")
       foreach (rm, player.snake_rooms) {
         msg ("-"+rm.name)
       }
       msg ("-Head")
     }
+  </function>
+    <function name="set_checkpoint">
+    // Set a checkpoint that the player can be sent back to (coiled up) if they die
+    player.checkpoint = ObjectListItem(ListParents(player),0)
+  </function>
+  <function name="game_over_checkpoint_restart">
+    // This function handles sending the player back to the last checkpoint if they die.
+    // The player arrives coiled up on that spot.
+    msg ("A large, scaly body spans the room. The creature that's been chasing you has found you. You feel a sharp pain, and everything goes black.")
+    msg ("MOVING TO LAST CHECKPOINT")
+    clear_rooms
+    MoveObject (player, player.checkpoint)
+    clear_rooms
   </function>
 </asl>
