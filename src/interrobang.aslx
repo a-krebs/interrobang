@@ -174,7 +174,14 @@
         </script>
       </exit>
       <object name="cardReader">
-        <inherit name="editor_room" />
+        <inherit name="editor_object" />
+        <alias>Key Card Reader</alias>
+        <alt type="stringlist">
+          <value>reader</value>
+          <value>key card reader</value>
+          <value>card reader</value>
+        </alt>
+        <takemsg>It's bolted to the wall. Also why would you want it anyways?</takemsg>
       </object>
     </object>
     <object name="r20">
@@ -205,9 +212,15 @@
       </exit>
       <object name="box">
         <inherit name="editor_object" />
-        <push type="script">
-          UnlockExit (vent20in)
-        </push>
+        <push type="script"><![CDATA[
+          if (player.length >= 5) {
+            msg ("With a mighty headbutt you push the box away. Your arms are numb. That's why you used your head. Yeah. Shhhh.")
+            UnlockExit (vent20in)
+          }
+          else {
+            msg ("You feel too weak to push this box. Your stomach has the rumblies that only hands can satisfy.")
+          }
+        ]]></push>
       </object>
     </object>
     <object name="r21">
@@ -311,8 +324,16 @@
           <inherit name="editor_object" />
           <alias>Key Card</alias>
           <take />
+          <alt type="stringlist">
+            <value>key</value>
+            <value>keycard</value>
+            <value>card</value>
+            <value>key card</value>
+          </alt>
+          <takemsg>You scoop it up in your flippy floppy lips.</takemsg>
           <selfuseon type="scriptdictionary">
             <item key="cardReader">
+              msg ("The reader goes beep boop and the door obligingly opens.")
               UnlockExit (finishExit)
             </item>
           </selfuseon>
@@ -414,7 +435,8 @@
       if (indexHit = player.length-2) {
         // We hit our own body at the head, give a no turn back message
         msg ("You can't go back that way, the snake is behind you.")
-        // TODO: Stop the area transition somehow
+        // TODO: Stop the area transition somehow instead of just going to the checkpoint
+        game_over_checkpoint_restart
       }
       else if (not indexHit = 0) {
         // We hit our own body, give a game over message
@@ -462,6 +484,7 @@
   <function name="grow_snake">
     // This function increases the snake's length by 1 and fixes the room tracking list to add on another "slot"
     // When the player changes rooms after they've "grown", it's like they get one room longer at the neck
+    msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... push a box around, or something.")
     player.length = player.length + 1
     curRoom = ObjectListItem(ListParents(player),0)
     // We have to do this gross thing of putting the new element in its own list so that we can combine it with
