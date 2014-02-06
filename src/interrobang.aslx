@@ -7,7 +7,7 @@
     <version>0.0.0</version>
     <firstpublished>2014</firstpublished>
     <category type="string"></category>
-    <gridmap />
+    <gridmap type="boolean">false</gridmap>
     <start type="script">
       // All of the initial "slots" of the snake are filled with the player's current room
       player.snake_rooms = NewObjectList()
@@ -18,6 +18,7 @@
       // The first checkpoint is the player's current room
       player.checkpoint = curRoom
     </start>
+    <cover>snake logo.png</cover>
   </game>
   <object name="Prototype">
     <inherit name="editor_room" />
@@ -147,6 +148,7 @@
       <onexit type="script">
         change_rooms
       </onexit>
+      <picture>card reader.png</picture>
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
         <look type="script">
@@ -170,6 +172,7 @@
         <locked />
         <runscript />
         <script type="script">
+          ClearFramePicture
           finish
         </script>
       </exit>
@@ -189,6 +192,12 @@
       <onexit type="script">
         change_rooms
       </onexit>
+      <picture type="string"></picture>
+      <enter type="script">
+        if (Contains (r20,box)) {
+          SetFramePicture ("crate vent.png")
+        }
+      </enter>
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
         <look type="script">
@@ -216,6 +225,8 @@
           if (player.length >= 5) {
             msg ("With a mighty headbutt you push the box away. Your arms are numb. That's why you used your head. Yeah. Shhhh.")
             UnlockExit (vent20in)
+            ClearFramePicture
+            RemoveObject (box)
           }
           else {
             msg ("You feel too weak to push this box. Your stomach has the rumblies that only hands can satisfy.")
@@ -252,6 +263,12 @@
       <onexit type="script">
         change_rooms
       </onexit>
+      <picture type="string"></picture>
+      <enter type="script">
+        if (Contains (r22,deadRat)) {
+          SetFramePicture ("deadrat.png")
+        }
+      </enter>
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
         <look type="script">
@@ -274,12 +291,18 @@
         <take type="boolean">false</take>
         <eat type="script">
           grow_snake
+          ClearFramePicture
+          RemoveObject (deadRat)
         </eat>
         <consume type="script">
           grow_snake
+          ClearFramePicture
+          RemoveObject (deadRat)
         </consume>
         <swallow type="script">
           grow_snake
+          ClearFramePicture
+          RemoveObject (deadRat)
         </swallow>
       </object>
     </object>
@@ -308,6 +331,11 @@
         <onexit type="script">
           change_rooms
         </onexit>
+        <enter type="script">
+          if (Contains (vent10,keyCard)) {
+            SetFramePicture ("keycard.png")
+          }
+        </enter>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
           <look type="script">
@@ -337,6 +365,9 @@
               UnlockExit (finishExit)
             </item>
           </selfuseon>
+          <ontake type="script">
+            ClearFramePicture
+          </ontake>
         </object>
       </object>
       <object name="vent20">
