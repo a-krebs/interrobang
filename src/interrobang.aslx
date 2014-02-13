@@ -4,7 +4,7 @@
   <include ref="Core.aslx" />
   <game name="interrobang">
     <gameid>39702944-ce39-4243-8459-2aaad4c4d15e</gameid>
-    <version>0.0.0</version>
+    <version>0.1.0</version>
     <firstpublished>2014</firstpublished>
     <category type="string"></category>
     <gridmap type="boolean">false</gridmap>
@@ -25,12 +25,12 @@
     <inherit name="editor_room" />
     <object name="r00">
       <inherit name="editor_room" />
-      <onexit type="script">
-        change_rooms
-      </onexit>
       <description>You can see a vent on the wall, but the room is otherwise unremarkable.</description>
       <descprefix>You are in</descprefix>
       <alias>room</alias>
+      <onexit type="script">
+        change_rooms
+      </onexit>
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
         <look type="script">
@@ -54,10 +54,10 @@
     </object>
     <object name="r01">
       <inherit name="editor_room" />
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
-      <alias>room</alias>
       <exit alias="west" to="r00">
         <inherit name="westdirection" />
         <look type="script">
@@ -79,10 +79,10 @@
     </object>
     <object name="r02">
       <inherit name="editor_room" />
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
-      <alias>room</alias>
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
         <look type="script">
@@ -98,10 +98,10 @@
     </object>
     <object name="r10">
       <inherit name="editor_room" />
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
-      <alias>room</alias>
       <exit alias="north" to="r00">
         <inherit name="northdirection" />
       </exit>
@@ -114,10 +114,10 @@
     </object>
     <object name="r11">
       <inherit name="editor_room" />
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
-      <alias>room</alias>
       <exit alias="north" to="r01">
         <inherit name="northdirection" />
         <look type="script">
@@ -154,10 +154,10 @@
     <object name="r12">
       <inherit name="editor_room" />
       <picture>card reader.png</picture>
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
-      <alias>room</alias>
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
         <look type="script">
@@ -200,6 +200,7 @@
     <object name="r20">
       <inherit name="editor_room" />
       <picture type="string"></picture>
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
@@ -208,7 +209,6 @@
           SetFramePicture ("crate vent.png")
         }
       </enter>
-      <alias>room</alias>
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
         <look type="script">
@@ -232,6 +232,7 @@
       </exit>
       <object name="box">
         <inherit name="editor_object" />
+        <look>The large box appears to be very heavy. There doesn't seem to be a way to open it, but if you had to guess as to its contents, you'd probably go with spiders. Very dense spiders.</look>
         <push type="script"><![CDATA[
           if (player.length >= 5) {
             msg ("You slam into the box with all of your weight, and manage to push it aside. You feel a sense of accomplishment disproportionate to the task of moving a box.")
@@ -243,15 +244,14 @@
             msg ("You feel too weak to push this box. You're so hungry you could eat a grue.")
           }
         ]]></push>
-        <look>The large box appears to be very heavy. There doesn't seem to be a way to open it, but if you had to guess as to its contents, you'd probably go with spiders. Very dense spiders.</look>
       </object>
     </object>
     <object name="r21">
       <inherit name="editor_room" />
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
-      <alias>room</alias>
       <exit alias="north" to="r11">
         <inherit name="northdirection" />
         <look type="script">
@@ -274,6 +274,7 @@
     <object name="r22">
       <inherit name="editor_room" />
       <picture type="string"></picture>
+      <alias>room</alias>
       <onexit type="script">
         change_rooms
       </onexit>
@@ -282,7 +283,6 @@
           SetFramePicture ("deadrat.png")
         }
       </enter>
-      <alias>room</alias>
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
         <look type="script">
@@ -303,6 +303,7 @@
           <value>dead rat</value>
         </alt>
         <take type="boolean">false</take>
+        <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
         <eat type="script">
           grow_snake
           ClearFramePicture
@@ -318,17 +319,16 @@
           ClearFramePicture
           RemoveObject (deadRat)
         </swallow>
-        <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
       </object>
     </object>
     <object name="vent">
       <inherit name="editor_room" />
       <object name="vent00">
         <inherit name="editor_room" />
+        <alias>vent</alias>
         <onexit type="script">
           change_rooms
         </onexit>
-        <alias>vent</alias>
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
           <look type="script">
@@ -344,6 +344,7 @@
       </object>
       <object name="vent10">
         <inherit name="editor_room" />
+        <alias>vent</alias>
         <onexit type="script">
           change_rooms
         </onexit>
@@ -352,7 +353,6 @@
             SetFramePicture ("keycard.png")
           }
         </enter>
-        <alias>vent</alias>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
           <look type="script">
@@ -376,6 +376,8 @@
             <value>key card</value>
           </alt>
           <takemsg>You pick up the key card.</takemsg>
+          <use />
+          <look>The key card glistens with a familiar sheen. It brings back memories of a key card reader you've seen in your travels.</look>
           <ontake type="script">
             ClearFramePicture
           </ontake>
@@ -385,16 +387,14 @@
               UnlockExit (finishExit)
             </item>
           </selfuseon>
-          <use />
-          <look>The key card glistens with a familiar sheen. It brings back memories of a key card reader you've seen in your travels.</look>
         </object>
       </object>
       <object name="vent20">
         <inherit name="editor_room" />
+        <alias>vent</alias>
         <onexit type="script">
           change_rooms
         </onexit>
-        <alias>vent</alias>
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
           <look type="script">
