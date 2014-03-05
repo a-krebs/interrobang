@@ -464,6 +464,23 @@
           look_room (f01)
         </look>
       </exit>
+      <object name="typewriter">
+        <inherit name="editor_object" />
+        <take type="boolean">false</take>
+        <look>It's an old fashioned type writer. It looks like somebdoy has been using it to create a maserpiece.</look>
+        <takemsg>It weighs 10,000 tonnes, no-way-hose-ay</takemsg>
+      </object>
+      <object name="thesis">
+        <inherit name="editor_object" />
+        <take type="script">
+          if (player.length = 10) {
+            msg ("With a heave-ho you hoist it onto your shoulders. It's balanced precariously.")
+          }
+          else {
+          }
+          msg ("You try to heft the stack of papers up, but you're too weak. You consider picking it up one page at a time, but there are at LEAST a bajillion pages there, so that's not going to happen. Maybe if your stomach was full, you'd be strong enough to pick it up.")
+        </take>
+      </object>
     </object>
     <object name="f01">
       <inherit name="editor_room" />
@@ -577,6 +594,14 @@
           look_room (f11)
         </look>
       </exit>
+      <object name="photo">
+        <inherit name="editor_object" />
+        <alias>photo of terrible beasts</alias>
+        <usedefaultprefix type="boolean">false</usedefaultprefix>
+        <look>It's a picture of monsters that vaguely resemble those that captured you.</look>
+        <take />
+        <takemsg>You knock the thing over and the glass breaks. You gingerly pull the photo out and hold onto it.</takemsg>
+      </object>
     </object>
     <object name="f11">
       <inherit name="editor_room" />
@@ -637,6 +662,31 @@
           look_room (f13)
         </look>
       </exit>
+      <object name="crumpled paper">
+        <inherit name="editor_object" />
+        <look>There's a bit of crumpled up paper. It has some illegible scribbles on it. </look>
+        <take />
+        <takemsg>You pick it up. Crinkle crinkle.</takemsg>
+        <burn type="script"><![CDATA[
+          if (Got(crumpled paper)) {
+            if (game.pov.parent = f13) {
+              if (bunsen burner.flame = true) {
+                msg ("You lift the paper into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+                destroy ("crumpled paper")
+              }
+              else {
+                msg ("You wave the paper around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+              }
+            }
+            else {
+              msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
+            }
+          }
+          else {
+            msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
+          }
+        ]]></burn>
+      </object>
     </object>
     <object name="f13">
       <inherit name="editor_room" />
@@ -667,6 +717,62 @@
           look_room (f03)
         </look>
       </exit>
+      <object name="bunsen burner">
+        <inherit name="editor_object" />
+        <tipped type="boolean">false</tipped>
+        <flame type="boolean">false</flame>
+        <look type="script">
+          msg ("There is a bunsen burner sitting on the table. ")
+          if (bunsen burner.tipped = 1) {
+            msg ("It's been tipped onto its side.")
+          }
+          if (bunsen burner.flame = 0) {
+            msg ("There's no fire.")
+          }
+          else {
+            msg ("A hot, blue flame is burning at its tip.")
+          }
+        </look>
+        <hug type="script">
+          if (bunsen burner.tipped = false) {
+            msg ("It looks like it could use some TLC. You sidle up to embrace it, but bump into it in the process. It falls onto its side.")
+            set (bunsen burner, "tipped", false)
+          }
+          else {
+            msg ("You should leave it alone. Haven't you done enough?")
+          }
+        </hug>
+        <eat type="script">
+          if (bunsen burner.tipped = false) {
+            msg ("You've always loved the taste of gas, metal, and fire. You think it might be a good idea to put this thing in your mouth. You try to fit it into your face, but you drop it and it falls over.")
+            set (bunsen burner, "tipped", false)
+          }
+          else {
+            msg ("You should leave it alone. Haven't you done enough?")
+          }
+        </eat>
+        <attack type="script">
+          if (bunsen burner.tipped = false) {
+            msg ("What did you say? Are you talkin to me? Are  you talking. To me? You wind up to give the bunsen burner what for. At the slightest tap, it falls onto its side.")
+            set (bunsen burner, "tipped", false)
+          }
+          else {
+            msg ("You should leave it alone. Haven't you done enough?")
+          }
+        </attack>
+        <inspect type="script">
+          if (bunsen burner.tipped = false) {
+            msg ("You move in to take a look, but bump into it. It falls onto its side.")
+            set (bunsen burner, "tipped", false)
+          }
+          else {
+            msg ("You should leave it alone. Haven't you done enough?")
+          }
+        </inspect>
+      </object>
+      <object name="hose">
+        <inherit name="editor_object" />
+      </object>
     </object>
     <object name="f14">
       <inherit name="editor_room" />
@@ -713,11 +819,10 @@
         <inherit name="editor_object" />
         <inherit name="container_open" />
         <alias>small cage</alias>
-        <scenery />
+        <scenery type="boolean">false</scenery>
         <look>A small cage sits on the desk. Inside, you can see a hamster. He probably has a cute name like Mr. Pippy.</look>
         <alt type="stringlist">
           <value>cage</value>
-          <value>hamster</value>
         </alt>
         <isopen type="boolean">false</isopen>
         <transparent />
@@ -730,8 +835,13 @@
             <value>Mr. Pippy</value>
           </alt>
           <eat type="script">
-            grow_snake
-            msg ("You're so hungry, you dart forward, pick up the hamster and swallow it all in one motion. Mr Pippy makes a tiny sqeak, and then is silent.")
+            if (cage.isopen) {
+              grow_snake
+              msg ("You're so hungry, you dart forward, pick up the hamster and swallow it all in one motion. Mr Pippy makes a tiny sqeak, and then is silent.")
+            }
+            else {
+              msg ("You try to grab the hamster, but the cage is latched closed!")
+            }
           </eat>
         </object>
       </object>
@@ -835,6 +945,44 @@
       </exit>
     </object>
   </object>
+  <verb>
+    <property>hug</property>
+    <pattern>hug</pattern>
+    <defaultexpression>"You can't hug " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>attack</property>
+    <pattern>attack</pattern>
+    <defaultexpression>"You can't attack " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>inspect</property>
+    <pattern>inspect</pattern>
+    <defaultexpression>"You can't inspect " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>burn</property>
+    <pattern>burn</pattern>
+    <defaultexpression>"You can't burn " + object.article + "."</defaultexpression>
+  </verb>
+  <command>
+    <pattern>put paper in fire; put paper in flame; set paper on fire</pattern>
+    <script><![CDATA[
+      if (Got(crumpled paper)) {
+        if (game.pov.parent = f13) {
+          if (box.flame = 1) {
+            msg ("You lift the paper into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+          }
+          else {
+            msg ("You wave the paper around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+          }
+        }
+        else {
+          msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
+        }
+      }
+    ]]></script>
+  </command>
   <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
