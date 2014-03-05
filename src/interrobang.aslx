@@ -42,7 +42,7 @@
           look_room (r10)
         </look>
       </exit>
-      <exit name="Out Vent" alias="in" to="vent00">
+      <exit name="Out Vent" alias="in" to="r22">
         <inherit name="indirection" />
         <locked />
         <lockmessage>It looks like it opens from the inside.</lockmessage>
@@ -141,14 +141,6 @@
           look_room (r21)
         </look>
       </exit>
-      <object name="player">
-        <inherit name="editor_object" />
-        <inherit name="editor_player" />
-        <maxobjects type="int">1</maxobjects>
-        <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-        <length type="int">4</length>
-        <attr name="show_debug" type="int">0</attr>
-      </object>
     </object>
     <object name="r12">
       <inherit name="editor_room" />
@@ -305,19 +297,10 @@
         <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
         <eat type="script">
           grow_snake
+          msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... push a box around, or something.")
           ClearFramePicture
           RemoveObject (deadRat)
         </eat>
-        <consume type="script">
-          grow_snake
-          ClearFramePicture
-          RemoveObject (deadRat)
-        </consume>
-        <swallow type="script">
-          grow_snake
-          ClearFramePicture
-          RemoveObject (deadRat)
-        </swallow>
       </object>
     </object>
     <object name="vent">
@@ -459,6 +442,399 @@
     <pattern>swallow</pattern>
     <defaultexpression>"You can't swallow " + object.article + "."</defaultexpression>
   </verb>
+  <object name="FirePuzzle">
+    <inherit name="editor_room" />
+    <object name="f00">
+      <inherit name="editor_room" />
+      <enter type="script">
+      </enter>
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="south" to="f10">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f10)
+        </look>
+      </exit>
+      <exit alias="east" to="f01">
+        <inherit name="eastdirection" />
+        <lookonly />
+        <look type="script">
+          look_room (f01)
+        </look>
+      </exit>
+    </object>
+    <object name="f01">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f02">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f02)
+        </look>
+      </exit>
+      <exit alias="south" to="f11">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f11)
+        </look>
+      </exit>
+      <exit alias="west" to="f00">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f00)
+        </look>
+      </exit>
+    </object>
+    <object name="f02">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f03">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f03)
+        </look>
+      </exit>
+      <exit alias="west" to="f01">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f01)
+        </look>
+      </exit>
+      <exit to="f12">
+        <look type="script">
+          look_room (f12)
+        </look>
+      </exit>
+    </object>
+    <object name="f03">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f04">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f04)
+        </look>
+      </exit>
+      <exit alias="west" to="f02">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f02)
+        </look>
+      </exit>
+      <exit alias="south" to="f14">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f13)
+        </look>
+      </exit>
+    </object>
+    <object name="f04">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="west" to="f03">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f03)
+        </look>
+      </exit>
+      <exit alias="south" to="f14">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f14)
+        </look>
+      </exit>
+    </object>
+    <object name="f10">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="north" to="f00">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f00)
+        </look>
+      </exit>
+      <exit alias="south" to="f20">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f20)
+        </look>
+      </exit>
+      <exit alias="east" to="f11">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f11)
+        </look>
+      </exit>
+    </object>
+    <object name="f11">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f12">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f12)
+        </look>
+      </exit>
+      <exit alias="north" to="f01">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f01)
+        </look>
+      </exit>
+      <exit alias="south" to="f21">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f21)
+        </look>
+      </exit>
+      <exit alias="west" to="f10">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f10)
+        </look>
+      </exit>
+    </object>
+    <object name="f12">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="north" to="f02">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f02)
+        </look>
+      </exit>
+      <exit alias="south" to="f22">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f22)
+        </look>
+      </exit>
+      <exit alias="west" to="f11">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f11)
+        </look>
+      </exit>
+      <exit alias="east" to="f13">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f13)
+        </look>
+      </exit>
+    </object>
+    <object name="f13">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f14">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f14)
+        </look>
+      </exit>
+      <exit alias="west" to="f12">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f12)
+        </look>
+      </exit>
+      <exit alias="south" to="f23">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f23)
+        </look>
+      </exit>
+      <exit alias="north" to="f03">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f03)
+        </look>
+      </exit>
+    </object>
+    <object name="f14">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="north" to="f04">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f04)
+        </look>
+      </exit>
+      <exit alias="south" to="f24">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f24)
+        </look>
+      </exit>
+      <exit alias="west" to="f13">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f13)
+        </look>
+      </exit>
+    </object>
+    <object name="f20">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="north" to="f10">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f10)
+        </look>
+      </exit>
+      <exit alias="east" to="f21">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f21)
+        </look>
+      </exit>
+      <object name="cage">
+        <inherit name="editor_object" />
+        <inherit name="container_open" />
+        <alias>small cage</alias>
+        <scenery />
+        <look>A small cage sits on the desk. Inside, you can see a hamster. He probably has a cute name like Mr. Pippy.</look>
+        <alt type="stringlist">
+          <value>cage</value>
+          <value>hamster</value>
+        </alt>
+        <isopen type="boolean">false</isopen>
+        <transparent />
+        <openmsg>You bump the latch and swing the door open.</openmsg>
+        <closemsg>You nudge the door closed.</closemsg>
+        <object name="hamster">
+          <inherit name="editor_object" />
+          <look>There's a little furry ball in the cage. So cute. It smells good. He probably has a cute name like Mr. Pippy</look>
+          <alt type="stringlist">
+            <value>Mr. Pippy</value>
+          </alt>
+          <eat type="script">
+            grow_snake
+            msg ("You're so hungry, you dart forward, pick up the hamster and swallow it all in one motion. Mr Pippy makes a tiny sqeak, and then is silent.")
+          </eat>
+        </object>
+      </object>
+    </object>
+    <object name="f21">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f22">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f22)
+        </look>
+      </exit>
+      <exit alias="west" to="f20">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f20)
+        </look>
+      </exit>
+      <exit alias="north" to="f11">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f11)
+        </look>
+      </exit>
+    </object>
+    <object name="f22">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f23">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f23)
+        </look>
+      </exit>
+      <exit alias="west" to="f21">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f21)
+        </look>
+      </exit>
+      <exit alias="north" to="f12">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f12)
+        </look>
+      </exit>
+    </object>
+    <object name="f23">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <exit alias="east" to="f24">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f24)
+        </look>
+      </exit>
+      <exit alias="west" to="f22">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f22)
+        </look>
+      </exit>
+      <exit alias="north" to="f13">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f13)
+        </look>
+      </exit>
+    </object>
+    <object name="f24">
+      <inherit name="editor_room" />
+      <onexit type="script">
+        change_rooms
+      </onexit>
+      <object name="player">
+        <inherit name="editor_object" />
+        <inherit name="editor_player" />
+        <maxobjects type="int">1</maxobjects>
+        <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+        <length type="int">9</length>
+        <attr name="show_debug" type="int">0</attr>
+      </object>
+      <exit alias="north" to="f14">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f14)
+        </look>
+      </exit>
+      <exit alias="west" to="f23">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (f23)
+        </look>
+      </exit>
+    </object>
+  </object>
   <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
@@ -491,7 +867,7 @@
         game_over
       }
       else {
-      	list_rooms
+        list_rooms
       }
     }
   </function>
@@ -534,7 +910,6 @@
   <function name="grow_snake">
     // This function increases the snake's length by 1 and fixes the room tracking list to add on another "slot"
     // When the player changes rooms after they've "grown", it's like they get one room longer at the neck
-    msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... push a box around, or something.")
     player.length = player.length + 1
     curRoom = ObjectListItem(ListParents(player),0)
     // We have to do this gross thing of putting the new element in its own list so that we can combine it with
