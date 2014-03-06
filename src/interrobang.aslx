@@ -11,6 +11,7 @@
     <cover>snake logo.png</cover>
     <start type="script">
       // All of the initial "slots" of the snake are filled with the player's current room
+      player.game_start = 1
       player.snake_rooms = NewObjectList()
       curRoom = ObjectListItem(ListParents(player),0)
       for (index, 0, player.length-1) {
@@ -28,8 +29,10 @@
       <descprefix>You are in</descprefix>
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
         <look type="script">
@@ -55,8 +58,10 @@
       <inherit name="editor_room" />
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="west" to="r00">
         <inherit name="westdirection" />
         <look type="script">
@@ -80,8 +85,10 @@
       <inherit name="editor_room" />
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
         <look type="script">
@@ -99,8 +106,10 @@
       <inherit name="editor_room" />
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="r00">
         <inherit name="northdirection" />
       </exit>
@@ -115,8 +124,10 @@
       <inherit name="editor_room" />
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="r01">
         <inherit name="northdirection" />
         <look type="script">
@@ -147,8 +158,10 @@
       <picture>card reader.png</picture>
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
         <look type="script">
@@ -193,12 +206,12 @@
       <picture type="string"></picture>
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
       <enter type="script">
         if (Contains (r20,box)) {
           SetFramePicture ("crate vent.png")
         }
+        change_rooms
       </enter>
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
@@ -241,8 +254,10 @@
       <inherit name="editor_room" />
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="r11">
         <inherit name="northdirection" />
         <look type="script">
@@ -267,12 +282,12 @@
       <picture type="string"></picture>
       <alias>room</alias>
       <onexit type="script">
-        change_rooms
       </onexit>
       <enter type="script">
         if (Contains (r22,deadRat)) {
           SetFramePicture ("deadrat.png")
         }
+        change_rooms
       </enter>
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
@@ -295,15 +310,15 @@
         </alt>
         <take type="boolean">false</take>
         <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
         <eat type="script">
           grow_snake
           msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... push a box around, or something.")
           ClearFramePicture
           RemoveObject (deadRat)
         </eat>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-        </displayverbs>
       </object>
     </object>
     <object name="vent">
@@ -312,8 +327,10 @@
         <inherit name="editor_room" />
         <alias>vent</alias>
         <onexit type="script">
-          change_rooms
         </onexit>
+        <enter type="script">
+          change_rooms
+        </enter>
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
           <look type="script">
@@ -331,12 +348,12 @@
         <inherit name="editor_room" />
         <alias>vent</alias>
         <onexit type="script">
-          change_rooms
         </onexit>
         <enter type="script">
           if (Contains (vent10,keyCard)) {
             SetFramePicture ("keycard.png")
           }
+          change_rooms
         </enter>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
@@ -378,8 +395,10 @@
         <inherit name="editor_room" />
         <alias>vent</alias>
         <onexit type="script">
-          change_rooms
         </onexit>
+        <enter type="script">
+          change_rooms
+        </enter>
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
           <look type="script">
@@ -450,9 +469,9 @@
     <object name="f00">
       <inherit name="editor_room" />
       <enter type="script">
+        change_rooms
       </enter>
       <onexit type="script">
-        change_rooms
       </onexit>
       <exit alias="south" to="f10">
         <inherit name="southdirection" />
@@ -468,6 +487,8 @@
       </object>
       <object name="thesis">
         <inherit name="editor_object" />
+        <look>This thesis looks like it's the work of months, possibly years, labouriously created on this typewriter. That's a LOT of paper.</look>
+        <wasburned type="boolean">false</wasburned>
         <take type="script">
           if (player.length = 10) {
             msg ("With a heave-ho you hoist it onto your shoulders. It's balanced precariously.")
@@ -477,15 +498,14 @@
             msg ("You try to heft the stack of papers up, but you're too weak. You consider picking it up one page at a time, but there are at LEAST a bajillion pages there, so that's not going to happen. Maybe if your stomach was full, you'd be strong enough to pick it up.")
           }
         </take>
-        <look>This thesis looks like it's the work of months, possibly years, labouriously created on this typewriter. That's a LOT of paper.</look>
-        <wasburned type="boolean">false</wasburned>
         <burn type="script">
           if (Got(thesis)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.tipped = true) {
                 if (bunsen burner.flame = true) {
                   msg ("You drop the thesis into the fire. The flames spread over it, and it quickly becomes a huge ball of flame There's so much smoke that you can hardly see or breathe. The fire alarm starts blaring.")
-                  destroy ("thesis")
+                  set (thesis, "wasburned", true)
+                  RemoveObject (thesis)
                 }
                 else {
                   msg ("You lift the thesis in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
@@ -514,8 +534,10 @@
     <object name="f01">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f02">
         <inherit name="eastdirection" />
         <look type="script">
@@ -550,8 +572,10 @@
     <object name="f02">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f03">
         <inherit name="eastdirection" />
         <look type="script">
@@ -585,8 +609,10 @@
     <object name="f03">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f04">
         <inherit name="eastdirection" />
         <look type="script">
@@ -605,12 +631,20 @@
           look_room (f13)
         </look>
       </exit>
+      <exit alias="north" to="p21">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (p21)
+        </look>
+      </exit>
     </object>
     <object name="f04">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="west" to="f03">
         <inherit name="westdirection" />
         <look type="script">
@@ -623,12 +657,20 @@
           look_room (f14)
         </look>
       </exit>
+      <exit alias="north" to="p22">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (p22)
+        </look>
+      </exit>
     </object>
     <object name="f10">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="f00">
         <inherit name="northdirection" />
         <look type="script">
@@ -678,8 +720,10 @@
     <object name="f11">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f12">
         <inherit name="eastdirection" />
         <look type="script">
@@ -708,8 +752,10 @@
     <object name="f12">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="f02">
         <inherit name="northdirection" />
         <look type="script">
@@ -763,8 +809,10 @@
     <object name="f13">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f14">
         <inherit name="eastdirection" />
         <look type="script">
@@ -793,6 +841,9 @@
         <inherit name="editor_object" />
         <tipped type="boolean">false</tipped>
         <flame type="boolean">false</flame>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
         <look type="script">
           msg ("There is a bunsen burner sitting on the table. ")
           if (bunsen burner.tipped = true) {
@@ -841,12 +892,10 @@
             msg ("You should leave it alone. Haven't you done enough?")
           }
         </inspect>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-        </displayverbs>
       </object>
       <object name="hose">
         <inherit name="editor_object" />
+        <attached type="int">1</attached>
         <take type="script">
           AddToInventory (player)
           msg ("You take that hose. It's yours.")
@@ -864,11 +913,15 @@
             msg ("It's a rubber hose. One end is connected to the tap, and the other end is hanging off the counter.")
           }
         </look>
-        <attached type="int">1</attached>
       </object>
       <object name="gas valve">
         <inherit name="editor_object" />
         <inherit name="switchable" />
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
+        <switchonmsg>You turn the gas valve to the on position.</switchonmsg>
+        <switchoffmsg>You turn the gas valve to the off position.</switchoffmsg>
         <look type="script">
           if (IsSwitchedOn(gas valve)) {
             msg ("It's a valve for gas that fuels things like bunsen burners. It's emitting a faint hissing sound.")
@@ -877,11 +930,6 @@
             msg ("It's a valve for gas that fuels things like bunsen burners. It's not doing anything.")
           }
         </look>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-        </displayverbs>
-        <switchonmsg>You turn the gas valve to the on position.</switchonmsg>
-        <switchoffmsg>You turn the gas valve to the off position.</switchoffmsg>
         <onswitchon type="script">
           if (hose.attached = 1) {
             set (bunsen burner, "flame", true)
@@ -895,8 +943,10 @@
     <object name="f14">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="f04">
         <inherit name="northdirection" />
         <look type="script">
@@ -919,8 +969,10 @@
     <object name="f20">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="north" to="f10">
         <inherit name="northdirection" />
         <look type="script">
@@ -952,6 +1004,9 @@
           <alt type="stringlist">
             <value>Mr. Pippy</value>
           </alt>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
           <eat type="script">
             if (cage.isopen) {
               grow_snake
@@ -961,17 +1016,16 @@
               msg ("You try to grab the hamster, but the cage is latched closed!")
             }
           </eat>
-          <displayverbs type="stringlist">
-            <value>Look at</value>
-          </displayverbs>
         </object>
       </object>
     </object>
     <object name="f21">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f22">
         <inherit name="eastdirection" />
         <look type="script">
@@ -994,8 +1048,10 @@
     <object name="f22">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f23">
         <inherit name="eastdirection" />
         <look type="script">
@@ -1018,8 +1074,10 @@
     <object name="f23">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <exit alias="east" to="f24">
         <inherit name="eastdirection" />
         <look type="script">
@@ -1042,8 +1100,10 @@
     <object name="f24">
       <inherit name="editor_room" />
       <onexit type="script">
-        change_rooms
       </onexit>
+      <enter type="script">
+        change_rooms
+      </enter>
       <object name="player">
         <inherit name="editor_object" />
         <inherit name="editor_player" />
@@ -1105,7 +1165,7 @@
     ]]></script>
   </command>
   <command>
-    <pattern>attach hose to bunsen burner; attach hose to gas; attach hose to gas valve</pattern>
+    <pattern>attach hose to bunsen burner; attach hose to gas; attach hose to gas valve; use hose on valve; use hose on gas; use hose on bunsen burner</pattern>
     <unresolved type="string"></unresolved>
     <script>
       if (Got(hose)) {
@@ -1149,40 +1209,375 @@
       }
     ]]></script>
   </command>
+  <object name="PlantPuzzle">
+    <inherit name="editor_room" />
+    <object name="p01">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="west">
+        <inherit name="westdirection" />
+        <scenery />
+        <locked />
+        <lookonly />
+        <look>There's a door this way that the monsters left through. It's shut tight, though. There's no way to open it.</look>
+      </exit>
+      <object name="window">
+        <inherit name="editor_object" />
+        <alias>open window</alias>
+        <alt type="stringlist">
+          <value>window</value>
+        </alt>
+        <look>High up near the ceiling, there's an open window. You can feel and smell fresh air through it. This is what must have cleared out the smoke.</look>
+      </object>
+      <object name="pile of dirt">
+        <inherit name="editor_object" />
+        <visible type="boolean">false</visible>
+        <alt type="stringlist">
+          <value>bean plant</value>
+          <value>dirt</value>
+        </alt>
+        <grown type="boolean">false</grown>
+        <look type="script">
+          if (pile of dirt.grown = false) {
+            if (hose.attached = 2) {
+              if (IsSwitchedOn(faucet)) {
+                msg ("The water runs out of the end of the hose and makes a large puddle on the floor. As the puddle spreads across the room, the dirt begins to moisten. You hear a sharp crunching noise as something within the dirt begins to spring to life. Suddenly, a huge plant coils out of the dirt, and grows upwards in a spiral, reaching towards the light streaming through the open window.")
+                MakeObjectVisible (plant)
+              }
+              else {
+                msg ("The end of the hose is poking towards the pile of dry dirt, but no water is coming out.")
+              }
+            }
+            else {
+              msg ("Directly below the open window is a pile of dry dirt, with the remains of its smashed pot scattered around.")
+            }
+          }
+          else {
+            msg ("It's a pile of dirt, out of which is sprouting a magnficient vine that snakes up towards the window.")
+          }
+        </look>
+      </object>
+      <object name="plant">
+        <inherit name="editor_object" />
+        <alias>tall bean plant</alias>
+        <alt type="stringlist">
+          <value>plant</value>
+          <value>vine</value>
+          <value>beanstalk</value>
+        </alt>
+        <climb type="script">
+          game_win
+        </climb>
+        <climbup type="script">
+          game_win
+        </climbup>
+        <visible type="boolean">false</visible>
+      </object>
+      <exit alias="south" to="p11">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (p11)
+        </look>
+      </exit>
+      <exit alias="east" to="p02">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (p02)
+        </look>
+      </exit>
+    </object>
+    <object name="p02">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <object name="bean plant">
+        <inherit name="editor_object" />
+        <look>Its label says "Superior-grow military-strength developmental prototype beanstalk". It's in a clay pot on the top of this shelf. There doesn't appear to be anything growing in the pot, and the soil is dry.</look>
+        <pushoffshelf type="string"></pushoffshelf>
+        <throw type="string"></throw>
+        <push type="script">
+          if (player.length = 11) {
+            msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
+            MakeObjectVisible (pile of dirt)
+            destroy ("bean plant")
+          }
+          msg ("You heave against the pot, but it doesn't budge. You're just not strong enough to move it. If only you had some more protein in your system.")
+        </push>
+      </object>
+      <exit alias="west" to="p01">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (p01)
+        </look>
+      </exit>
+      <exit alias="south" to="p12">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (p12)
+        </look>
+      </exit>
+    </object>
+    <object name="p10">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <object name="sink">
+        <inherit name="editor_object" />
+        <look>The sink is slightly filled with water, but is draining steadily.</look>
+      </object>
+      <object name="faucet">
+        <inherit name="editor_object" />
+        <inherit name="switchable" />
+        <alt type="stringlist">
+          <value>tap</value>
+          <value>running faucet</value>
+        </alt>
+        <switchonmsg>The handle sticks a little but you manage to turn the faucet on. Water is coming out now.</switchonmsg>
+        <switchoffmsg>You shut the water off. Only YOU can protect the environment!</switchoffmsg>
+        <switchedon />
+        <look type="script">
+          if (IsSwitchedOn(faucet)) {
+            msg ("It's a faucet. Water is pouring out.")
+          }
+          else {
+            msg ("It's a faucet. It's off.")
+          }
+          if (hose.attached = 2) {
+            msg ("There is a rubber hose attached to the nozzle. ")
+          }
+        </look>
+      </object>
+      <exit alias="east" to="p11">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (p11)
+        </look>
+      </exit>
+      <exit alias="south" to="p20">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (p20)
+        </look>
+      </exit>
+    </object>
+    <object name="p11">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="north" to="p01">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (p01)
+        </look>
+      </exit>
+      <exit alias="east" to="p12">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (p12)
+        </look>
+      </exit>
+      <exit alias="west" to="p10">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (p10)
+        </look>
+      </exit>
+      <exit alias="south" to="p21">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (p21)
+        </look>
+      </exit>
+    </object>
+    <object name="p12">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="north" to="p02">
+        <inherit name="northdirection" />
+        <lookonly type="boolean">false</lookonly>
+        <look type="script">
+          look_room (p02)
+        </look>
+      </exit>
+      <exit alias="south" to="p22">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (p22)
+        </look>
+      </exit>
+      <exit alias="west" to="p11">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (p11)
+        </look>
+      </exit>
+    </object>
+    <object name="p20">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <object name="meat plant">
+        <inherit name="editor_object" />
+        <alias>meaty plant</alias>
+        <look>There's a plant on this shelf. The label says "Experimental DNA hybrid for Synthetic Meat Production." Its leaves look like tasty little steaks.</look>
+        <eat type="script">
+          msg ("You swallow that meat plant whole!")
+          grow_snake
+        </eat>
+      </object>
+      <exit alias="north" to="p10">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (p11)
+        </look>
+      </exit>
+      <exit to="p21">
+        <look type="script">
+          look_room (p21)
+        </look>
+      </exit>
+    </object>
+    <object name="p21">
+      <inherit name="editor_room" />
+      <beforefirstenter type="script">
+      </beforefirstenter>
+      <enter type="script">
+        change_rooms
+      </enter>
+      <firstenter type="script">
+        humans_caught
+      </firstenter>
+      <exit alias="south" to="f03">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f03)
+        </look>
+      </exit>
+      <exit alias="north" to="p11">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (p11)
+        </look>
+      </exit>
+      <exit alias="west" to="p20">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (p20)
+        </look>
+      </exit>
+      <exit alias="east" to="p22">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (p22)
+        </look>
+        <runscript />
+      </exit>
+    </object>
+    <object name="p22">
+      <inherit name="editor_room" />
+      <beforefirstenter type="script">
+      </beforefirstenter>
+      <enter type="script">
+        change_rooms
+      </enter>
+      <firstenter type="script">
+        humans_caught
+      </firstenter>
+      <exit alias="north" to="p12">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (p12)
+        </look>
+      </exit>
+      <exit alias="south" to="f04">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (f04)
+        </look>
+      </exit>
+      <exit alias="west" to="p21">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (p21)
+        </look>
+      </exit>
+    </object>
+  </object>
+  <command>
+    <pattern>attach hose to faucet; attach hose to tap; put hose on facuet; put hose on tap; use hose on faucet; use hose on tap</pattern>
+    <script>
+      if (Got(hose)) {
+        if (game.pov.parent = p10) {
+          msg ("You attach the hose to the running faucet. The other end hangs off the end of the sink.")
+          RemoveObject (hose)
+          set (hose, "attached", 2)
+        }
+        else {
+          msg ("You're not near anything to attach it to.")
+        }
+      }
+      else {
+        msg ("You don't have any hose!")
+      }
+    </script>
+  </command>
+  <verb>
+    <property>pushoffshelf</property>
+    <pattern>push off shelf</pattern>
+    <defaultexpression>"You can't push off shelf " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>climbup</property>
+    <pattern>climb up</pattern>
+    <defaultexpression>"You can't climb up " + object.article + "."</defaultexpression>
+  </verb>
   <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
     // of the previously visited rooms, where index 0 is the snake's tail
     // and index (player.length-1) is the head
-    curRoom = ObjectListItem(ListParents(player),0)
-    if (not DoesInherit (curRoom, "not_snake_room")) {
-      list_rooms
-      // Remove the tail room at index 0
-      tailRoom = ObjectListItem(player.snake_rooms, 0)
-      list remove (player.snake_rooms, tailRoom)
-      // Check whether the newest room is in the list already
-      // indexHit corresponds to the snake's body part that we run into, if we run into it
-      count = 0
-      indexHit = 0
-      foreach (rm, player.snake_rooms) {
-        count = count + 1
-        if (rm.name = curRoom.name) {
-          indexHit = count
+    if (player.game_start = 0) {
+      curRoom = ObjectListItem(ListParents(player),0)
+      if (not DoesInherit (curRoom, "not_snake_room")) {
+        list_rooms
+        // Remove the tail room at index 0
+        tailRoom = ObjectListItem(player.snake_rooms, 0)
+        list remove (player.snake_rooms, tailRoom)
+        // Check whether the newest room is in the list already
+        // indexHit corresponds to the snake's body part that we run into, if we run into it
+        count = 0
+        indexHit = 0
+        foreach (rm, player.snake_rooms) {
+          count = count + 1
+          if (rm.name = curRoom.name) {
+            indexHit = count
+          }
+        }
+        // Now add in the new head room (we do this now even if we've bitten ourself)
+        list add (player.snake_rooms, curRoom)
+        if (indexHit = player.length-2) {
+          // We hit our own body at the head, give a no turn back message
+          msg ("You hear the sound of a large object dragging across the floor, but you proceed anyway.")
+          game_over
+        }
+        else if (not indexHit = 0) {
+          game_over
+        }
+        else {
+          list_rooms
         }
       }
-      // Now add in the new head room (we do this now even if we've bitten ourself)
-      list add (player.snake_rooms, curRoom)
-      if (indexHit = player.length-2) {
-        // We hit our own body at the head, give a no turn back message
-        msg ("You hear the sound of a large object dragging across the floor, but you proceed anyway.")
-        game_over
-      }
-      else if (not indexHit = 0) {
-        game_over
-      }
-      else {
-        list_rooms
-      }
+    }
+    else {
+      player.game_start = 0
     }
   </function>
   <function name="look_room" parameters="lookRoom"><![CDATA[
@@ -1249,4 +1644,34 @@
     ClearFramePicture
     finish
   ]]></function>
+  <function name="game_win">
+    msg ("You climb up the beanstalk and out the window. Congratulations, you're free! Also, YOU WERE TEH SNAKE THE WHOLE TIME OMG")
+    finish
+  </function>
+  <function name="humans_caught"><![CDATA[
+    if (thesis.wasburned = false) {
+      msg ("You got caught by the humans in this room! Oh noooo.<br/><br/>Hint: You can look into a room before entering it.<br/><br/>Remember to save!")
+      finish
+    }
+  ]]></function>
+  <walkthrough name="burnThesisWalk">
+    <steps type="simplestringlist">
+      go west
+      west
+      west
+      west
+      open small cage
+      eat hamster
+      north
+      north
+      take thesis
+      east
+      south
+      east
+      east
+      turn on gas
+      hug bunsen burner
+      burn thesis
+    </steps>
+  </walkthrough>
 </asl>
