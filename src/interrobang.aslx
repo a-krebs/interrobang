@@ -301,6 +301,9 @@
           ClearFramePicture
           RemoveObject (deadRat)
         </eat>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
       </object>
     </object>
     <object name="vent">
@@ -457,13 +460,6 @@
           look_room (f10)
         </look>
       </exit>
-      <exit alias="east" to="f01">
-        <inherit name="eastdirection" />
-        <lookonly />
-        <look type="script">
-          look_room (f01)
-        </look>
-      </exit>
       <object name="typewriter">
         <inherit name="editor_object" />
         <take type="boolean">false</take>
@@ -475,12 +471,45 @@
         <take type="script">
           if (player.length = 10) {
             msg ("With a heave-ho you hoist it onto your shoulders. It's balanced precariously.")
+            AddToInventory (thesis)
           }
           else {
+            msg ("You try to heft the stack of papers up, but you're too weak. You consider picking it up one page at a time, but there are at LEAST a bajillion pages there, so that's not going to happen. Maybe if your stomach was full, you'd be strong enough to pick it up.")
           }
-          msg ("You try to heft the stack of papers up, but you're too weak. You consider picking it up one page at a time, but there are at LEAST a bajillion pages there, so that's not going to happen. Maybe if your stomach was full, you'd be strong enough to pick it up.")
         </take>
+        <look>This thesis looks like it's the work of months, possibly years, labouriously created on this typewriter. That's a LOT of paper.</look>
+        <wasburned type="boolean">false</wasburned>
+        <burn type="script">
+          if (Got(thesis)) {
+            if (game.pov.parent = f13) {
+              if (bunsen burner.tipped = true) {
+                if (bunsen burner.flame = true) {
+                  msg ("You drop the thesis into the fire. The flames spread over it, and it quickly becomes a huge ball of flame There's so much smoke that you can hardly see or breathe. The fire alarm starts blaring.")
+                  destroy ("thesis")
+                }
+                else {
+                  msg ("You lift the thesis in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+                }
+              }
+              else {
+                msg ("Try as you might to lift the thesis into the fire, you're just not strong enough to hold it up. Moreover, if you tried to burn it while you were holding it, that might be bad news bears for you. If only you could set it down to burn it.")
+              }
+            }
+            else {
+              msg ("You try your best to channel your inner rage into a fire ball to set the thesis on fire, but nothing happens. You are not a magician, and there's no fire nearby.")
+            }
+          }
+          else {
+            msg ("You try your best to channel your inner rage into a fire ball to set the thesis on fire, but nothing happens. You are not a magician, and there's no fire nearby.")
+          }
+        </burn>
       </object>
+      <exit alias="east" to="f01">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (f01)
+        </look>
+      </exit>
     </object>
     <object name="f01">
       <inherit name="editor_room" />
@@ -505,6 +534,18 @@
           look_room (f00)
         </look>
       </exit>
+      <object name="tinted window1">
+        <inherit name="editor_object" />
+        <alias>tinted window</alias>
+        <look type="script">
+          if (thesis.wasburned = false) {
+            msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous. ")
+          }
+          else {
+            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like they're an open window!")
+          }
+        </look>
+      </object>
     </object>
     <object name="f02">
       <inherit name="editor_room" />
@@ -528,6 +569,18 @@
           look_room (f12)
         </look>
       </exit>
+      <object name="tinted window2">
+        <inherit name="editor_object" />
+        <alias>tinted window</alias>
+        <look type="script">
+          if (thesis.wasburned = false) {
+            msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous. ")
+          }
+          else {
+            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like they're an open window!")
+          }
+        </look>
+      </object>
     </object>
     <object name="f03">
       <inherit name="editor_room" />
@@ -601,6 +654,25 @@
         <look>It's a picture of monsters that vaguely resemble those that captured you.</look>
         <take />
         <takemsg>You knock the thing over and the glass breaks. You gingerly pull the photo out and hold onto it.</takemsg>
+        <burn type="script"><![CDATA[
+          if (Got(crumpled paper)) {
+            if (game.pov.parent = f13) {
+              if (bunsen burner.flame = true) {
+                msg ("You lift the photo into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+                destroy ("crumpled paper")
+              }
+              else {
+                msg ("You wave the photo around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+              }
+            }
+            else {
+              msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+            }
+          }
+          else {
+            msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+          }
+        ]]></burn>
       </object>
     </object>
     <object name="f11">
@@ -723,10 +795,10 @@
         <flame type="boolean">false</flame>
         <look type="script">
           msg ("There is a bunsen burner sitting on the table. ")
-          if (bunsen burner.tipped = 1) {
+          if (bunsen burner.tipped = true) {
             msg ("It's been tipped onto its side.")
           }
-          if (bunsen burner.flame = 0) {
+          if (bunsen burner.flame = false) {
             msg ("There's no fire.")
           }
           else {
@@ -736,7 +808,7 @@
         <hug type="script">
           if (bunsen burner.tipped = false) {
             msg ("It looks like it could use some TLC. You sidle up to embrace it, but bump into it in the process. It falls onto its side.")
-            set (bunsen burner, "tipped", false)
+            set (bunsen burner, "tipped", true)
           }
           else {
             msg ("You should leave it alone. Haven't you done enough?")
@@ -745,7 +817,7 @@
         <eat type="script">
           if (bunsen burner.tipped = false) {
             msg ("You've always loved the taste of gas, metal, and fire. You think it might be a good idea to put this thing in your mouth. You try to fit it into your face, but you drop it and it falls over.")
-            set (bunsen burner, "tipped", false)
+            set (bunsen burner, "tipped", true)
           }
           else {
             msg ("You should leave it alone. Haven't you done enough?")
@@ -754,7 +826,7 @@
         <attack type="script">
           if (bunsen burner.tipped = false) {
             msg ("What did you say? Are you talkin to me? Are  you talking. To me? You wind up to give the bunsen burner what for. At the slightest tap, it falls onto its side.")
-            set (bunsen burner, "tipped", false)
+            set (bunsen burner, "tipped", true)
           }
           else {
             msg ("You should leave it alone. Haven't you done enough?")
@@ -763,15 +835,61 @@
         <inspect type="script">
           if (bunsen burner.tipped = false) {
             msg ("You move in to take a look, but bump into it. It falls onto its side.")
-            set (bunsen burner, "tipped", false)
+            set (bunsen burner, "tipped", true)
           }
           else {
             msg ("You should leave it alone. Haven't you done enough?")
           }
         </inspect>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
       </object>
       <object name="hose">
         <inherit name="editor_object" />
+        <take type="script">
+          AddToInventory (player)
+          msg ("You take that hose. It's yours.")
+          set (hose, "attached", 0)
+          set (bunsen burner, "flame", false)
+        </take>
+        <look type="script">
+          if (hose.attached = 0) {
+            msg ("It's a rubber hose that could be connected from the gas valve to the bunsen burner.")
+          }
+          if (hose.attached = 1) {
+            msg ("It's a rubber hose. It's connecting the gas valve to the bunsen burner.")
+          }
+          if (hose.attached = 2) {
+            msg ("It's a rubber hose. One end is connected to the tap, and the other end is hanging off the counter.")
+          }
+        </look>
+        <attached type="int">1</attached>
+      </object>
+      <object name="gas valve">
+        <inherit name="editor_object" />
+        <inherit name="switchable" />
+        <look type="script">
+          if (IsSwitchedOn(gas valve)) {
+            msg ("It's a valve for gas that fuels things like bunsen burners. It's emitting a faint hissing sound.")
+          }
+          else {
+            msg ("It's a valve for gas that fuels things like bunsen burners. It's not doing anything.")
+          }
+        </look>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
+        <switchonmsg>You turn the gas valve to the on position.</switchonmsg>
+        <switchoffmsg>You turn the gas valve to the off position.</switchoffmsg>
+        <onswitchon type="script">
+          if (hose.attached = 1) {
+            set (bunsen burner, "flame", true)
+          }
+        </onswitchon>
+        <onswitchoff type="script">
+          set (bunsen burner, "flame", false)
+        </onswitchoff>
       </object>
     </object>
     <object name="f14">
@@ -843,6 +961,9 @@
               msg ("You try to grab the hamster, but the cage is latched closed!")
             }
           </eat>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
         </object>
       </object>
     </object>
@@ -970,7 +1091,7 @@
     <script><![CDATA[
       if (Got(crumpled paper)) {
         if (game.pov.parent = f13) {
-          if (box.flame = 1) {
+          if (box.flame = true) {
             msg ("You lift the paper into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
           }
           else {
@@ -980,6 +1101,51 @@
         else {
           msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
         }
+      }
+    ]]></script>
+  </command>
+  <command>
+    <pattern>attach hose to bunsen burner; attach hose to gas; attach hose to gas valve</pattern>
+    <unresolved type="string"></unresolved>
+    <script>
+      if (Got(hose)) {
+        if (game.pov.parent = f13) {
+          msg ("You attach the hose to the bunsen burner on one end and to the gas valve on the other..")
+          RemoveObject (hose)
+          set (hose, "attached", 1)
+          if (IsSwitchedOn(gas valve)) {
+            msg ("The bunsen burner's flame turns on.")
+            set (bunsen burner, "flame", true)
+          }
+        }
+        else {
+          msg ("You're not near any bunsen burner.")
+        }
+      }
+      else {
+        msg ("You don't have any hose!")
+      }
+    </script>
+  </command>
+  <command>
+    <pattern>put photo in fire; put photo in flame; set photo on fire</pattern>
+    <script><![CDATA[
+      if (Got(photo)) {
+        if (game.pov.parent = f13) {
+          if (bunsen burner.flame = true) {
+            msg ("You lift the photo into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+            destroy ("photo")
+          }
+          else {
+            msg ("You wave the photo around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+          }
+        }
+        else {
+          msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+        }
+      }
+      else {
+        msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
       }
     ]]></script>
   </command>
