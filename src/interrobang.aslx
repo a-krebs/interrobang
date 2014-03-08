@@ -1217,13 +1217,6 @@
       <enter type="script">
         change_rooms
       </enter>
-      <exit alias="west">
-        <inherit name="westdirection" />
-        <scenery />
-        <locked />
-        <lookonly />
-        <look>There's a door this way that the monsters left through. It's shut tight, though. There's no way to open it.</look>
-      </exit>
       <object name="window">
         <inherit name="editor_object" />
         <alias>open window</alias>
@@ -1288,6 +1281,10 @@
           look_room (p02)
         </look>
       </exit>
+      <object name="door">
+        <inherit name="editor_object" />
+        <look>There's a door to the west that the monsters left through. It's shut tight, though. There's no way to open it.</look>
+      </object>
     </object>
     <object name="p02">
       <inherit name="editor_room" />
