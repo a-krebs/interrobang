@@ -564,7 +564,7 @@
             msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous. ")
           }
           else {
-            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like they're an open window!")
+            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like there's an open window!")
           }
         </look>
       </object>
@@ -601,7 +601,7 @@
             msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous. ")
           }
           else {
-            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like they're an open window!")
+            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like there's an open window!")
           }
         </look>
       </object>
@@ -897,7 +897,7 @@
         <inherit name="editor_object" />
         <attached type="int">1</attached>
         <take type="script">
-          AddToInventory (player)
+          AddToInventory (hose)
           msg ("You take that hose. It's yours.")
           set (hose, "attached", 0)
           set (bunsen burner, "flame", false)
@@ -990,7 +990,7 @@
         <inherit name="container_open" />
         <alias>small cage</alias>
         <scenery type="boolean">false</scenery>
-        <look>A small cage sits on the desk. Inside, you can see a hamster. He probably has a cute name like Mr. Pippy.</look>
+        <look>A small wire cage sits on the desk.</look>
         <alt type="stringlist">
           <value>cage</value>
         </alt>
@@ -1011,6 +1011,7 @@
             if (cage.isopen) {
               grow_snake
               msg ("You're so hungry, you dart forward, pick up the hamster and swallow it all in one motion. Mr Pippy makes a tiny sqeak, and then is silent.")
+              RemoveObject (hamster)
             }
             else {
               msg ("You try to grab the hamster, but the cage is latched closed!")
@@ -1267,13 +1268,13 @@
           <value>vine</value>
           <value>beanstalk</value>
         </alt>
+        <visible type="boolean">false</visible>
         <climb type="script">
           game_win
         </climb>
         <climbup type="script">
           game_win
         </climbup>
-        <visible type="boolean">false</visible>
       </object>
       <exit alias="south" to="p11">
         <inherit name="southdirection" />
@@ -1296,16 +1297,32 @@
       <object name="bean plant">
         <inherit name="editor_object" />
         <look>Its label says "Superior-grow military-strength developmental prototype beanstalk". It's in a clay pot on the top of this shelf. There doesn't appear to be anything growing in the pot, and the soil is dry.</look>
-        <pushoffshelf type="string"></pushoffshelf>
-        <throw type="string"></throw>
+        <alt type="stringlist">
+          <value>pot</value>
+          <value>clay pot</value>
+          <value>bean plant</value>
+        </alt>
+        <throw type="script">
+          if (player.length = 11) {
+            msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
+            MakeObjectVisible (pile of dirt)
+            destroy ("bean plant")
+          }
+          else {
+            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. Maybe you could move it if you had more protein in your system.")
+          }
+        </throw>
         <push type="script">
           if (player.length = 11) {
             msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
           }
-          msg ("You heave against the pot, but it doesn't budge. You're just not strong enough to move it. If only you had some more protein in your system.")
+          else {
+            msg ("You heave against the pot, but it doesn't budge. You're just not strong enough to move it. If only you had some more protein in your system.")
+          }
         </push>
+        <alias>pot of dirt</alias>
       </object>
       <exit alias="west" to="p01">
         <inherit name="westdirection" />
@@ -1431,6 +1448,7 @@
         <eat type="script">
           msg ("You swallow that meat plant whole!")
           grow_snake
+          RemoveObject (meat plant)
         </eat>
       </object>
       <exit alias="north" to="p10">
@@ -1475,10 +1493,10 @@
       </exit>
       <exit alias="east" to="p22">
         <inherit name="eastdirection" />
+        <runscript />
         <look type="script">
           look_room (p22)
         </look>
-        <runscript />
       </exit>
     </object>
     <object name="p22">
@@ -1512,7 +1530,7 @@
     </object>
   </object>
   <command>
-    <pattern>attach hose to faucet; attach hose to tap; put hose on facuet; put hose on tap; use hose on faucet; use hose on tap</pattern>
+    <pattern>attach hose to faucet; attach hose to tap; put hose on faucet; put hose on tap; use hose on faucet; use hose on tap</pattern>
     <script>
       if (Got(hose)) {
         if (game.pov.parent = p10) {
@@ -1539,6 +1557,23 @@
     <pattern>climb up</pattern>
     <defaultexpression>"You can't climb up " + object.article + "."</defaultexpression>
   </verb>
+  <command>
+    <script>
+      if (game.pov.parent = p02) {
+        if (ListContains(ScopeVisible(), bean plant)) {
+          if (player.length = 11) {
+            msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
+            MakeObjectVisible (pile of dirt)
+            RemoveObject (bean plant)
+          }
+          else {
+            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. Maybe you could move it if you had more protein in your system.")
+          }
+        }
+      }
+    </script>
+    <pattern>push pot off shelf; push pot of dirt off shelf; push plant off shelf</pattern>
+  </command>
   <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
