@@ -1105,14 +1105,6 @@
       <enter type="script">
         change_rooms
       </enter>
-      <object name="player">
-        <inherit name="editor_object" />
-        <inherit name="editor_player" />
-        <maxobjects type="int">1</maxobjects>
-        <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-        <length type="int">9</length>
-        <attr name="show_debug" type="int">0</attr>
-      </object>
       <exit alias="north" to="f14">
         <inherit name="northdirection" />
         <look type="script">
@@ -1299,6 +1291,7 @@
           <value>clay pot</value>
           <value>bean plant</value>
         </alt>
+        <alias>pot of dirt</alias>
         <throw type="script">
           if (player.length = 11) {
             msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
@@ -1319,7 +1312,6 @@
             msg ("You heave against the pot, but it doesn't budge. You're just not strong enough to move it. If only you had some more protein in your system.")
           }
         </push>
-        <alias>pot of dirt</alias>
       </object>
       <exit alias="west" to="p01">
         <inherit name="westdirection" />
@@ -1555,6 +1547,7 @@
     <defaultexpression>"You can't climb up " + object.article + "."</defaultexpression>
   </verb>
   <command>
+    <pattern>push pot off shelf; push pot of dirt off shelf; push plant off shelf</pattern>
     <script>
       if (game.pov.parent = p02) {
         if (ListContains(ScopeVisible(), bean plant)) {
@@ -1569,8 +1562,243 @@
         }
       }
     </script>
-    <pattern>push pot off shelf; push pot of dirt off shelf; push plant off shelf</pattern>
   </command>
+  <object name="TwoRoomPuzzle">
+    <inherit name="editor_room" />
+    <object name="StartRoom">
+      <inherit name="editor_room" />
+      <object name="tr_start00">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="east" to="tr_start01">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start01)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_start10">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_start10)
+          </look>
+        </exit>
+        <object name="player">
+          <inherit name="editor_object" />
+          <inherit name="editor_player" />
+          <maxobjects type="int">1</maxobjects>
+          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+          <length type="int">9</length>
+          <attr name="show_debug" type="int">0</attr>
+        </object>
+      </object>
+      <object name="tr_start01">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start00">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start00)
+          </look>
+        </exit>
+        <exit alias="east" to="tr_start02">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start02)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_start11">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_start11)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start02">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start01">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start01)
+          </look>
+        </exit>
+        <exit alias="east" to="tr_start03">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start03)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_start12">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_start12)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start03">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start02">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start02)
+          </look>
+        </exit>
+        <exit alias="east" to="tr_start04">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start04)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_start13">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_start13)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start04">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start03">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start03)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_start14">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_start14)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start10">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="east" to="tr_start11">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start11)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_start00">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_start00)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start11">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start10">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start10)
+          </look>
+        </exit>
+        <exit alias="east" to="tr_start12">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start12)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_start01">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_start01)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start12">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start11">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start11)
+          </look>
+        </exit>
+        <exit alias="east" to="tr_start13">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start13)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_start02">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_start02)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start13">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start12">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start12)
+          </look>
+        </exit>
+        <exit alias="east" to="tr_start14">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_start14)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_start03">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_start03)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_start14">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_start13">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_start13)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_start04">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_start04)
+          </look>
+        </exit>
+      </object>
+    </object>
+    <object name="SmallRoom">
+      <inherit name="editor_object" />
+    </object>
+    <object name="LargeRoom">
+      <inherit name="editor_room" />
+    </object>
+  </object>
   <type name="not_snake_room" />
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
