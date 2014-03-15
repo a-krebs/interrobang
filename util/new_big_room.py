@@ -3,7 +3,7 @@ import sys
 OBJECT_FORMAT_STRING = "\
 <object name=\"{obj_name}\">\n\
     <inherit name=\"editor_room\" />\n\
-    <enter type=\"scipt\">\n\
+    <enter type=\"script\">\n\
         change_rooms\n\
     </enter>\n\
 {obj_content}\n\
