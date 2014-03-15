@@ -4,7 +4,7 @@
   <include ref="Core.aslx" />
   <game name="interrobang">
     <gameid>39702944-ce39-4243-8459-2aaad4c4d15e</gameid>
-    <version>0.0.0</version>
+    <version>0.1.0</version>
     <firstpublished>2014</firstpublished>
     <category type="string"></category>
     <gridmap />
