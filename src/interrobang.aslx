@@ -1584,14 +1584,6 @@
             look_room (tr_start10)
           </look>
         </exit>
-        <object name="player">
-          <inherit name="editor_object" />
-          <inherit name="editor_player" />
-          <maxobjects type="int">1</maxobjects>
-          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-          <length type="int">9</length>
-          <attr name="show_debug" type="int">0</attr>
-        </object>
       </object>
       <object name="tr_start01">
         <inherit name="editor_room" />
@@ -1794,6 +1786,134 @@
     </object>
     <object name="SmallRoom">
       <inherit name="editor_object" />
+      <object name="tr_small00">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="east" to="tr_small01">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_small01)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_small10">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_small10)
+          </look>
+        </exit>
+        <object name="player">
+          <inherit name="editor_object" />
+          <inherit name="editor_player" />
+          <maxobjects type="int">1</maxobjects>
+          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+          <length type="int">9</length>
+          <attr name="show_debug" type="int">0</attr>
+        </object>
+      </object>
+      <object name="tr_small01">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_small00">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_small00)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_small11">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_small11)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_small10">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="east" to="tr_small11">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_small11)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_small00">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_small00)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_small20">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_small20)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_small11">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_small10">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_small10)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_small01">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_small01)
+          </look>
+        </exit>
+        <exit alias="south" to="tr_small21">
+          <inherit name="southdirection" />
+          <look type="script">
+            look_room (tr_small21)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_small20">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="east" to="tr_small21">
+          <inherit name="eastdirection" />
+          <look type="script">
+            look_room (tr_small21)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_small10">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_small10)
+          </look>
+        </exit>
+      </object>
+      <object name="tr_small21">
+        <inherit name="editor_room" />
+        <enter type="script">
+          change_rooms
+        </enter>
+        <exit alias="west" to="tr_small20">
+          <inherit name="westdirection" />
+          <look type="script">
+            look_room (tr_small20)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_small11">
+          <inherit name="northdirection" />
+          <look type="script">
+            look_room (tr_small11)
+          </look>
+        </exit>
+      </object>
     </object>
     <object name="LargeRoom">
       <inherit name="editor_room" />
