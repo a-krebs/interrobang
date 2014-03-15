@@ -1764,6 +1764,12 @@
             look_room (tr_start03)
           </look>
         </exit>
+        <exit alias="south" to="tr_large00">
+          <inherit name="southdirection" />
+		  <look type="script">
+            look_room (tr_large00)
+          </look>
+        </exit>
       </object>
       <object name="tr_start14">
         <inherit name="editor_room" />
@@ -1931,9 +1937,15 @@
           <inherit name="editor_player" />
           <maxobjects type="int">1</maxobjects>
           <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-          <length type="int">9</length>
+          <length type="int">5</length>
           <attr name="show_debug" type="int">0</attr>
         </object>
+        <exit alias="north" to="tr_start13">
+          <inherit name="northdirection" />
+		  <look type="script">
+            look_room (tr_start13)
+          </look>
+        </exit>
       </object>
       <object name="tr_large01">
         <inherit name="editor_room" />
