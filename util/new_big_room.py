@@ -2,21 +2,21 @@ import sys
 
 OBJECT_FORMAT_STRING = "\
 <object name=\"{obj_name}\">\n\
-    <inherit name=\"editor_room\" />\n\
-    <enter type=\"script\">\n\
-        change_rooms\n\
-    </enter>\n\
+  <inherit name=\"editor_room\" />\n\
+  <enter type=\"script\">\n\
+    change_rooms\n\
+  </enter>\n\
 {obj_content}\n\
 </object>\
 "
 
 EXIT_FORMAT_STRING = "\
-    <exit alias=\"{room_alias}\" to=\"{exit_target}\">\n\
-        <inherit name=\"{direction}direction\" />\n\
-        <look type=\"script\">\n\
-            look_room ({exit_target})\n\
-        </look>\n\
-    </exit>\
+  <exit alias=\"{room_alias}\" to=\"{exit_target}\">\n\
+    <inherit name=\"{direction}direction\" />\n\
+    <look type=\"script\">\n\
+      look_room ({exit_target})\n\
+    </look>\n\
+  </exit>\
 "
 
 class Room(object):
