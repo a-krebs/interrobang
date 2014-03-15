@@ -1716,6 +1716,12 @@
             look_room (tr_start01)
           </look>
         </exit>
+        <exit alias="south" to="tr_small01">
+          <inherit name="southdirection" />
+		  <look type="script">
+            look_room (tr_small01)
+          </look>
+        </exit>
       </object>
       <object name="tr_start12">
         <inherit name="editor_room" />
@@ -1766,7 +1772,7 @@
         </exit>
         <exit alias="south" to="tr_large00">
           <inherit name="southdirection" />
-		  <look type="script">
+          <look type="script">
             look_room (tr_large00)
           </look>
         </exit>
@@ -1825,6 +1831,12 @@
           <inherit name="southdirection" />
           <look type="script">
             look_room (tr_small11)
+          </look>
+        </exit>
+        <exit alias="north" to="tr_start11">
+          <inherit name="northdirection" />
+		  <look type="script">
+            look_room (tr_start11)
           </look>
         </exit>
       </object>
@@ -1942,7 +1954,7 @@
         </object>
         <exit alias="north" to="tr_start13">
           <inherit name="northdirection" />
-		  <look type="script">
+          <look type="script">
             look_room (tr_start13)
           </look>
         </exit>
