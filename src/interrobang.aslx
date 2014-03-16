@@ -154,6 +154,14 @@
           look_room (r21)
         </look>
       </exit>
+      <object name="player">
+        <inherit name="editor_object" />
+        <inherit name="editor_player" />
+        <maxobjects type="int">1</maxobjects>
+        <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+        <length type="int">5</length>
+        <attr name="show_debug" type="int">0</attr>
+      </object>
     </object>
     <object name="r12">
       <inherit name="editor_room" />
@@ -182,14 +190,16 @@
           look_room (r22)
         </look>
       </exit>
-      <exit name="finishExit" alias="east" to="finish">
+      <exit name="prototypeFinishExit" alias="east" to="i00">
         <inherit name="eastdirection" />
         <locked />
-        <runscript />
+        <runscript type="boolean">false</runscript>
         <script type="script">
           ClearFramePicture
-          finish
         </script>
+        <look type="script">
+          look_room (i00)
+        </look>
       </exit>
       <object name="cardReader">
         <inherit name="editor_object" />
@@ -387,8 +397,8 @@
           </ontake>
           <selfuseon type="scriptdictionary">
             <item key="cardReader">
-              msg ("The reader goes beep boop and the door obligingly opens. The world slowly fades to white as the prototype ends.")
-              UnlockExit (finishExit)
+              msg ("The reader goes beep boop and the door obligingly opens.")
+              UnlockExit (prototypeFinishExit)
             </item>
           </selfuseon>
         </object>
@@ -414,9 +424,6 @@
           </look>
         </exit>
       </object>
-    </object>
-    <object name="finish">
-      <inherit name="editor_room" />
     </object>
   </object>
   <command>
@@ -1119,6 +1126,12 @@
           look_room (f23)
         </look>
       </exit>
+      <exit alias="south" to="t_torches00">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (t_torches00)
+        </look>
+      </exit>
     </object>
   </object>
   <verb>
@@ -1616,6 +1629,9 @@
         <enter type="script">
           change_rooms
         </enter>
+        <firstenter type="script">
+          msg ("You hear a noise to the east, maybe you should check it out.")
+        </firstenter>
         <exit alias="west" to="tr_start01">
           <inherit name="westdirection" />
           <look type="script">
@@ -1632,6 +1648,13 @@
           <inherit name="southdirection" />
           <look type="script">
             look_room (tr_start12)
+          </look>
+        </exit>
+        <exit alias="north" to="i11">
+          <inherit name="northdirection" />
+          <lookonly type="boolean">false</lookonly>
+          <look type="script">
+            look_room (i11)
           </look>
         </exit>
       </object>
@@ -1868,14 +1891,6 @@
           <inherit name="eastdirection" />
           <locked type="boolean">false</locked>
         </exit>
-        <object name="player">
-          <inherit name="editor_object" />
-          <inherit name="editor_player" />
-          <maxobjects type="int">1</maxobjects>
-          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-          <length type="int">5</length>
-          <attr name="show_debug" type="int">0</attr>
-        </object>
       </object>
     </object>
     <object name="SmallRoom">
@@ -2258,6 +2273,12 @@
         <inherit name="photoreceptor_base" />
         <attr name="light_req" type="int">1</attr>
       </object>
+      <exit alias="north" to="f24">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (f24)
+        </look>
+      </exit>
     </object>
     <object name="t_torches01">
       <inherit name="editor_room" />
@@ -2763,6 +2784,93 @@
     <property>poweron</property>
     <defaultexpression>"You can't power on " + object.article + "."</defaultexpression>
   </verb>
+  <object name="IkeaShelfPuzzle">
+    <inherit name="editor_object" />
+    <object name="i00">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="east" to="i01">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (i01)
+        </look>
+      </exit>
+      <exit alias="south" to="i10">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (i10)
+        </look>
+      </exit>
+      <exit alias="west" to="r12">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (r12)
+        </look>
+      </exit>
+    </object>
+    <object name="i01">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="west" to="i00">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (i00)
+        </look>
+      </exit>
+      <exit alias="south" to="i11">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (i11)
+        </look>
+      </exit>
+    </object>
+    <object name="i10">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="east" to="i11">
+        <inherit name="eastdirection" />
+        <look type="script">
+          look_room (i11)
+        </look>
+      </exit>
+      <exit alias="north" to="i00">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (i00)
+        </look>
+      </exit>
+    </object>
+    <object name="i11">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="west" to="i10">
+        <inherit name="westdirection" />
+        <look type="script">
+          look_room (i10)
+        </look>
+      </exit>
+      <exit alias="north" to="i01">
+        <inherit name="northdirection" />
+        <look type="script">
+          look_room (i01)
+        </look>
+      </exit>
+      <exit alias="south" to="tr_start02">
+        <inherit name="southdirection" />
+        <look type="script">
+          look_room (tr_start02)
+        </look>
+      </exit>
+    </object>
+  </object>
   <type name="not_snake_room" />
   <type name="shake_light_base">
     <attr name="max_dur" type="int">0</attr>
@@ -2968,6 +3076,11 @@
       turn on gas
       hug bunsen burner
       burn thesis
+    </steps>
+  </walkthrough>
+  <walkthrough name="prototypeWalk">
+    <steps type="simplestringlist">
+      go north
     </steps>
   </walkthrough>
 </asl>
