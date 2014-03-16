@@ -2272,12 +2272,14 @@
         <inherit name="editor_object" />
         <inherit name="photoreceptor_base" />
         <attr name="light_req" type="int">1</attr>
+        <alias>door control</alias>
       </object>
-      <exit alias="north" to="f24">
+      <exit name="t_torches00_to_f24" alias="north" to="f24">
         <inherit name="northdirection" />
         <look type="script">
           look_room (f24)
         </look>
+        <locked />
       </exit>
     </object>
     <object name="t_torches01">
@@ -2875,6 +2877,7 @@
   <type name="shake_light_base">
     <attr name="max_dur" type="int">0</attr>
     <attr name="remaining_dur" type="int">0</attr>
+    <alias>flashlight</alias>
     <target type="object">player</target>
     <shake type="script">
       msg ("You shake the flashlight. " + this.max_dur + " little lights blink on the side. What could they mean...?")
@@ -2898,7 +2901,7 @@
     <poweron type="script"><![CDATA[
       curr_light = 0
       foreach (light, this.lights_list) {
-        if (light.remain_during > 0) {
+        if (light.remaining_dur > 0) {
           curr_light = curr_light + 1
         }
       }
@@ -2913,7 +2916,8 @@
     ]]></poweron>
     <use type="script">
       if (this.powered_on) {
-        msg ("TODO trigger exit unlock")
+        msg ("The door control indicates the door is unlocked.")
+		UnlockExit (t_torches00_to_f24)
       }
       else {
         msg ("This unit appears to need to be powered on before it can be used.")
@@ -3153,7 +3157,16 @@
       go north
       go east
       lie on scale
+      drop key card
       go east
+    </steps>
+  </walkthrough>
+  <walkthrough name="torchWalk">
+    <steps type="simplestringlist">
+      shake flashlight
+      power on door control
+      use door control
+      go north
     </steps>
   </walkthrough>
 </asl>
