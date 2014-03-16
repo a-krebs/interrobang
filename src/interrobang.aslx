@@ -1632,6 +1632,14 @@
             look_room (tr_start12)
           </look>
         </exit>
+        <object name="player">
+          <inherit name="editor_object" />
+          <inherit name="editor_player" />
+          <maxobjects type="int">1</maxobjects>
+          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+          <length type="int">5</length>
+          <attr name="show_debug" type="int">0</attr>
+        </object>
       </object>
       <object name="tr_start03">
         <inherit name="editor_room" />
@@ -1718,7 +1726,7 @@
         </exit>
         <exit alias="south" to="tr_small01">
           <inherit name="southdirection" />
-		  <look type="script">
+          <look type="script">
             look_room (tr_small01)
           </look>
         </exit>
@@ -1794,6 +1802,27 @@
             look_room (tr_start04)
           </look>
         </exit>
+        <object name="scale">
+          <inherit name="editor_object" />
+          <drop type="boolean">false</drop>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+            <value>Take</value>
+          </displayverbs>
+          <lie type="script"><![CDATA[
+            if (player.length < 7) {
+              msg ("The scale beeps, but nothing else happens. Maybe you are not heavy enough...")
+            }
+            else {
+              UnlockExit (tr_start14_to_t_torch00)
+              msg ("The scale beeps. Just as you give up hope and go to look for another dirty rat to eat, you hear the clicking noise of a door unlocking.")
+            }
+          ]]></lie>
+        </object>
+        <exit name="tr_start14_to_t_torch00" alias="east" to="t_torch00">
+          <inherit name="eastdirection" />
+          <locked />
+        </exit>
       </object>
     </object>
     <object name="SmallRoom">
@@ -1835,10 +1864,29 @@
         </exit>
         <exit alias="north" to="tr_start11">
           <inherit name="northdirection" />
-		  <look type="script">
+          <look type="script">
             look_room (tr_start11)
           </look>
         </exit>
+        <object name="deadRat1">
+          <inherit name="editor_object" />
+          <alias>dead rat</alias>
+          <alt type="stringlist">
+            <value>rat</value>
+            <value>dead rat</value>
+          </alt>
+          <take type="boolean">false</take>
+          <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
+          <eat type="script">
+            grow_snake
+            msg ("Om nom nom. You feel so strong and fierce now. Wait...no...you feel lazy. Like you could just go... sit on a scale.")
+            ClearFramePicture
+            RemoveObject (deadRat1)
+          </eat>
+        </object>
       </object>
       <object name="tr_small10">
         <inherit name="editor_room" />
@@ -1944,14 +1992,6 @@
             look_room (tr_large10)
           </look>
         </exit>
-        <object name="player">
-          <inherit name="editor_object" />
-          <inherit name="editor_player" />
-          <maxobjects type="int">1</maxobjects>
-          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-          <length type="int">5</length>
-          <attr name="show_debug" type="int">0</attr>
-        </object>
         <exit alias="north" to="tr_start13">
           <inherit name="northdirection" />
           <look type="script">
@@ -2000,6 +2040,25 @@
             look_room (tr_large20)
           </look>
         </exit>
+        <object name="deadRat2">
+          <inherit name="editor_object" />
+          <alias>dead rat</alias>
+          <alt type="stringlist">
+            <value>rat</value>
+            <value>dead rat</value>
+          </alt>
+          <take type="boolean">false</take>
+          <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
+          <eat type="script">
+            grow_snake
+            msg ("Om nom nom. You feel so strong and fierce now. Wait...no...you feel lazy. Like you could just go... sit on a scale.")
+            ClearFramePicture
+            RemoveObject (deadRat2)
+          </eat>
+        </object>
       </object>
       <object name="tr_large11">
         <inherit name="editor_room" />
@@ -2109,6 +2168,19 @@
           </look>
         </exit>
       </object>
+    </object>
+  </object>
+  <object name="TorchPuzzle">
+    <inherit name="editor_room" />
+    <object name="t_torch00">
+      <inherit name="editor_room" />
+      <enter type="script">
+        change_rooms
+      </enter>
+      <exit alias="west" to="tr_start14">
+        <inherit name="westdirection" />
+        <locked type="boolean">false</locked>
+      </exit>
     </object>
   </object>
   <type name="not_snake_room" />
