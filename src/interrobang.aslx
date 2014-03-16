@@ -1700,6 +1700,33 @@
             look_room (tr_start00)
           </look>
         </exit>
+        <object name="keyCard1">
+          <inherit name="editor_object" />
+          <alias>Key Card</alias>
+          <take />
+          <alt type="stringlist">
+            <value>key</value>
+            <value>keycard</value>
+            <value>card</value>
+            <value>key card</value>
+          </alt>
+          <takemsg>You pick up the key card.</takemsg>
+          <use />
+          <look>The key card glistens with a familiar sheen. It brings back memories of a key card reader you've seen in your travels.</look>
+          <ontake type="script">
+            ClearFramePicture
+          </ontake>
+          <selfuseon type="scriptdictionary">
+            <item key="cardReader1">
+              msg ("The reader goes beep boop and the door obligingly opens.")
+              UnlockExit (tr_star11_to_tr_small01)
+            </item>
+            <item key="cardReader2">
+              msg ("The reader goes beep boop and the door obligingly opens.")
+              UnlockExit (tr_start13_to_tr_large00)
+            </item>
+          </selfuseon>
+        </object>
       </object>
       <object name="tr_start11">
         <inherit name="editor_room" />
@@ -1724,12 +1751,24 @@
             look_room (tr_start01)
           </look>
         </exit>
-        <exit alias="south" to="tr_small01">
+        <exit name="tr_star11_to_tr_small01" alias="south" to="tr_small01">
           <inherit name="southdirection" />
+          <locked />
           <look type="script">
             look_room (tr_small01)
           </look>
         </exit>
+        <object name="cardReader1">
+          <inherit name="editor_object" />
+          <alias>Key Card Reader</alias>
+          <alt type="stringlist">
+            <value>reader</value>
+            <value>key card reader</value>
+            <value>card reader</value>
+          </alt>
+          <takemsg>It's bolted to the wall. Also why would you want it anyways?</takemsg>
+          <look>The key card reader glistens with the sheen of new plastic. It looks state of the art.</look>
+        </object>
       </object>
       <object name="tr_start12">
         <inherit name="editor_room" />
@@ -1778,12 +1817,24 @@
             look_room (tr_start03)
           </look>
         </exit>
-        <exit alias="south" to="tr_large00">
+        <exit name="tr_start13_to_tr_large00" alias="south" to="tr_large00">
           <inherit name="southdirection" />
+          <locked />
           <look type="script">
             look_room (tr_large00)
           </look>
         </exit>
+        <object name="cardReader2">
+          <inherit name="editor_object" />
+          <alias>Key Card Reader</alias>
+          <alt type="stringlist">
+            <value>reader</value>
+            <value>key card reader</value>
+            <value>card reader</value>
+          </alt>
+          <takemsg>It's bolted to the wall. Also why would you want it anyways?</takemsg>
+          <look>The key card reader glistens with the sheen of new plastic. It looks state of the art.</look>
+        </object>
       </object>
       <object name="tr_start14">
         <inherit name="editor_room" />
