@@ -159,7 +159,7 @@
         <inherit name="editor_player" />
         <maxobjects type="int">1</maxobjects>
         <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-        <length type="int">5</length>
+        <length type="int">4</length>
         <attr name="show_debug" type="int">0</attr>
       </object>
     </object>
@@ -1882,14 +1882,14 @@
               msg ("The scale beeps, but nothing else happens. Maybe you are not heavy enough...")
             }
             else {
-              UnlockExit (tr_start14_to_t_torch00)
+              UnlockExit (tr_start14_to_t_torches00)
               msg ("The scale beeps. Just as you give up hope and go to look for another dirty rat to eat, you hear the clicking noise of a door unlocking.")
             }
           ]]></lie>
         </object>
         <exit name="tr_start14_to_t_torches00" alias="east" to="t_torches00">
           <inherit name="eastdirection" />
-          <locked type="boolean">false</locked>
+          <locked />
         </exit>
       </object>
     </object>
@@ -3081,6 +3081,79 @@
   <walkthrough name="prototypeWalk">
     <steps type="simplestringlist">
       go north
+      go east
+      go south
+      go south
+      eat rat
+      go west
+      go west
+      push box
+      go in
+      go north
+      take key card
+      go north
+      go out
+      go east
+      go east
+      go south
+      use key card on key card reader
+      drop key card
+      go east
+    </steps>
+  </walkthrough>
+  <walkthrough name="ikeaShelfWalk">
+    <steps type="simplestringlist">
+      go east
+      go south
+      go south
+    </steps>
+  </walkthrough>
+  <walkthrough name="twoRoomsWalk">
+    <steps type="simplestringlist">
+      go east
+      go east
+      go south
+      go west
+      go west
+      go west
+      go west
+      pick up key card
+      go north
+      go east
+      go east
+      go east
+      go east
+      go south
+      go west
+      go west
+      go west
+      use key card on key card reader
+      go south
+      eat rat
+      go south
+      go south
+      go west
+      go north
+      go north
+      go east
+      go north
+      go east
+      go east
+      use key card on key card reader
+      go south
+      go south
+      eat rat
+      go south
+      go south
+      go east
+      go north
+      go north
+      go north
+      go west
+      go north
+      go east
+      lie on scale
+      go east
     </steps>
   </walkthrough>
 </asl>
