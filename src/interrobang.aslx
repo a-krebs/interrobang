@@ -2286,6 +2286,7 @@
         msg ("but there are " + curr_light + " lights on in the room.")
       }
       else {
+        this.powered_on = true
         msg ("and there is enought light! It powers on!")
       }
     ]]></poweron>
@@ -2299,44 +2300,10 @@
     </use>
   </type>
   <function name="change_rooms">
-    // This function handles movement into a "snake room" by storing a list
-    // of the previously visited rooms, where index 0 is the snake's tail
-    // and index (player.length-1) is the head
-    if (player.game_start = 0) {
-      curRoom = ObjectListItem(ListParents(player),0)
-      if (not DoesInherit (curRoom, "not_snake_room")) {
-        list_rooms
-        // Remove the tail room at index 0
-        tailRoom = ObjectListItem(player.snake_rooms, 0)
-        list remove (player.snake_rooms, tailRoom)
-        // Check whether the newest room is in the list already
-        // indexHit corresponds to the snake's body part that we run into, if we run into it
-        count = 0
-        indexHit = 0
-        foreach (rm, player.snake_rooms) {
-          count = count + 1
-          if (rm.name = curRoom.name) {
-            indexHit = count
-          }
-        }
-        // Now add in the new head room (we do this now even if we've bitten ourself)
-        list add (player.snake_rooms, curRoom)
-        if (indexHit = player.length-2) {
-          // We hit our own body at the head, give a no turn back message
-          msg ("You hear the sound of a large object dragging across the floor, but you proceed anyway.")
-          game_over
-        }
-        else if (not indexHit = 0) {
-          game_over
-        }
-        else {
-          list_rooms
-        }
-      }
-    }
-    else {
-      player.game_start = 0
-    }
+    // This function should be called at all transitions between rooms.
+    // It handles the snake length as well as any other events that need
+    // to be triggered at after each room transition
+    change_rooms_snake
   </function>
   <function name="look_room" parameters="lookRoom"><![CDATA[
     // This function is called when we look into a room. Test if that room is in our list.
@@ -2417,6 +2384,46 @@
       // create list of light sources
       photoreceptor.lights_list = NewObjectList()
       photoreceptor.initialized = true
+    }
+  </function>
+  <function name="change_rooms_snake">
+    // This function handles movement into a "snake room" by storing a list
+    // of the previously visited rooms, where index 0 is the snake's tail
+    // and index (player.length-1) is the head
+    if (player.game_start = 0) {
+      curRoom = ObjectListItem(ListParents(player),0)
+      if (not DoesInherit (curRoom, "not_snake_room")) {
+        list_rooms
+        // Remove the tail room at index 0
+        tailRoom = ObjectListItem(player.snake_rooms, 0)
+        list remove (player.snake_rooms, tailRoom)
+        // Check whether the newest room is in the list already
+        // indexHit corresponds to the snake's body part that we run into, if we run into it
+        count = 0
+        indexHit = 0
+        foreach (rm, player.snake_rooms) {
+          count = count + 1
+          if (rm.name = curRoom.name) {
+            indexHit = count
+          }
+        }
+        // Now add in the new head room (we do this now even if we've bitten ourself)
+        list add (player.snake_rooms, curRoom)
+        if (indexHit = player.length-2) {
+          // We hit our own body at the head, give a no turn back message
+          msg ("You hear the sound of a large object dragging across the floor, but you proceed anyway.")
+          game_over
+        }
+        else if (not indexHit = 0) {
+          game_over
+        }
+        else {
+          list_rooms
+        }
+      }
+    }
+    else {
+      player.game_start = 0
     }
   </function>
   <walkthrough name="burnThesisWalk">
