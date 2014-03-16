@@ -1632,14 +1632,6 @@
             look_room (tr_start12)
           </look>
         </exit>
-        <object name="player">
-          <inherit name="editor_object" />
-          <inherit name="editor_player" />
-          <maxobjects type="int">1</maxobjects>
-          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
-          <length type="int">5</length>
-          <attr name="show_debug" type="int">0</attr>
-        </object>
       </object>
       <object name="tr_start03">
         <inherit name="editor_room" />
@@ -1872,8 +1864,16 @@
         </object>
         <exit name="tr_start14_to_t_torch00" alias="east" to="t_torch00">
           <inherit name="eastdirection" />
-          <locked />
+          <locked type="boolean">false</locked>
         </exit>
+        <object name="player">
+          <inherit name="editor_object" />
+          <inherit name="editor_player" />
+          <maxobjects type="int">1</maxobjects>
+          <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+          <length type="int">5</length>
+          <attr name="show_debug" type="int">0</attr>
+        </object>
       </object>
     </object>
     <object name="SmallRoom">
@@ -2227,14 +2227,77 @@
       <inherit name="editor_room" />
       <enter type="script">
         change_rooms
+        init_photoreceptor (photoreceptor0)
       </enter>
       <exit alias="west" to="tr_start14">
         <inherit name="westdirection" />
         <locked type="boolean">false</locked>
       </exit>
+      <object name="light3_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">3</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
+      <object name="photoreceptor0">
+        <inherit name="editor_object" />
+        <inherit name="photoreceptor_base" />
+        <attr name="light_req" type="int">1</attr>
+      </object>
     </object>
   </object>
+  <verb>
+    <pattern>shake</pattern>
+    <property>shake</property>
+    <defaulttext>"You can't shake " + object.article + "."</defaulttext>
+    <defaultexpression>"You can't climb up " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <pattern>power on</pattern>
+    <property>poweron</property>
+    <defaultexpression>"You can't power on " + object.article + "."</defaultexpression>
+  </verb>
   <type name="not_snake_room" />
+  <type name="shake_light_base">
+    <attr name="max_dur" type="int">0</attr>
+    <attr name="remaining_dur" type="int">0</attr>
+    <target type="object">player</target>
+    <shake type="script">
+      msg ("You shake the flashlight")
+      msg (this.target)
+      msg (this.target.lights_list)
+      list add (this.target.lights_list, this)
+      this.remaining_dur = this.max_dur
+    </shake>
+  </type>
+  <type name="photoreceptor_base">
+    <attr name="light_req" type="int">0</attr>
+    <initialized type="boolean">false</initialized>
+    <attr name="powered_on" type="boolean">false</attr>
+    <poweron type="script"><![CDATA[
+      curr_light = 0
+      foreach (light, this.lights_list) {
+        msg (light)
+        curr_light = curr_light + 1
+      }
+      msg ("It looks like this unit is powerd by light. Reading the panel, it looks like it requires " + this.light_req + " light sources to fully power on,")
+      if (curr_light < this.light_req) {
+        msg ("but there are " + curr_light + " lights on in the room.")
+      }
+      else {
+        msg ("and there is enought light! It powers on!")
+      }
+    ]]></poweron>
+    <use type="script">
+      if (this.powered_on) {
+        msg ("TODO trigger exit unlock")
+      }
+      else {
+        msg ("This unit appears to need to be powered on before it can be used.")
+      }
+    </use>
+  </type>
   <function name="change_rooms">
     // This function handles movement into a "snake room" by storing a list
     // of the previously visited rooms, where index 0 is the snake's tail
@@ -2349,6 +2412,13 @@
       finish
     }
   ]]></function>
+  <function name="init_photoreceptor" parameters="photoreceptor">
+    if (not photoreceptor.initialized) {
+      // create list of light sources
+      photoreceptor.lights_list = NewObjectList()
+      photoreceptor.initialized = true
+    }
+  </function>
   <walkthrough name="burnThesisWalk">
     <steps type="simplestringlist">
       go west
