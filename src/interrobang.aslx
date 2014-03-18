@@ -2283,7 +2283,7 @@
         <runscript />
         <script type="script"><![CDATA[
           if (player.length < 9) {
-            msg ("The door rattles as you push it, but it's still latched. Oh, there's a handle! Too bad you can't reach it. Maybe you can find something to stand on...")
+            msg ("The door rattles as you push it, but it's still latched. Oh, there's a handle! Too bad you can't reach it. Maybe you can find a way to get up there...")
           }
           else {
             MoveObject (player, f24)
