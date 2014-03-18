@@ -2271,15 +2271,15 @@
       <object name="photoreceptor0">
         <inherit name="editor_object" />
         <inherit name="photoreceptor_base" />
-        <attr name="light_req" type="int">1</attr>
+        <attr name="light_req" type="int">6</attr>
         <alias>door control</alias>
       </object>
       <exit name="t_torches00_to_f24" alias="north" to="f24">
         <inherit name="northdirection" />
+        <locked />
         <look type="script">
           look_room (f24)
         </look>
-        <locked />
       </exit>
     </object>
     <object name="t_torches01">
@@ -2377,6 +2377,13 @@
           look_room (t_torches21)
         </look>
       </exit>
+      <object name="light3_1">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">3</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches12">
       <inherit name="editor_room" />
@@ -2401,6 +2408,13 @@
           look_room (t_torches22)
         </look>
       </exit>
+      <object name="light6_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">6</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches20">
       <inherit name="editor_room" />
@@ -2425,6 +2439,13 @@
           look_room (t_torches30)
         </look>
       </exit>
+      <object name="light5_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">5</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches21">
       <inherit name="editor_room" />
@@ -2533,6 +2554,13 @@
           look_room (t_torches41)
         </look>
       </exit>
+      <object name="light7_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">7</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches32">
       <inherit name="editor_room" />
@@ -2557,6 +2585,13 @@
           look_room (t_torches42)
         </look>
       </exit>
+      <object name="light2_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">2</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches40">
       <inherit name="editor_room" />
@@ -2581,6 +2616,13 @@
           look_room (t_torches50)
         </look>
       </exit>
+      <object name="light9_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">9</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches41">
       <inherit name="editor_room" />
@@ -2689,6 +2731,13 @@
           look_room (t_torches61)
         </look>
       </exit>
+      <object name="light11_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">11</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches52">
       <inherit name="editor_room" />
@@ -2713,6 +2762,13 @@
           look_room (t_torches62)
         </look>
       </exit>
+      <object name="light2_1">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">2</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches60">
       <inherit name="editor_room" />
@@ -2731,6 +2787,13 @@
           look_room (t_torches50)
         </look>
       </exit>
+      <object name="light13_0">
+        <inherit name="editor_object" />
+        <inherit name="shake_light_base" />
+        <attr name="max_dur" type="int">13</attr>
+        <lightsource type="boolean">false</lightsource>
+        <target type="object">photoreceptor0</target>
+      </object>
     </object>
     <object name="t_torches61">
       <inherit name="editor_room" />
@@ -2917,7 +2980,7 @@
     <use type="script">
       if (this.powered_on) {
         msg ("The door control indicates the door is unlocked.")
-		UnlockExit (t_torches00_to_f24)
+        UnlockExit (t_torches00_to_f24)
       }
       else {
         msg ("This unit appears to need to be powered on before it can be used.")
@@ -3163,6 +3226,34 @@
   </walkthrough>
   <walkthrough name="torchWalk">
     <steps type="simplestringlist">
+		go east
+		go east
+		go south
+		go south
+		go south
+		go south
+		go south
+		go south
+		go west
+		go west
+		shake flashlight
+		go north
+		go east
+		shake flashlight
+		go north
+		go west
+		shake flashlight
+		go north
+		go east
+		shake flashlight
+		go north
+		go west
+		shake flashlight
+		go north
+		go east
+		shake flashlight
+		go north
+		go west
       shake flashlight
       power on door control
       use door control
