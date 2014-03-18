@@ -2946,9 +2946,8 @@
       msg ("You shake the flashlight. " + this.max_dur + " little lights blink on the side. What could they mean...?")
       in_list = false
       foreach (light, this.target.lights_list) {
-        if (light == this) {
+        if (light = this) {
           in_list = true
-          msg ("already in list")
         }
       }
       if (not in_list) {
@@ -3226,34 +3225,34 @@
   </walkthrough>
   <walkthrough name="torchWalk">
     <steps type="simplestringlist">
-		go east
-		go east
-		go south
-		go south
-		go south
-		go south
-		go south
-		go south
-		go west
-		go west
-		shake flashlight
-		go north
-		go east
-		shake flashlight
-		go north
-		go west
-		shake flashlight
-		go north
-		go east
-		shake flashlight
-		go north
-		go west
-		shake flashlight
-		go north
-		go east
-		shake flashlight
-		go north
-		go west
+      go east
+      go east
+      go south
+      go south
+      go south
+      go south
+      go south
+      go south
+      go west
+      go west
+      shake flashlight
+      go north
+      go east
+      shake flashlight
+      go north
+      go west
+      shake flashlight
+      go north
+      go east
+      shake flashlight
+      go north
+      go west
+      shake flashlight
+      go north
+      go east
+      shake flashlight
+      go north
+      go west
       shake flashlight
       power on door control
       use door control
