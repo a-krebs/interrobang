@@ -2,9 +2,9 @@
 <asl version="540">
   <include ref="English.aslx" />
   <include ref="Core.aslx" />
-  <game name="interrobang">
+  <game name="Snack">
     <gameid>39702944-ce39-4243-8459-2aaad4c4d15e</gameid>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <firstpublished>2014</firstpublished>
     <category type="string"></category>
     <gridmap />
@@ -21,6 +21,10 @@
       }
       msg ("You wake up in a brightly lit room, stunned by the quality of the introductory narrative that was not included in the prototype. Shaking off the awe of the jaw-dropping writing that you will one day witness, you turn your attention to the situation at hand. The room around you is large and barren, save for a large steel light fixture mounted on the ceiling. The only sound you can hear is the peaceful hum of the fluorescent bulbs lining the fixture. It's not safe here.There's no time to waste. It's coming for you.")
     </start>
+    <author>Team Interrobang</author>
+    <attr name="autodescription_description" type="int">2</attr>
+    <attr name="autodescription_youcansee" type="int">3</attr>
+    <attr name="autodescription_youcango" type="int">4</attr>
   </game>
   <object name="Prototype">
     <inherit name="editor_room" />
