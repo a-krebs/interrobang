@@ -23,7 +23,7 @@
       for (index, 0, player.length-1) {
         list add (player.snake_rooms, curRoom)
       }
-      msg ("You wake up in a brightly lit room, stunned by the quality of the introductory narrative that was not included in the prototype. Shaking off the awe of the jaw-dropping writing that you will one day witness, you turn your attention to the situation at hand. The room around you is large and barren, save for a large steel light fixture mounted on the ceiling. The only sound you can hear is the peaceful hum of the fluorescent bulbs lining the fixture. It's not safe here.There's no time to waste. It's coming for you.")
+            msg ("Groggy, you awaken in an unfamiliar room on a cold tile floor of green. You feel slimy and realize you have no idea how you got here. Your blood runs cold.<br/><br/>Pushing away the regret of whatever you may have done last night, you first notice the emptiness of the place, and the foreboding feeling that something is coming after you.")
     </start>
   </game>
   <object name="Prototype">
@@ -162,7 +162,7 @@
         <inherit name="editor_object" />
         <inherit name="editor_player" />
         <maxobjects type="int">1</maxobjects>
-        <containermaxobjects>You feel weak...You can only manage to carry one object.</containermaxobjects>
+        <containermaxobjects>You want to grab it, but you can't seem to pull it off. You're already holding something.</containermaxobjects>
         <length type="int">4</length>
         <attr name="show_debug" type="int">0</attr>
       </object>
@@ -213,8 +213,8 @@
           <value>key card reader</value>
           <value>card reader</value>
         </alt>
-        <takemsg>It's bolted to the wall. Also why would you want it anyways?</takemsg>
-        <look>The key card reader glistens with the sheen of new plastic. It looks state of the art.</look>
+        <takemsg>It's bolted to the wall. Also, why would you want it, anyway?</takemsg>
+        <look>The key card reader glistens with the sheen of new plastic. It looks like state-of-the-art technology.</look>
       </object>
     </object>
     <object name="r20">
@@ -252,16 +252,16 @@
       </exit>
       <object name="box">
         <inherit name="editor_object" />
-        <look>The large box appears to be very heavy. There doesn't seem to be a way to open it, but if you had to guess as to its contents, you'd probably go with spiders. Very dense spiders.</look>
+        <look>The large box appears to be very heavy. There doesn't seem to be a way to open it, but if you had to hazard a guess as to the nature of its contents, you'd probably go with...spiders? Very dense spiders.</look>
         <push type="script"><![CDATA[
           if (player.length >= 5) {
-            msg ("You slam into the box with all of your weight, and manage to push it aside. You feel a sense of accomplishment disproportionate to the task of moving a box.")
+            msg ("You slam into the box with all of your weight, and manage to push it aside. You feel a sense of accomplishment somewhat disproportionate to the task of moving a box.")
             UnlockExit (vent20in)
             ClearFramePicture
             RemoveObject (box)
           }
           else {
-            msg ("You feel too weak to push this box. You're so hungry you could eat a grue.")
+            msg ("You feel exhausted, too weak to even push a box. You're so hungry you could eat a grue, and you don't even know what that is.")
           }
         ]]></push>
       </object>
@@ -325,13 +325,13 @@
           <value>dead rat</value>
         </alt>
         <take type="boolean">false</take>
-        <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
+        <look>A dead, but not-yet-rotting rat...so it probably isn't toxic.</look>
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
         <eat type="script">
           grow_snake
-          msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... push a box around, or something.")
+          msg ("Delicious! You feel...invigorated. Virile. Voluptuous...<br/><br/>...you're starting to make yourself uncomfortable.")
           ClearFramePicture
           RemoveObject (deadRat)
         </eat>
@@ -395,13 +395,13 @@
           </alt>
           <takemsg>You pick up the key card.</takemsg>
           <use />
-          <look>The key card glistens with a familiar sheen. It brings back memories of a key card reader you've seen in your travels.</look>
+          <look>The key card shines with a familiar glisten. It brings back memories of a key card reader you've seen in your travels, back in the old country: like Mama used to make. Or maybe that was elsewhere in this room. You're still filling the holes in your swiss-cheese memory.</look>
           <ontake type="script">
             ClearFramePicture
           </ontake>
           <selfuseon type="scriptdictionary">
             <item key="cardReader">
-              msg ("The reader goes beep boop and the door obligingly opens.")
+              msg ("Bleep, boop, doop! Now that you're done scat singing, you use the key card in the reader, and the door opens silently.")
               UnlockExit (prototypeFinishExit)
             </item>
           </selfuseon>
@@ -435,7 +435,7 @@
     <script>
       if (player.show_debug = 0) {
         player.show_debug = 1
-        msg ("Debug now on.")
+        msg ("Debug now on. Cheater.")
       }
       else {
         player.show_debug = 0
@@ -495,20 +495,20 @@
       <object name="typewriter">
         <inherit name="editor_object" />
         <take type="boolean">false</take>
-        <look>It's an old fashioned type writer. It looks like somebdoy has been using it to create a maserpiece.</look>
-        <takemsg>It weighs 10,000 tonnes, no-way-hose-ay</takemsg>
+        <look>It's an old-fashioned typewriter. Someone must be using it to write an absolute masterpiece. Writing on computers is for talentless hacks, as we all know.</look>
+        <takemsg>It weighs, like...a ton. No way, José!</takemsg>
       </object>
       <object name="thesis">
         <inherit name="editor_object" />
-        <look>This thesis looks like it's the work of months, possibly years, labouriously created on this typewriter. That's a LOT of paper.</look>
+        <look>This thesis looks like it's the product of months—possibly years—of work, slavishly hammering away at the typewriter. That's a LOT of paper. It would be a shame if something were to happen to it!</look>
         <wasburned type="boolean">false</wasburned>
         <take type="script">
           if (player.length = 10) {
-            msg ("With a heave-ho you hoist it onto your shoulders. It's balanced precariously.")
+            msg ("You stretch out and clamp down on it. You've got it securely. You ought to do something with it right away; there's no time to talk!")
             AddToInventory (thesis)
           }
           else {
-            msg ("You try to heft the stack of papers up, but you're too weak. You consider picking it up one page at a time, but there are at LEAST a bajillion pages there, so that's not going to happen. Maybe if your stomach was full, you'd be strong enough to pick it up.")
+            msg ("You try to heft the stack of papers up, but you're too weak—if only you'd had a balanced breakfast like your parents taught you. You consider picking it up one page at a time, but by your count, there are...at LEAST two and a half bajillion pages there. Then again, you were never very good at math.")
           }
         </take>
         <burn type="script">
@@ -516,24 +516,24 @@
             if (game.pov.parent = f13) {
               if (bunsen burner.tipped = true) {
                 if (bunsen burner.flame = true) {
-                  msg ("You drop the thesis into the fire. The flames spread over it, and it quickly becomes a huge ball of flame There's so much smoke that you can hardly see or breathe. The fire alarm starts blaring.")
+                  msg ("You drop the thesis into the fire, watching the tendrils lick at it until it becomes a tiny inferno. You try (in vain) to remember the last time you saw Flames overwhelm anything.<br/><br/>The thesis fire begins to fill the room with smoke. “Thesis making it really hard to see/breathe!” you exclaim (you dork). How did you even speak that kind of punctuation? The fire alarm is going off, by the way.")
                   set (thesis, "wasburned", true)
                   RemoveObject (thesis)
                 }
                 else {
-                  msg ("You lift the thesis in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+                  msg ("You try to lift the thesis in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? It's not even turned on!")
                 }
               }
               else {
-                msg ("Try as you might to lift the thesis into the fire, you're just not strong enough to hold it up. Moreover, if you tried to burn it while you were holding it, that might be bad news bears for you. If only you could set it down to burn it.")
+                msg ("You try to lift the thesis all the way up to the fire, but you just don't seem to have the reach that you used to. Should have done more Pilates, maybe. Regardless, you're going to want to think about this laterally.")
               }
             }
             else {
-              msg ("You try your best to channel your inner rage into a fire ball to set the thesis on fire, but nothing happens. You are not a magician, and there's no fire nearby.")
+              msg ("You do your best Human Torch impression, but you're a couple of factors shy of the necessary requirements. You're not a magician (yet), so your best bet is to focus your inner rage on it.<br/><br/>Spoiler: it doesn't work.")
             }
           }
           else {
-            msg ("You try your best to channel your inner rage into a fire ball to set the thesis on fire, but nothing happens. You are not a magician, and there's no fire nearby.")
+            msg ("You do your best Human Torch impression, but you're a couple of factors shy of the necessary requirements. You're not a magician (yet), so your best bet is to focus your inner rage on it.<br/><br/>Spoiler: it doesn't work.")
           }
         </burn>
       </object>
@@ -574,10 +574,10 @@
         <alias>tinted window</alias>
         <look type="script">
           if (thesis.wasburned = false) {
-            msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous. ")
+            msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous...but you're not afraid of anything! Right, champ?")
           }
           else {
-            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like there's an open window!")
+            msg ("You look north into the next room, through the tinted glass. It looks unoccupied, but you can see a bright light.")
           }
         </look>
       </object>
@@ -611,10 +611,10 @@
         <alias>tinted window</alias>
         <look type="script">
           if (thesis.wasburned = false) {
-            msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous. ")
+            msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous...but you're not afraid of anything! Right, champ?")
           }
           else {
-            msg ("You look north into the next room through the tinted glass. It looks unoccupied. You can see a bright light, looks like there's an open window!")
+            msg ("You look north into the next room, through the tinted glass. It looks unoccupied, but you can see a bright light.")
           }
         </look>
       </object>
@@ -706,26 +706,26 @@
         <inherit name="editor_object" />
         <alias>photo of terrible beasts</alias>
         <usedefaultprefix type="boolean">false</usedefaultprefix>
-        <look>It's a picture of monsters that vaguely resemble those that captured you.</look>
+        <look>It's a picture of...monsters? They look alien, yet somehow familiar. Your existentialism is acting up again.</look>
         <take />
-        <takemsg>You knock the thing over and the glass breaks. You gingerly pull the photo out and hold onto it.</takemsg>
+        <takemsg>Clumsily, you knock the frame over and shatter it—not unlike Lennie, unaware of your own strength, only desiring to...what? You haven't read “Of Mice and Men”? Come on. Well, you've got the photo now.</takemsg>
         <burn type="script"><![CDATA[
           if (Got(crumpled paper)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.flame = true) {
-                msg ("You lift the photo into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+                msg ("You lift the photo into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it just stares back blankly...which is even worse than saying something negative, you know?")
                 destroy ("crumpled paper")
               }
               else {
-                msg ("You wave the photo around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+                msg ("You try to lift the photo in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? It's not even turned on!")
               }
             }
             else {
-              msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+              msg ("You take a deep breath...and blow flaming hot air at the photo...and it bursts into flames!<br/><br/>Just kidding. You're not quite a dragon.")
             }
           }
           else {
-            msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+            msg ("You take a deep breath...and blow flaming hot air at the photo...and it bursts into flames! <br/><br/>Just kidding. You're not quite a dragon.")
           }
         ]]></burn>
       </object>
@@ -795,26 +795,26 @@
       </exit>
       <object name="crumpled paper">
         <inherit name="editor_object" />
-        <look>There's a bit of crumpled up paper. It has some illegible scribbles on it. </look>
+        <look>There's a bit of crumpled-up paper; it has some illegible scribbling on it. You resist the urge to make a joke about doctors writing prescriptions.</look>
         <take />
         <takemsg>You pick it up. Crinkle crinkle.</takemsg>
         <burn type="script"><![CDATA[
           if (Got(crumpled paper)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.flame = true) {
-                msg ("You lift the paper into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+                msg ("You lift the crumpled paper into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance anxiously at the smoke detector overhead, but it's quiet. A little too quiet.")
                 destroy ("crumpled paper")
               }
               else {
-                msg ("You wave the paper around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+                msg ("You try to lift the crumpled wad in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? It's not even turned on!")
               }
             }
             else {
-              msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
+              msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!<br/><br/>Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
             }
           }
           else {
-            msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
+            msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!<br/><br/>Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
           }
         ]]></burn>
       </object>
@@ -858,7 +858,7 @@
           <value>Look at</value>
         </displayverbs>
         <look type="script">
-          msg ("There is a bunsen burner sitting on the table. ")
+          msg ("There is a Bunsen burner sitting on the table. ")
           if (bunsen burner.tipped = true) {
             msg ("It's been tipped onto its side.")
           }
@@ -889,7 +889,7 @@
         </eat>
         <attack type="script">
           if (bunsen burner.tipped = false) {
-            msg ("What did you say? Are you talkin to me? Are  you talking. To me? You wind up to give the bunsen burner what for. At the slightest tap, it falls onto its side.")
+            msg ("What did you say? Are you talkin' to me? C'est à moi que tu parles?<br/><br/>You coil up to give the Bunsen burner the ol' what-for. At the slightest tap, it falls onto its side. Guess you showed that thing.")
             set (bunsen burner, "tipped", true)
           }
           else {
@@ -917,10 +917,10 @@
         </take>
         <look type="script">
           if (hose.attached = 0) {
-            msg ("It's a rubber hose that could be connected from the gas valve to the bunsen burner.")
+            msg ("It's a rubber hose with threaded ends that could be conceivably be connected from one thing to another...if you were REALLY crazy.")
           }
           if (hose.attached = 1) {
-            msg ("It's a rubber hose. It's connecting the gas valve to the bunsen burner.")
+            msg ("It's a rubber hose. It's connecting the gas valve to the Bunsen burner.")
           }
           if (hose.attached = 2) {
             msg ("It's a rubber hose. One end is connected to the tap, and the other end is hanging off the counter.")
@@ -933,14 +933,14 @@
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
-        <switchonmsg>You turn the gas valve to the on position.</switchonmsg>
-        <switchoffmsg>You turn the gas valve to the off position.</switchoffmsg>
+        <switchonmsg>You turn the gas valve to the "on" position.</switchonmsg>
+        <switchoffmsg>You turn the gas valve to the "off" position.</switchoffmsg>
         <look type="script">
           if (IsSwitchedOn(gas valve)) {
-            msg ("It's a valve for gas that fuels things like bunsen burners. It's emitting a faint hissing sound.")
+            msg ("It says it's on, which probably explains the hissing sound. Maybe.")
           }
           else {
-            msg ("It's a valve for gas that fuels things like bunsen burners. It's not doing anything.")
+            msg ("It's a valve...for gas...that fuels things...that burn gas. It's...pretty self-explanatory?")
           }
         </look>
         <onswitchon type="script">
@@ -1003,17 +1003,17 @@
         <inherit name="container_open" />
         <alias>small cage</alias>
         <scenery type="boolean">false</scenery>
-        <look>A small wire cage sits on the desk.</look>
+        <look>A small wire cage sits on the desk. There's a small, brown lump inside.</look>
         <alt type="stringlist">
           <value>cage</value>
         </alt>
         <isopen type="boolean">false</isopen>
         <transparent />
-        <openmsg>You bump the latch and swing the door open.</openmsg>
+        <openmsg>You bump the latch and the door swings open.</openmsg>
         <closemsg>You nudge the door closed.</closemsg>
         <object name="hamster">
           <inherit name="editor_object" />
-          <look>There's a little furry ball in the cage. So cute. It smells good. He probably has a cute name like Mr. Pippy</look>
+          <look>The small, brown lump looks back at you...so cute! The little furry ball smells good. It probably has a cute name like Pippy or something. Someone probably loves it very, very much. It would be a tragedy if something awful were to happen to it.</look>
           <alt type="stringlist">
             <value>Mr. Pippy</value>
           </alt>
@@ -1023,7 +1023,7 @@
           <eat type="script">
             if (cage.isopen) {
               grow_snake
-              msg ("You're so hungry, you dart forward, pick up the hamster and swallow it all in one motion. Mr Pippy makes a tiny sqeak, and then is silent.")
+              msg ("You're so hungry. You dart forward, pick up the hamster, and swallow it all in one motion. The adorable Pippy makes a tiny squeak, and then all is silent.")
               RemoveObject (hamster)
             }
             else {
@@ -1164,14 +1164,14 @@
       if (Got(crumpled paper)) {
         if (game.pov.parent = f13) {
           if (box.flame = true) {
-            msg ("You lift the paper into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+            msg ("You lift the crumpled paper into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance anxiously at the smoke detector overhead, but it's quiet. A little too quiet.")
           }
           else {
-            msg ("You wave the paper around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+            msg ("You try to lift the crumpled wad in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? It's not even turned on!")
           }
         }
         else {
-          msg ("You focus your Superman eyes on the paper. With all your squinting power at max, you think you see a tiny wisp of smoke starting to form. Ah, nope, you must be mistaken.<br/><br/>You are not Superman, and there's nothing nearby to burn this with.")
+          msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!<br/><br/>Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
         }
       }
     ]]></script>
@@ -1182,7 +1182,7 @@
     <script>
       if (Got(hose)) {
         if (game.pov.parent = f13) {
-          msg ("You attach the hose to the bunsen burner on one end and to the gas valve on the other..")
+          msg ("You attach the hose to the Bunsen burner on one end and to the gas valve on the other..")
           RemoveObject (hose)
           set (hose, "attached", 1)
           if (IsSwitchedOn(gas valve)) {
@@ -1191,11 +1191,11 @@
           }
         }
         else {
-          msg ("You're not near any bunsen burner.")
+          msg ("You're not near anything you can attach it to.")
         }
       }
       else {
-        msg ("You don't have any hose!")
+        msg ("You don't have a hose! Or a money, or a cash.<br/><br/>You scrub.")
       }
     </script>
   </command>
@@ -1205,19 +1205,19 @@
       if (Got(photo)) {
         if (game.pov.parent = f13) {
           if (bunsen burner.flame = true) {
-            msg ("You lift the photo into the flame . It quickly starts to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it doesn't seem to notice you doing anything out of the ordinary.")
+            msg ("You lift the photo into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it just stares back blankly...which is even worse than saying something negative, you know?")
             destroy ("photo")
           }
           else {
-            msg ("You wave the photo around in front of the bunsen burner, but nothing happens. What did you think, that this was a magical fire machine? It's not even turned on!")
+            msg ("You try to lift the photo in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? It's not even turned on!")
           }
         }
         else {
-          msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+          msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!<br/><br/>Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
         }
       }
       else {
-        msg ("You take a deep breath, and blow flaming hot air at the photo, and it bursts into flames. <br/><br/>Just kidding. You are not a dragon. There's no fire in site, and nothing happens.")
+        msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!<br/><br/>Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
       }
     ]]></script>
   </command>
@@ -1248,11 +1248,11 @@
           if (pile of dirt.grown = false) {
             if (hose.attached = 2) {
               if (IsSwitchedOn(faucet)) {
-                msg ("The water runs out of the end of the hose and makes a large puddle on the floor. As the puddle spreads across the room, the dirt begins to moisten. You hear a sharp crunching noise as something within the dirt begins to spring to life. Suddenly, a huge plant coils out of the dirt, and grows upwards in a spiral, reaching towards the light streaming through the open window.")
+                msg ("The water runs out of the end of the hose, and starts forming a puddle on the floor. As the puddle spreads across the room, the dirt begins to moisten. You soon hear a sharp crunching noise as something within the dirt springs to life. Suddenly, a huge plant coils out of the dirt, and grows upwards in a spiral, reaching towards the light streaming in through the open window.<br/><br/>Wonderful what science can do these days, no?")
                 MakeObjectVisible (plant)
               }
               else {
-                msg ("The end of the hose is poking towards the pile of dry dirt, but no water is coming out.")
+                msg ("The end of the hose is pointing toward the pile of dry dirt, but nothing is coming out. It's almost as if the hose itself is not a source of water.")
               }
             }
             else {
@@ -1260,7 +1260,7 @@
             }
           }
           else {
-            msg ("It's a pile of dirt, out of which is sprouting a magnficient vine that snakes up towards the window.")
+            msg ("It's a pile of dirt, out of which is sprouting a magnificent vine that snakes up  toward the open window. You feel a growing sense of deep symbolism.")
           }
         </look>
       </object>
@@ -1304,7 +1304,7 @@
       </enter>
       <object name="bean plant">
         <inherit name="editor_object" />
-        <look>Its label says "Superior-grow military-strength developmental prototype beanstalk". It's in a clay pot on the top of this shelf. There doesn't appear to be anything growing in the pot, and the soil is dry.</look>
+        <look>Its label says "Superior-growth, military-strength developmental prototype beanstalk". It's in a clay pot (which doesn't look military-strength) on the top of this shelf.<br/><br/>There doesn't appear to be anything growing in the pot, and the soil is dry.</look>
         <alt type="stringlist">
           <value>pot</value>
           <value>clay pot</value>
@@ -1313,22 +1313,22 @@
         <alias>pot of dirt</alias>
         <throw type="script">
           if (player.length = 11) {
-            msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
+            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
           }
           else {
-            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. Maybe you could move it if you had more protein in your system.")
+            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. What would your old Italian grandmother say? “You're getting too skinny!” in that comical accent of hers. And then she'd basically dump a vat of pasta in front of you. Remember that?")
           }
         </throw>
         <push type="script">
           if (player.length = 11) {
-            msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
+            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
           }
           else {
-            msg ("You heave against the pot, but it doesn't budge. You're just not strong enough to move it. If only you had some more protein in your system.")
+            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. What would your old Italian grandmother say? “You're getting too skinny!” in that comical accent of hers. And then she'd basically dump a vat of pasta in front of you. Remember that?")
           }
         </push>
       </object>
@@ -1361,7 +1361,7 @@
           <value>tap</value>
           <value>running faucet</value>
         </alt>
-        <switchonmsg>The handle sticks a little but you manage to turn the faucet on. Water is coming out now.</switchonmsg>
+        <switchonmsg>The handle sticks a little, but you manage to turn the faucet on, and water is rushing out. Better hope this place is rent-controlled.</switchonmsg>
         <switchoffmsg>You shut the water off. Only YOU can protect the environment!</switchoffmsg>
         <switchedon />
         <look type="script">
@@ -1454,7 +1454,7 @@
         <alias>meaty plant</alias>
         <look>There's a plant on this shelf. The label says "Experimental DNA hybrid for Synthetic Meat Production." Its leaves look like tasty little steaks.</look>
         <eat type="script">
-          msg ("You swallow that meat plant whole!")
+          msg ("You swallow that meat plant whole!<br/><br/>That's not a sentence you read every day.")
           grow_snake
           RemoveObject (meat plant)
         </eat>
@@ -1551,7 +1551,7 @@
         }
       }
       else {
-        msg ("You don't have any hose!")
+        msg ("You don't have a hose! Or a money, or a cash.<br/><br/>You scrub.")
       }
     </script>
   </command>
@@ -1571,12 +1571,12 @@
       if (game.pov.parent = p02) {
         if (ListContains(ScopeVisible(), bean plant)) {
           if (player.length = 11) {
-            msg ("You throw your weight against the pot, and it tips off the shelf. You hear it smash on the ground below.")
+            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below.")
             MakeObjectVisible (pile of dirt)
             RemoveObject (bean plant)
           }
           else {
-            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. Maybe you could move it if you had more protein in your system.")
+            msg ("You push as hard as you can against the heavy pot, but it doesn't budge. What would your old Italian grandmother say? “You're getting too skinny!” in that comical accent of hers. And then she'd basically dump a vat of pasta in front of you. Remember that?")
           }
         }
       }
@@ -1634,7 +1634,7 @@
           change_rooms
         </enter>
         <firstenter type="script">
-          msg ("You hear a noise to the east, maybe you should check it out.")
+          msg ("You hear a noise to the east! Maybe you should check it out.")
         </firstenter>
         <exit alias="west" to="tr_start01">
           <inherit name="westdirection" />
@@ -1733,17 +1733,17 @@
           </alt>
           <takemsg>You pick up the key card.</takemsg>
           <use />
-          <look>The key card glistens with a familiar sheen. It brings back memories of a key card reader you've seen in your travels.</look>
+          <look>The key card shines with a familiar glisten. It brings back memories of...memories. You're in some sort of quantum loop, obviously. ARE YOU TRIPPING OUT YET?!?</look>
           <ontake type="script">
             ClearFramePicture
           </ontake>
           <selfuseon type="scriptdictionary">
             <item key="cardReader1">
-              msg ("The reader goes beep boop and the door obligingly opens.")
+              msg ("The card reader signals its approval with a noise inimitable through onomatopoeia.")
               UnlockExit (tr_star11_to_tr_small01)
             </item>
             <item key="cardReader2">
-              msg ("The reader goes beep boop and the door obligingly opens.")
+              msg ("The reader accepts the card, sucking it in; out of the slot is unleashed a flood of wailing, tormented screams: the sound of thousands of souls who have died in previous save files, trying in vain to escape the eternal prison that is this puzzle room, never to find solace.<br/><br/>No pressure.")
               UnlockExit (tr_start13_to_tr_large00)
             </item>
           </selfuseon>
@@ -1787,8 +1787,8 @@
             <value>key card reader</value>
             <value>card reader</value>
           </alt>
-          <takemsg>It's bolted to the wall. Also why would you want it anyways?</takemsg>
-          <look>The key card reader glistens with the sheen of new plastic. It looks state of the art.</look>
+          <takemsg>It's...glued to the wall. But, like, a really strong glue. Never you mind.</takemsg>
+          <look>The key card reader glistens with the sheen of new—no, wait. Ew, gross, what IS that? Never mind. The device appears to be operational.</look>
         </object>
       </object>
       <object name="tr_start12">
@@ -1853,8 +1853,8 @@
             <value>key card reader</value>
             <value>card reader</value>
           </alt>
-          <takemsg>It's bolted to the wall. Also why would you want it anyways?</takemsg>
-          <look>The key card reader glistens with the sheen of new plastic. It looks state of the art.</look>
+          <takemsg>It's cemented to the wall, and you forgot your jackhammer. Nice going.</takemsg>
+          <look>The key card reader glistens with the sheen of new metal (not to be confused with nu metal, which is a pretentious way of saying "alternative" metal, and is a garbage genre anyhow).</look>
         </object>
       </object>
       <object name="tr_start14">
@@ -1883,7 +1883,7 @@
           </displayverbs>
           <lie type="script"><![CDATA[
             if (player.length < 7) {
-              msg ("The scale beeps, but nothing else happens. Maybe you are not heavy enough...")
+              msg ("The scale beeps, but nothing else happens. Clearly, you have not satisfied the almighty guardian device.")
             }
             else {
               UnlockExit (tr_start14_to_t_torches00)
@@ -1954,7 +1954,7 @@
           </displayverbs>
           <eat type="script">
             grow_snake
-            msg ("Om nom nom. You feel so strong and fierce now. Wait...no...you feel lazy. Like you could just go... sit on a scale.")
+            msg ("Packing on the pounds, there, aren't you? Look, someone had to tell you. Really, you should be thankful. Don't get so damn emotional!")
             ClearFramePicture
             RemoveObject (deadRat1)
           </eat>
@@ -2120,13 +2120,13 @@
             <value>dead rat</value>
           </alt>
           <take type="boolean">false</take>
-          <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
+          <look>A less-dead, but equally edible rat. You're not going to let it suffer, are you?</look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
           <eat type="script">
             grow_snake
-            msg ("Om nom nom. You feel so strong and fierce now. Wait...no...you feel lazy. Like you could just go... sit on a scale.")
+            msg ("The rat goes straight to your ample midsection as you put it out of its misery.<br/><br/>...or maybe that rat was just getting better, and you've swooped in and taken its life before it could even tell its family it loved them. Looks like you'll just have to spend the rest of your days wondering: what if?")
             ClearFramePicture
             RemoveObject (deadRat2)
           </eat>
@@ -2287,7 +2287,7 @@
         </look>
         <script type="script"><![CDATA[
           if (player.length < 9) {
-            msg ("The door rattles as you push it, but it's still latched. Oh, there's a handle! Too bad you can't reach it. Maybe you can find a way to get up there...")
+            msg ("The door rattles as you push it, but it's still latched. Oh, there's a handle! It's too bad you can't reach it. Maybe you can find a way to get up there...")
           }
           else {
             MoveObject (player, f24)
@@ -2938,7 +2938,7 @@
         </drag>
         <look type="script"><![CDATA[
           if (player.length < 7) {
-            msg ("It's an Ikea shelf. Solid, modern, and likely to collapse if looked at in the wrong way. The shelves remind you of something you once climbed up. Maybe, if you're really nice to it, you could climb up it.")
+            msg ("It's an Ikea shelf. Solid, modern, and likely to collapse if looked at in the wrong way. It surely couldn't hold your weight, especially after you shamelessly gorged on rats.")
           }
           else {
             msg ("You look at " + this.alias + " sternly. It is intimidated by your strength and collapses immediately. Several wrapped food items fall out of one of the drawers.")
@@ -2973,7 +2973,7 @@
           <visible />
           <eat type="script">
             grow_snake
-            msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... uh, reach a door handle.")
+            msg ("It tastes so good, but the shame burns so badly. Not that you care. You're just taking up ever more space as you go.")
             ClearFramePicture
             RemoveObject (this)
           </eat>
@@ -2993,7 +2993,7 @@
           <visible />
           <eat type="script">
             grow_snake
-            msg ("Om nom nom. You feel so strong and fierce now. Like you could just go... uh, reach a door handle.")
+            msg ("You down it all like nothing. Did your parents teach you no manners? You are grown now, but only in size.")
             ClearFramePicture
             RemoveObject (this)
           </eat>
@@ -3100,19 +3100,19 @@
     }
     if (indexHit = player.length-1) {
       // We see our own body at the head, give a no turn back message
-      msg ("You've just come from there, you wouldn't want to risk running into whatever's following you, would you?")
+      msg ("You've just come from there. You wouldn't want to risk running into anything that may be following you...would you?")
     }
     else if (indexHit > 1) {
       // We see our own body in the middle, give a warning message
-      msg ("You see a large, scaly body stretching across that room. Who knows what it belongs to?")
+      msg ("You see a slimy, scaly body stretching across that room, nearly filling it. What a monstrosity!")
     }
     else if (indexHit = 1) {
       // We see our own tail, give an okay message
-      msg ("You see the tip of a scaly tail. It looks like the monster is passing through. If you're quiet you can go this way.")
+      msg ("You see the tip of a slimy, scaly tail. It looks like the monster is passing through. You're probably clear to go this way.")
     }
     else {
       // No snake to see, give an all clear message
-      msg ("That way is dark, empty and quiet.")
+      msg ("That way is dark, empty and quiet. Not unlike your heart, you monster!<br/><br/>Sorry. That was inappropriate.")
     }
   ]]></function>
   <function name="clear_rooms">
@@ -3147,17 +3147,17 @@
     }
   </function>
   <function name="game_over"><![CDATA[
-    msg ("A large, scaly body spans the room. The creature that's been chasing you has found you. You feel a sharp pain, and everything goes black.<br/><br/>Hint: You can look into a room before entering it.<br/><br/>Remember to save!")
+    msg ("A slimy, scaly body spans the room. The pursuing creature and the one fleeing have come to a head, it seems! It's a flurry of fangs and blood as you try to defend yourself...and you fight valiantly, but are ultimately torn apart.<br/><br/>Hint: You can look into a room before entering it.<br/><br/>Remember to save!")
     ClearFramePicture
     finish
   ]]></function>
   <function name="game_win">
-    msg ("You climb up the beanstalk and out the window. Congratulations, you're free! Also, YOU WERE TEH SNAKE THE WHOLE TIME OMG")
+    msg ("You slither up the beanstalk and out the window—out to freedom in the long, cool grass where you feel most at home.<br/><br/>Congratulations: you have won Snake!")
     finish
   </function>
   <function name="humans_caught"><![CDATA[
     if (thesis.wasburned = false) {
-      msg ("You got caught by the humans in this room! Oh noooo.<br/><br/>Hint: You can look into a room before entering it.<br/><br/>Remember to save!")
+      msg ("You got caught by the humans in this room! They don't seem very nice...guess you're hooped.<br/><br/>Hint: You can look into a room before entering it.<br/><br/>Remember to save!")
       finish
     }
   ]]></function>
@@ -3193,7 +3193,7 @@
         list add (player.snake_rooms, curRoom)
         if (indexHit = player.length-2) {
           // We hit our own body at the head, give a no turn back message
-          msg ("You hear the sound of a large object dragging across the floor, but you proceed anyway.")
+          msg ("You hear the sound of a heaving body dragging across the floor, but you proceed anyway.")
           game_over
         }
         else if (not indexHit = 0) {
@@ -3213,7 +3213,7 @@
       if (light.remaining_dur > 0) {
         light.remaining_dur = (light.remaining_dur - 1)
         if (light.remaining_dur = 0) {
-          msg ("A light has tunred off.")
+          msg ("A light has turned off.")
         }
       }
     }
