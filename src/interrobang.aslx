@@ -158,6 +158,14 @@
           look_room (r21)
         </look>
       </exit>
+      <object name="player">
+        <inherit name="editor_object" />
+        <inherit name="editor_player" />
+        <maxobjects type="int">1</maxobjects>
+        <containermaxobjects>You want to grab it, but you're already holding something.</containermaxobjects>
+        <length type="int">4</length>
+        <attr name="show_debug" type="int">0</attr>
+      </object>
     </object>
     <object name="r12">
       <inherit name="editor_room" />
@@ -515,11 +523,11 @@
                   RemoveObject (thesis)
                 }
                 else {
-                  msg ("You try to lift the thesis in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? It's not even turned on!")
+                  msg ("You try to lift the thesis in front of the Bunsen burner, but nothing happens. What did you think—that this was a magical fire machine? Well, I suppose it is. But it's not even turned on!")
                 }
               }
               else {
-                msg ("You try to lift the thesis all the way up to the fire, but you just don't seem to have the reach that you used to. Should have done more Pilates, maybe. Regardless, you're going to want to think about this laterally.")
+                msg ("You try to lift the thesis all the way up to the fire, but you just don't seem to have the reach that you used to. Should have done more Pilates, maybe. Regardless, you're going to want to think about this laterally. As in, bring the fire down to surface level.")
               }
             }
             else {
@@ -647,9 +655,15 @@
       </exit>
       <exit alias="north" to="p21">
         <inherit name="northdirection" />
-        <look type="script">
+        <look type="script"><![CDATA[
           look_room (p21)
-        </look>
+          if (thesis.wasburned = false) {
+            msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
+          }
+          else {
+            msg ("You peer through the crack between the double doors. No more meat noises!")
+          }
+        ]]></look>
       </exit>
       <object name="double doors1">
         <inherit name="editor_object" />
@@ -660,7 +674,7 @@
             msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
           }
           else {
-            msg ("You peer through the crack between the double doors. All seems to be peacefully silent. It looks like it's safe to go this way now!")
+            msg ("You peer through the crack between the double doors. No more meat noises!")
           }
         ]]></look>
         <alias>double door</alias>
@@ -688,9 +702,15 @@
       </exit>
       <exit alias="north" to="p22">
         <inherit name="northdirection" />
-        <look type="script">
+        <look type="script"><![CDATA[
           look_room (p22)
-        </look>
+          if (thesis.wasburned = false) {
+            msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
+          }
+          else {
+            msg ("You peer through the crack between the double doors. No more meat noises!")
+          }
+        ]]></look>
       </exit>
       <object name="double doors2">
         <inherit name="editor_object" />
@@ -701,7 +721,7 @@
             msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
           }
           else {
-            msg ("You peer through the crack between the double doors. All seems to be peacefully silent. It looks like it's safe to go this way now!")
+            msg ("You peer through the crack between the double doors. No more meat noises!")
           }
         ]]></look>
         <alias>double door</alias>
@@ -1246,14 +1266,6 @@
           look_room (t_torches00)
         </look>
       </exit>
-      <object name="player">
-        <inherit name="editor_object" />
-        <inherit name="editor_player" />
-        <maxobjects type="int">1</maxobjects>
-        <containermaxobjects>You want to grab it, but you're already holding something.</containermaxobjects>
-        <length type="int">9</length>
-        <attr name="show_debug" type="int">0</attr>
-      </object>
     </object>
   </object>
   <verb>
@@ -1347,14 +1359,37 @@
         change_rooms
       </enter>
       <alias>greenhouse room</alias>
-      <description>To the east are a bunch of shelves with knick knacks and plants on them. To the west is a big, solid door that's firmly closed.</description>
+      <description type="script">
+        if (ListContains(ScopeVisible(), pile of dirt)) {
+          if (pile of dirt.grown = false) {
+            if (hose.attached = 2) {
+              if (IsSwitchedOn(faucet)) {
+                msg ("The water runs out of the end of the hose, and starts forming a puddle on the floor. As the puddle spreads across the room, the dirt begins to moisten. You soon hear a sharp crunching noise as something within the dirt springs to life. Suddenly, a huge plant coils out of the dirt, and grows upwards in a spiral, reaching towards the light streaming in through the open window.Wonderful what science can do these days, no?")
+                MakeObjectVisible (plant)
+              }
+              else {
+                msg ("The end of the hose is pointing toward the pile of dry dirt, but nothing is coming out. It's almost as if the hose on its own is not a source of water.")
+              }
+            }
+            else {
+              msg ("Directly below the open window is a pile of dry dirt, with the remains of its smashed pot scattered around.")
+            }
+          }
+          else {
+            msg ("It's a pile of dirt, out of which is sprouting a magnificent vine that snakes up  toward the open window. You feel a growing sense of deep symbolism.")
+          }
+        }
+        else {
+        }
+        msg ("To the east are a bunch of shelves with knick knacks and plants on them. To the west is a big, solid door that's firmly closed.")
+      </description>
       <object name="window">
         <inherit name="editor_object" />
         <alias>open window</alias>
         <alt type="stringlist">
           <value>window</value>
         </alt>
-        <look>High up near the ceiling, there's an open window. You can feel and smell fresh air through it. This is what must have cleared out the smoke! Smells like freedom! </look>
+        <look>High up near the ceiling, there's an open window. You can feel and smell fresh air through it. This is what must have cleared out the smoke! Smells like freedom! Too bad you were always the shortest kid in class, there's no way you can reach it from down here.</look>
         <takemsg>Um. It's a window. Technically it's an empty space. This is real life, not some cartoon where you can take a window off a wall with you, or some silly game where you can create orange and blue windows wherever you want.</takemsg>
       </object>
       <object name="pile of dirt">
@@ -1384,6 +1419,7 @@
             msg ("It's a pile of dirt, out of which is sprouting a magnificent vine that snakes up  toward the open window. You feel a growing sense of deep symbolism.")
           }
         </look>
+        <takemsg>You put some of the dirt in your pockets. Or at least you would, if you had pockets. Come on, man. It's dirt.</takemsg>
       </object>
       <object name="plant">
         <inherit name="editor_object" />
@@ -1401,6 +1437,7 @@
           game_win
         </climbup>
         <takemsg>You can't take this majestic creature. It's just been given new life in its sprawling pile of dirt. You wish you could be happy living in a pile of dirt.</takemsg>
+        <look>Like little Johnny Appleseed, you have created this magnificent biological manifestation from the sweat of your brow. Like Jack the Giant Slayer, you have done it entirely accidentally, by halphazardly throwing some seeds and some dirt and some water together. You swell with pride.</look>
       </object>
       <exit alias="south" to="p11">
         <inherit name="southdirection" />
@@ -1438,7 +1475,7 @@
         <alias>pot of dirt</alias>
         <throw type="script">
           if (player.length = 11) {
-            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below.")
+            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below the window to the west.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
           }
@@ -1448,7 +1485,7 @@
         </throw>
         <push type="script">
           if (player.length = 11) {
-            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below.")
+            msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below the window to the west.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
           }
@@ -1456,6 +1493,13 @@
             msg ("You push as hard as you can against the heavy pot, but it doesn't budge. What would your old Italian grandmother say? “You're getting too skinny!” in that comical accent of hers. And then she'd basically dump a vat of pasta in front of you. Remember that?")
           }
         </push>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+          <value>Take</value>
+          <value>Push</value>
+          <value>Throw</value>
+        </displayverbs>
+        <takemsg>You don't want that pot. Just say no.</takemsg>
       </object>
       <exit alias="west" to="p01">
         <inherit name="westdirection" />
@@ -1479,7 +1523,7 @@
       <description>In this corner of the room, wedged between the wall and the shelves of plants, is a sink. The sound of running water is almost as soothing as the noise made by a japanese shishi-odoshi. Well, not really. You just really wanted a chance to say the word "shishi-odoshi."</description>
       <object name="sink">
         <inherit name="editor_object" />
-        <look>The sink is slightly filled with water, but is draining steadily.</look>
+        <look><![CDATA[The sink is slightly filled with water, but is draining steadily. You consider three options for getting water out of this sink:<br/>1) Plug up the drain<br/>2) Carry the water in a vessel<br/>3) Redirect the water coming from the tap.<br/>You focus all of your psychic powers into trying to determine the answer. It's foggy...  you see... that only one option will work... and its number rhymes with "shmee"...]]></look>
       </object>
       <object name="faucet">
         <inherit name="editor_object" />
@@ -1493,7 +1537,7 @@
         <switchedon />
         <look type="script">
           if (IsSwitchedOn(faucet)) {
-            msg ("It's a faucet. Water is pouring out.")
+            msg ("It's a faucet. Water is pouring out. The water is draining down into the sink below, but maybe there's a way that you can direct it? You think you may have seen something a little earlier that you could use to direct the flow of fluids.")
           }
           else {
             msg ("It's a faucet. It's off.")
@@ -1522,7 +1566,14 @@
         change_rooms
       </enter>
       <alias>greenhouse room</alias>
-      <description>You're in the center of the room, and there is nothing remarkable here. You contemplate spinning on your heels round and round with your arms outstretched, pretending to be a tornado knocking all the things off the shelves. But for some reason, before you can contemplate too long, you are seized with the feeling that that's a terrible idea. </description>
+      <description type="script">
+        if (hose.attached = 2) {
+          msg ("There's a pool of water on the floor. Demonstrating the remarkable relationship of cause and effect, attaching the hose to the faucet has caused water to pool on the floor. Splish splash. ")
+        }
+        else {
+          msg ("You're in the center of the room, and there is nothing remarkable here. You contemplate spinning on your heels round and round with your arms outstretched, pretending to be a tornado knocking all the things off the shelves. But for some reason, before you can contemplate too long, you are seized with the feeling that that's a terrible idea. ")
+        }
+      </description>
       <exit alias="north" to="p01">
         <inherit name="northdirection" />
         <look type="script">
@@ -1601,7 +1652,8 @@
           look_room (p11)
         </look>
       </exit>
-      <exit to="p21">
+      <exit alias="east" to="p21">
+        <inherit name="eastdirection" />
         <look type="script">
           look_room (p21)
         </look>
@@ -3662,6 +3714,34 @@
       take hose
       north
       look at double door
+    </steps>
+  </walkthrough>
+  <walkthrough name="startToFinish">
+    <steps type="simplestringlist">
+      north
+      west
+      eat meaty plant
+      north
+      use hose on faucet
+      east
+      north
+      east
+      push pot of dirt
+      south
+      south
+      south
+      south
+      south
+      west
+      north
+      look north
+      north
+      north
+      north
+      north
+      look at open window
+      look at tall bean plant
+      climb tall bean plant
     </steps>
   </walkthrough>
 </asl>
