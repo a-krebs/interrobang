@@ -505,12 +505,12 @@
             msg ("You try to heft the stack of papers up, but you're too weak—if only you'd had a balanced breakfast like your parents taught you. You consider picking it up one page at a time, but by your count, there are...at LEAST two and a half bajillion pages there. Then again, you were never very good at math.")
           }
         </take>
-        <burn type="script">
+        <burn type="script"><![CDATA[
           if (Got(thesis)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.tipped = true) {
                 if (bunsen burner.flame = true) {
-                  msg ("You drop the thesis into the fire, watching the tendrils lick at it until it becomes a tiny inferno. You try (in vain) to remember the last time you saw Flames overwhelm anything.The thesis fire begins to fill the room with smoke. “Thesis making it really hard to see/breathe!” you exclaim (you dork). How did you even speak that kind of punctuation? The fire alarm is going off, by the way.")
+                  msg ("You drop the thesis into the fire, watching the tendrils lick at it until it becomes a tiny inferno. You try (in vain) to remember the last time you saw Flames overwhelm anything.The thesis fire begins to fill the room with smoke. “Thesis making it really hard to see/breathe!” you exclaim (you dork). How did you even speak that kind of punctuation? The fire alarm is going off, by the way.<br/><br/>You hear some shuffling and some meat monster noises in the room to the north. After awhile, the noises stop. Except for the fire alarm. That will never stop.")
                   set (thesis, "wasburned", true)
                   RemoveObject (thesis)
                 }
@@ -529,7 +529,7 @@
           else {
             msg ("You do your best Human Torch impression, but you're a couple of factors shy of the necessary requirements. You're not a magician (yet), so your best bet is to focus your inner rage on it.Spoiler: it doesn't work.")
           }
-        </burn>
+        ]]></burn>
       </object>
       <exit alias="east" to="f01">
         <inherit name="eastdirection" />
@@ -1250,8 +1250,8 @@
         <inherit name="editor_object" />
         <inherit name="editor_player" />
         <maxobjects type="int">1</maxobjects>
-        <containermaxobjects>You want to grab it, but you can't seem to pull it off. You're already holding something.</containermaxobjects>
-        <length type="int">4</length>
+        <containermaxobjects>You want to grab it, but you're already holding something.</containermaxobjects>
+        <length type="int">9</length>
         <attr name="show_debug" type="int">0</attr>
       </object>
     </object>
@@ -1346,13 +1346,16 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>greenhouse room</alias>
+      <description>To the east are a bunch of shelves with knick knacks and plants on them. To the west is a big, solid door that's firmly closed.</description>
       <object name="window">
         <inherit name="editor_object" />
         <alias>open window</alias>
         <alt type="stringlist">
           <value>window</value>
         </alt>
-        <look>High up near the ceiling, there's an open window. You can feel and smell fresh air through it. This is what must have cleared out the smoke.</look>
+        <look>High up near the ceiling, there's an open window. You can feel and smell fresh air through it. This is what must have cleared out the smoke! Smells like freedom! </look>
+        <takemsg>Um. It's a window. Technically it's an empty space. This is real life, not some cartoon where you can take a window off a wall with you, or some silly game where you can create orange and blue windows wherever you want.</takemsg>
       </object>
       <object name="pile of dirt">
         <inherit name="editor_object" />
@@ -1397,6 +1400,7 @@
         <climbup type="script">
           game_win
         </climbup>
+        <takemsg>You can't take this majestic creature. It's just been given new life in its sprawling pile of dirt. You wish you could be happy living in a pile of dirt.</takemsg>
       </object>
       <exit alias="south" to="p11">
         <inherit name="southdirection" />
@@ -1412,7 +1416,8 @@
       </exit>
       <object name="door">
         <inherit name="editor_object" />
-        <look>There's a door to the west that the monsters left through. It's shut tight, though. There's no way to open it.</look>
+        <look>There's a door to the west that the monsters left through. It's shut tight, though. There's no way to open it. Trust me, I programmed this part of the game. There's no way.</look>
+        <takemsg>It's a door. What do you even do when you try to "take" a door? Did you expect to pull it off its hinges and cart it away with you? Did you really think that would be a solution to one of the puzzles in this game?</takemsg>
       </object>
     </object>
     <object name="p02">
@@ -1420,6 +1425,8 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>greenhouse room</alias>
+      <description><![CDATA[There's a big ol' shelf in the corner of this room. You climb up on top of it. You think you might be able to see your house from here! Oh, no... no, you can't. You're indoors.<br/><br/>If you look hard enough, you think you can see the end of the game from here, though.]]></description>
       <object name="bean plant">
         <inherit name="editor_object" />
         <look>Its label says "Superior-growth, military-strength developmental prototype beanstalk". It's in a clay pot (which doesn't look military-strength) on the top of this shelf.There doesn't appear to be anything growing in the pot, and the soil is dry.</look>
@@ -1468,6 +1475,8 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>greenhouse room</alias>
+      <description>In this corner of the room, wedged between the wall and the shelves of plants, is a sink. The sound of running water is almost as soothing as the noise made by a japanese shishi-odoshi. Well, not really. You just really wanted a chance to say the word "shishi-odoshi."</description>
       <object name="sink">
         <inherit name="editor_object" />
         <look>The sink is slightly filled with water, but is draining steadily.</look>
@@ -1512,6 +1521,8 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>greenhouse room</alias>
+      <description>You're in the center of the room, and there is nothing remarkable here. You contemplate spinning on your heels round and round with your arms outstretched, pretending to be a tornado knocking all the things off the shelves. But for some reason, before you can contemplate too long, you are seized with the feeling that that's a terrible idea. </description>
       <exit alias="north" to="p01">
         <inherit name="northdirection" />
         <look type="script">
@@ -1542,6 +1553,8 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>greenhouse room</alias>
+      <description>There are some more shelves along this wall, covered mostly in jars of plants. You thrust your face into a shrubbery. It makes you feel like you're home again.</description>
       <exit alias="north" to="p02">
         <inherit name="northdirection" />
         <lookonly type="boolean">false</lookonly>
@@ -1567,10 +1580,15 @@
       <enter type="script">
         change_rooms
       </enter>
+      <description type="script">
+        msg ("There's a shelf against the wall here, on which sits a number of plants in pots and containers. ")
+        picture ("meatplant.png")
+      </description>
+      <alias>greenhouse room</alias>
       <object name="meat plant">
         <inherit name="editor_object" />
         <alias>meaty plant</alias>
-        <look>There's a plant on this shelf. The label says "Experimental DNA hybrid for Synthetic Meat Production." Its leaves look like tasty little steaks.</look>
+        <look><![CDATA[The label on one of the plants says "Experimental DNA hybrid for Synthetic Meat Production." Its leaves look like tasty little steaks. Has science gone too far?!?!<br/><br/><br/>"No," you think. "Steaks are friggin delicious."]]></look>
         <eat type="script">
           msg ("You swallow that meat plant whole!That's not a sentence you read every day.")
           grow_snake
@@ -1599,6 +1617,8 @@
       <firstenter type="script">
         humans_caught
       </firstenter>
+      <description><![CDATA[This room has grey walls, a grey floor, and a grey ceiling. There is literally nothing in this room. Were you to spend a weekend here, it would not be a weekend well spent.<br/><br/>Oh wait, it's just smoky from the fire you made. Once the smoke clears, you can see a bit more.<br/><br/>You're in a small room. It feels humid, like a green house. Shelves line the north east wall. To the west are more shelves and a sink. Just ahead of you, you can see an open window with bright light shining in. The fresh air is the most pleasant thing you've smelled all day!]]></description>
+      <alias>greenhouse room</alias>
       <exit alias="south" to="f03">
         <inherit name="southdirection" />
         <look type="script">
@@ -1635,6 +1655,8 @@
       <firstenter type="script">
         humans_caught
       </firstenter>
+      <description><![CDATA[This room has grey walls, a grey floor, and a grey ceiling. There is literally nothing in this room. Were you to spend a weekend here, it would not be a weekend well spent.<br/><br/>Oh wait, it's just smoky from the fire you made. Once the smoke clears, you can see a bit more.<br/><br/>You're in a small room. It feels humid, like a green house. Shelves line the north east wall. To the west are more shelves and a sink. Just ahead of you, you can see an open window with bright light shining in. The fresh air is the most pleasant thing you've smelled all day!]]></description>
+      <alias>greenhouse room</alias>
       <exit alias="north" to="p12">
         <inherit name="northdirection" />
         <look type="script">
@@ -3336,26 +3358,6 @@
       }
     }
   ]]></function>
-  <walkthrough name="burnThesisWalk">
-    <steps type="simplestringlist">
-      go west
-      west
-      west
-      west
-      open small cage
-      eat hamster
-      north
-      north
-      take thesis
-      east
-      south
-      east
-      east
-      turn on gas
-      hug bunsen burner
-      burn thesis
-    </steps>
-  </walkthrough>
   <walkthrough name="prototypeWalk">
     <steps type="simplestringlist">
       go north
@@ -3636,6 +3638,30 @@
       eat brightly coloured candy
       eat dull boring candy
       go north
+    </steps>
+  </walkthrough>
+  <walkthrough name="burnThesis">
+    <steps type="simplestringlist">
+      west
+      west
+      west
+      west
+      open small cage
+      eat hamster
+      north
+      north
+      take thesis
+      east
+      south
+      east
+      east
+      turn on gas valve
+      hug bunsen burner
+      put thesis in fire
+      burn thesis
+      take hose
+      north
+      look at double door
     </steps>
   </walkthrough>
 </asl>
