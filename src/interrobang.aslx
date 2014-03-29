@@ -23,7 +23,7 @@
       for (index, 0, player.length-1) {
         list add (player.snake_rooms, curRoom)
       }
-            msg ("Groggy, you awaken in an unfamiliar room on a cold tile floor of green. You feel slimy and realize you have no idea how you got here. Your blood runs cold.Pushing away the regret of whatever you may have done last night, you first notice the emptiness of the place, and the foreboding feeling that something is coming after you.")
+      msg ("Groggy, you awaken in an unfamiliar room on a cold tile floor of green. You feel slimy and realize you have no idea how you got here. Your blood runs cold.Pushing away the regret of whatever you may have done last night, you first notice the emptiness of the place, and the foreboding feeling that something is coming after you.")
     </start>
   </game>
   <object name="Prototype">
@@ -158,14 +158,6 @@
           look_room (r21)
         </look>
       </exit>
-      <object name="player">
-        <inherit name="editor_object" />
-        <inherit name="editor_player" />
-        <maxobjects type="int">1</maxobjects>
-        <containermaxobjects>You want to grab it, but you can't seem to pull it off. You're already holding something.</containermaxobjects>
-        <length type="int">4</length>
-        <attr name="show_debug" type="int">0</attr>
-      </object>
     </object>
     <object name="r12">
       <inherit name="editor_room" />
@@ -481,6 +473,8 @@
     <inherit name="editor_room" />
     <object name="f00">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description>You're at the far right side of the desk. </description>
       <enter type="script">
         change_rooms
       </enter>
@@ -546,6 +540,8 @@
     </object>
     <object name="f01">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description><![CDATA[To the south east is a stainless steel lab bench. To the west is a desk against the wall. The desk is so close you can nearly touch it! Nearly. You've gotta Truffle Shuffle a little farther over.<br/><br/>The north wall is a tinted glass window, through which you can barely make something out.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -584,6 +580,8 @@
     </object>
     <object name="f02">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description><![CDATA[You pause to loiter on the far side of the lab bench. My, how far you've come! Circumnavigating a full room. You feel your insides swelling with pride. Oh, your mistake, it's just gas.<br/><br/>To the south is the lab bench. The north wall is a tinted glass window, through which you can barely make something out.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -601,7 +599,8 @@
           look_room (f01)
         </look>
       </exit>
-      <exit to="f12">
+      <exit alias="south" to="f12">
+        <inherit name="southdirection" />
         <look type="script">
           look_room (f12)
         </look>
@@ -621,6 +620,8 @@
     </object>
     <object name="f03">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description><![CDATA[To the south is the lab bench. To the north is one side of a double door. The doors are swung shut. As you gaze towards the doors, a nostalgic phrase rushes into your mind: "Haste makes waste!"<br/><br/>Psh. Everyone knows that the egregrious over-production of goods rampant in our consumer-centric society is what makes waste. Thanks for nothing, brain.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -650,9 +651,24 @@
           look_room (p21)
         </look>
       </exit>
+      <object name="double doors1">
+        <inherit name="editor_object" />
+        <inherit name="plural" />
+        <takemsg>It's a door. What do you even do when you try to "take" a door? Did you expect to pull it off its hinges and cart it away with you? Did you really think that would be a solution to one of the puzzles in this game?</takemsg>
+        <look type="script"><![CDATA[
+          if (thesis.wasburned = false) {
+            msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
+          }
+          else {
+            msg ("You peer through the crack between the double doors. All seems to be peacefully silent. It looks like it's safe to go this way now!")
+          }
+        ]]></look>
+        <alias>double door</alias>
+      </object>
     </object>
     <object name="f04">
       <inherit name="editor_room" />
+      <description><![CDATA[To the south east is the lab bench. To the north is one side of a double door. The doors are swung shut. As you gaze towards the doors, a nostalgic phrase rushes into your mind: "Look before you leap!"<br/><br/>Psh. There's nothing to jump off of here. Thanks for nothing, brain.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -676,9 +692,25 @@
           look_room (p22)
         </look>
       </exit>
+      <object name="double doors2">
+        <inherit name="editor_object" />
+        <inherit name="plural" />
+        <takemsg>It's a door. What do you even do when you try to "take" a door? Did you expect to pull it off its hinges and cart it away with you? Did you really think that would be a solution to one of the puzzles in this game?</takemsg>
+        <look type="script"><![CDATA[
+          if (thesis.wasburned = false) {
+            msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
+          }
+          else {
+            msg ("You peer through the crack between the double doors. All seems to be peacefully silent. It looks like it's safe to go this way now!")
+          }
+        ]]></look>
+        <alias>double door</alias>
+      </object>
     </object>
     <object name="f10">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description>You move over to take a look at the center of the desk. The space is generally bare, save for a small coffee pot that a lazy programmer has glued down so that you can't interact with it. You don't even feel like affirming the existence of such a mundane applliance by looking at it.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -706,10 +738,13 @@
         <inherit name="editor_object" />
         <alias>photo of terrible beasts</alias>
         <usedefaultprefix type="boolean">false</usedefaultprefix>
-        <look>It's a picture of...monsters? They look alien, yet somehow familiar. Your existentialism is acting up again.</look>
         <take />
-        <takemsg>Clumsily, you knock the frame over and shatter it—not unlike Lennie, unaware of your own strength, only desiring to...what? You haven't read “Of Mice and Men”? Come on. Well, you've got the photo now.</takemsg>
-        <burn type="script"><![CDATA[
+        <takemsg>Clumsily, you knock the frame over and shatter it—not unlike Lennie, unaware of your own strength, only desiring to...what? You haven't read “Of Mice and Men”? Come on. Well, you've got the photo now. It's all papery.</takemsg>
+        <look type="script"><![CDATA[
+          msg ("Oh gawd, oh, ugh, just, you can't even...<br/>It's worse than you thought. The scaly-tentacled superflously-optacled meat beasts that inhabit this place are truly a terror. You wouldn't be surprised if, slightly after this image was taken, the matriarch of the brood mercilessly devoured the young.<br/>Ugh, it's unspeakable.")
+          picture ("family_photo.png")
+        ]]></look>
+        <burn type="script">
           if (Got(crumpled paper)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.flame = true) {
@@ -727,11 +762,13 @@
           else {
             msg ("You take a deep breath...and blow flaming hot air at the photo...and it bursts into flames! Just kidding. You're not quite a dragon.")
           }
-        ]]></burn>
+        </burn>
       </object>
     </object>
     <object name="f11">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description>To the east is a stainless steel lab bench. To the west is a desk against the wall. The desk is so close you can nearly touch it! Nearly. You've gotta shake it like a polaroid picture a little farther over.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -764,11 +801,13 @@
     </object>
     <object name="f12">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
         change_rooms
       </enter>
+      <description>You approach the left side of the lab bench. Its surface is stainless steel and cold to the touch. You hate things that are cold to the touch. Then again, you also hate stains. You decide that this bench is okay after all.</description>
       <exit alias="north" to="f02">
         <inherit name="northdirection" />
         <look type="script">
@@ -798,7 +837,7 @@
         <look>There's a bit of crumpled-up paper; it has some illegible scribbling on it. You resist the urge to make a joke about doctors writing prescriptions.</look>
         <take />
         <takemsg>You pick it up. Crinkle crinkle.</takemsg>
-        <burn type="script"><![CDATA[
+        <burn type="script">
           if (Got(crumpled paper)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.flame = true) {
@@ -816,16 +855,18 @@
           else {
             msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
           }
-        ]]></burn>
+        </burn>
       </object>
     </object>
     <object name="f13">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
         change_rooms
       </enter>
+      <description>You approach the right side of the lab bench. It looks like a good place to do science. You're not a scientist though, so you think the bench looks pretty frustratingly outside the realm of anything that you could find pleasure in.</description>
       <exit alias="east" to="f14">
         <inherit name="eastdirection" />
         <look type="script">
@@ -955,11 +996,13 @@
     </object>
     <object name="f14">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
         change_rooms
       </enter>
+      <description><![CDATA[A ceiling fan humms loudly above you. The on/off cord hangs low enough that you could pull it with ease. <br/><br/>On the east wall, there's a large sign.<br/><br/>To the west is a lab bench, and farther to the north are some double doors.]]></description>
       <exit alias="north" to="f04">
         <inherit name="northdirection" />
         <look type="script">
@@ -978,9 +1021,26 @@
           look_room (f13)
         </look>
       </exit>
+      <object name="sign">
+        <inherit name="editor_object" />
+        <look><![CDATA[You saw the sign. And it opened up your eyes, you saw the sign.<br/>Life is demanding without understanding.<br/>You saw the sign, and it opened up your eyes you saw the sign.<br/>No one's gonna drag you up to get into the light where you belong.<br/>But where do you belong?<br/><br/>"Where do you belong?" you wonder.<br/><br/><br/>Where do you belong?]]></look>
+        <takemsg>This sign is an ethereal artifact not from our mortal plane. You can't simply take it. No, the Ace of Base message is one that transcends time and space.</takemsg>
+      </object>
+      <object name="cord">
+        <inherit name="editor_object" />
+        <pull>Pulling the cord does absolutely nothing. Your disappointment is immeasurable.</pull>
+        <use type="boolean">false</use>
+        <look>The ceiling fan's cord hangs tantalizingly within your grasp.</look>
+      </object>
+      <object name="fan">
+        <inherit name="editor_object" />
+        <look>The ceiling fan humms loudly above you. It doesn't even seem to be moving much air. It's more of a loud humm device. You would not be surprised if its father was a lawn mower and its mother was a compostable Sun Chips bag.</look>
+      </object>
     </object>
     <object name="f20">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description>You sidle over to the left-most side of the desk that spans the whole west wall. </description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -1003,7 +1063,7 @@
         <inherit name="container_open" />
         <alias>small cage</alias>
         <scenery type="boolean">false</scenery>
-        <look>A small wire cage sits on the desk. There's a small, brown lump inside.</look>
+        <look>A small wire cage sits on the desk. There's a small, brown, fluffy lump inside.</look>
         <alt type="stringlist">
           <value>cage</value>
         </alt>
@@ -1011,15 +1071,20 @@
         <transparent />
         <openmsg>You bump the latch and the door swings open.</openmsg>
         <closemsg>You nudge the door closed.</closemsg>
+        <takemsg>It looks like it's bolted to the desk, so there's no way to take it.</takemsg>
         <object name="hamster">
           <inherit name="editor_object" />
-          <look>The small, brown lump looks back at you...so cute! The little furry ball smells good. It probably has a cute name like Pippy or something. Someone probably loves it very, very much. It would be a tragedy if something awful were to happen to it.</look>
           <alt type="stringlist">
             <value>Mr. Pippy</value>
           </alt>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <takemsg>The little scamp wriggles away and into a corner. Looks like Mr. Pippy is a strong, beautiful hamster who don't need nobody to take him nowhere.</takemsg>
+          <look type="script"><![CDATA[
+            msg ("The small, brown lump looks back at you... Aww, look at hiw wittle snubby wubby face! He's probably got a cute name like Mr. Pippy or Captain Butternut Pluffles or Terence Peterson the Nibble Nabster. Someone probably loves him very, very much. It would be a tragedy if something awful were to happen to him.<br/><br/>Is that a stomach rumbling you hear?")
+            picture ("mrpippy.png")
+          ]]></look>
           <eat type="script">
             if (cage.isopen) {
               grow_snake
@@ -1035,6 +1100,8 @@
     </object>
     <object name="f21">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description>To the north east is a stainless steel lab bench. To the west is a desk against the wall. The desk is so close you can nearly touch it! Nearly. You've gotta wiggle dat booty a little farther over.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -1061,6 +1128,8 @@
     </object>
     <object name="f22">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description><![CDATA[As you move through the room you notice a poster on the wall.<br/><br/>To the north is a stainless steel lab bench. To the west is a desk against the wall.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -1084,9 +1153,16 @@
           look_room (f12)
         </look>
       </exit>
+      <object name="poster">
+        <inherit name="editor_object" />
+        <look>The poster reads "A good breakfast starts with eggs." You find the sentiment so revolting, you nearly vomit.</look>
+        <takemsg>It's terrible. You won't do it.</takemsg>
+      </object>
     </object>
     <object name="f23">
       <inherit name="editor_room" />
+      <alias>lab room</alias>
+      <description><![CDATA[This room feels empty and cold. The tiles are a stark white. You were never much for interior decorating, but this just feels blasé.<br/><br/>To the north is a stainless steel lab bench. To the west is a desk against the wall.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -1113,6 +1189,8 @@
     </object>
     <object name="f24">
       <inherit name="editor_room" />
+      <description>The passage gives way to a sprawling room with a tiled floor. Off to the north, you see large, closed double doors. To the north west, a stainless steel lab table sits in the center of the room. Farther west, you can see another desk against the wall. You'll have to move closer to get a better look at any of the room's furnishings.</description>
+      <alias>lab room</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -1136,6 +1214,14 @@
           look_room (t_torches00)
         </look>
       </exit>
+      <object name="player">
+        <inherit name="editor_object" />
+        <inherit name="editor_player" />
+        <maxobjects type="int">1</maxobjects>
+        <containermaxobjects>You want to grab it, but you can't seem to pull it off. You're already holding something.</containermaxobjects>
+        <length type="int">4</length>
+        <attr name="show_debug" type="int">0</attr>
+      </object>
     </object>
   </object>
   <verb>
@@ -1160,7 +1246,7 @@
   </verb>
   <command>
     <pattern>put paper in fire; put paper in flame; set paper on fire</pattern>
-    <script><![CDATA[
+    <script>
       if (Got(crumpled paper)) {
         if (game.pov.parent = f13) {
           if (box.flame = true) {
@@ -1174,7 +1260,7 @@
           msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
         }
       }
-    ]]></script>
+    </script>
   </command>
   <command>
     <pattern>attach hose to bunsen burner; attach hose to gas; attach hose to gas valve; use hose on valve; use hose on gas; use hose on bunsen burner</pattern>
@@ -1201,7 +1287,7 @@
   </command>
   <command>
     <pattern>put photo in fire; put photo in flame; set photo on fire</pattern>
-    <script><![CDATA[
+    <script>
       if (Got(photo)) {
         if (game.pov.parent = f13) {
           if (bunsen burner.flame = true) {
@@ -1219,7 +1305,7 @@
       else {
         msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
       }
-    ]]></script>
+    </script>
   </command>
   <object name="PlantPuzzle">
     <inherit name="editor_room" />
@@ -2282,6 +2368,7 @@
         <inherit name="northdirection" />
         <locked />
         <runscript />
+        <attr name="grid_length" type="int">7</attr>
         <look type="script">
           look_room (f24)
         </look>
@@ -2293,7 +2380,6 @@
             MoveObject (player, f24)
           }
         ]]></script>
-        <attr name="grid_length" type="int">7</attr>
       </exit>
     </object>
     <object name="t_torches01">
@@ -3146,21 +3232,21 @@
       msg ("-Head")
     }
   </function>
-  <function name="game_over"><![CDATA[
+  <function name="game_over">
     msg ("A slimy, scaly body spans the room. The pursuing creature and the one fleeing have come to a head, it seems! It's a flurry of fangs and blood as you try to defend yourself...and you fight valiantly, but are ultimately torn apart.Hint: You can look into a room before entering it.Remember to save!")
     ClearFramePicture
     finish
-  ]]></function>
+  </function>
   <function name="game_win">
     msg ("You slither up the beanstalk and out the window—out to freedom in the long, cool grass where you feel most at home.Congratulations: you have won Snake!")
     finish
   </function>
-  <function name="humans_caught"><![CDATA[
+  <function name="humans_caught">
     if (thesis.wasburned = false) {
       msg ("You got caught by the humans in this room! They don't seem very nice...guess you're hooped.Hint: You can look into a room before entering it.Remember to save!")
       finish
     }
-  ]]></function>
+  </function>
   <function name="init_photoreceptor" parameters="photoreceptor">
     if (not photoreceptor.initialized) {
       // create list of light sources
