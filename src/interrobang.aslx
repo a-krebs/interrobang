@@ -900,14 +900,25 @@
         </displayverbs>
         <look type="script">
           msg ("There is a Bunsen burner sitting on the table. ")
-          if (bunsen burner.tipped = true) {
-            msg ("It's been tipped onto its side.")
-          }
           if (bunsen burner.flame = false) {
             msg ("There's no fire.")
+            if (bunsen burner.tipped = true) {
+              msg ("It's been tipped onto its side.")
+              picture ("bunsen_tipped.png")
+            }
+            else {
+              picture ("bunsen_off.png")
+            }
           }
           else {
             msg ("A hot, blue flame is burning at its tip.")
+            if (bunsen burner.tipped = true) {
+              msg ("It's been tipped onto its side.")
+              picture ("bunsen_tipped_on.png")
+            }
+            else {
+              picture ("bunsen_on.png")
+            }
           }
         </look>
         <hug type="script">
@@ -946,6 +957,7 @@
             msg ("You should leave it alone. Haven't you done enough?")
           }
         </inspect>
+        <takemsg>No, you shouldn't take it. It looks like its job is to do science, and this is clearly the science table. Only one thing gets to be taken from its home today, and that's you!</takemsg>
       </object>
       <object name="hose">
         <inherit name="editor_object" />
@@ -973,6 +985,8 @@
         <inherit name="switchable" />
         <displayverbs type="stringlist">
           <value>Look at</value>
+          <value>Turn on</value>
+          <value>Turn off</value>
         </displayverbs>
         <switchonmsg>You turn the gas valve to the "on" position.</switchonmsg>
         <switchoffmsg>You turn the gas valve to the "off" position.</switchoffmsg>
@@ -992,6 +1006,24 @@
         <onswitchoff type="script">
           set (bunsen burner, "flame", false)
         </onswitchoff>
+        <alt type="stringlist">
+          <value>valve</value>
+          <value>gas</value>
+        </alt>
+        <use type="script">
+          if (this.switchedon) {
+            msg (DynamicTemplate("AlreadySwitchedOn", this))
+          }
+          else {
+            if (HasString(this, "switchonmsg")) {
+              msg (this.switchonmsg)
+            }
+            else {
+              msg (DynamicTemplate("SwitchedOn", this))
+            }
+            this.switchedon = true
+          }
+        </use>
       </object>
     </object>
     <object name="f14">
@@ -1082,7 +1114,7 @@
           </displayverbs>
           <takemsg>The little scamp wriggles away and into a corner. Looks like Mr. Pippy is a strong, beautiful hamster who don't need nobody to take him nowhere.</takemsg>
           <look type="script"><![CDATA[
-            msg ("The small, brown lump looks back at you... Aww, look at hiw wittle snubby wubby face! He's probably got a cute name like Mr. Pippy or Captain Butternut Pluffles or Terence Peterson the Nibble Nabster. Someone probably loves him very, very much. It would be a tragedy if something awful were to happen to him.<br/><br/>Is that a stomach rumbling you hear?")
+            msg ("The small, brown lump looks back at you... Aww, look at his wittle snubby wubby face! He's probably got a cute name like Mr. Pippy or Captain Butternut Pluffles or Terence Peterson the Nibble Nabster. Someone probably loves him very, very much. It would be a tragedy if something awful were to happen to him.<br/><br/>Is that a stomach rumbling you hear?")
             picture ("mrpippy.png")
           ]]></look>
           <eat type="script">
@@ -3241,12 +3273,12 @@
     msg ("You slither up the beanstalk and out the window—out to freedom in the long, cool grass where you feel most at home.Congratulations: you have won Snake!")
     finish
   </function>
-  <function name="humans_caught">
+  <function name="humans_caught"><![CDATA[
     if (thesis.wasburned = false) {
-      msg ("You got caught by the humans in this room! They don't seem very nice...guess you're hooped.Hint: You can look into a room before entering it.Remember to save!")
+      msg ("You throw caution to the wayside and do your best Kool-Aid man impression as you burt through the doors. Before you can even finish the \"OH\" of your \"OHHH YEAH,\" the beasts in the room seize upon you with shrieks that make your ears bleed. <br/><br/>You sure showed em', cowboy. Now you've gone and got wrangled, and the end is nigh. <br/><br/>Hint: You can look into a room before entering it.Remember to save!")
       finish
     }
-  </function>
+  ]]></function>
   <function name="init_photoreceptor" parameters="photoreceptor">
     if (not photoreceptor.initialized) {
       // create list of light sources
