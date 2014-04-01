@@ -1838,7 +1838,7 @@
           change_rooms
         </enter>
         <firstenter type="script">
-          msg ("This room is crazy large, and there's nothing in it. Zip. Squat. You've haven't space so underutilized since the shuttle program got shut down. Well, maybe not that bad, there's a few things at the far end.")
+          msg ("This room is crazy large, and there's nothing in it. Zip. Squat. You've haven't space so underutilized since the shuttle program got shut down. Well, maybe not that bad, there are a few things at the far end.")
         </firstenter>
         <exit alias="west" to="tr_start01">
           <inherit name="westdirection" />
@@ -3198,7 +3198,7 @@
     <object name="i01">
       <inherit name="editor_room" />
       <alias>study</alias>
-      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy european houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the painting.<br/>]]></description>
+      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy european houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the fire.<br/>]]></description>
       <enter type="script">
         change_rooms
       </enter>
