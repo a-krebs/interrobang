@@ -342,12 +342,12 @@
       <object name="vent00">
         <inherit name="editor_room" />
         <alias>vent</alias>
+        <description>The duct ahead of you looks like it curves back up, and it will probably end in one of the rooms above you.</description>
         <onexit type="script">
         </onexit>
         <enter type="script">
           change_rooms
         </enter>
-        <description>The duct ahead of you looks like it curves back up, and it will probably end in one of the rooms above you.</description>
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
           <look type="script">
@@ -364,6 +364,7 @@
       <object name="vent10">
         <inherit name="editor_room" />
         <alias>vent</alias>
+        <description>It's dark.</description>
         <onexit type="script">
         </onexit>
         <enter type="script">
@@ -372,7 +373,6 @@
           }
           change_rooms
         </enter>
-        <description>It's dark.</description>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
           <look type="script">
@@ -412,12 +412,12 @@
       <object name="vent20">
         <inherit name="editor_room" />
         <alias>vent</alias>
+        <description>It slopes down on a curve. It probably goes under the floor and to the north.</description>
         <onexit type="script">
         </onexit>
         <enter type="script">
           change_rooms
         </enter>
-        <description>It slopes down on a curve. It probably goes under the floor and to the north.</description>
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
           <look type="script">
@@ -1789,6 +1789,7 @@
       <inherit name="editor_room" />
       <object name="tr_start00">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -1807,6 +1808,7 @@
       </object>
       <object name="tr_start01">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -1831,10 +1833,12 @@
       </object>
       <object name="tr_start02">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
         <firstenter type="script">
+          msg ("This room is crazy large, and there's nothing in it. Zip. Squat. You've haven't space so underutilized since the shuttle program got shut down. Well, maybe not that bad, there's a few things at the far end.")
         </firstenter>
         <exit alias="west" to="tr_start01">
           <inherit name="westdirection" />
@@ -1864,6 +1868,7 @@
       </object>
       <object name="tr_start03">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -1888,6 +1893,7 @@
       </object>
       <object name="tr_start04">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -1906,6 +1912,7 @@
       </object>
       <object name="tr_start10">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -1951,6 +1958,7 @@
       </object>
       <object name="tr_start11">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -1993,6 +2001,7 @@
       </object>
       <object name="tr_start12">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2017,6 +2026,7 @@
       </object>
       <object name="tr_start13">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2059,6 +2069,7 @@
       </object>
       <object name="tr_start14">
         <inherit name="editor_room" />
+        <alias>large, empty room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2101,6 +2112,7 @@
       <inherit name="editor_object" />
       <object name="tr_small00">
         <inherit name="editor_room" />
+        <alias>storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2119,9 +2131,13 @@
       </object>
       <object name="tr_small01">
         <inherit name="editor_room" />
+        <alias>storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
+        <firstenter type="script">
+          msg ("This room has a warm draft. You hate warm drafts.")
+        </firstenter>
         <exit alias="west" to="tr_small00">
           <inherit name="westdirection" />
           <look type="script">
@@ -2162,6 +2178,7 @@
       </object>
       <object name="tr_small10">
         <inherit name="editor_room" />
+        <alias>storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2186,6 +2203,7 @@
       </object>
       <object name="tr_small11">
         <inherit name="editor_room" />
+        <alias>storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2210,6 +2228,7 @@
       </object>
       <object name="tr_small20">
         <inherit name="editor_room" />
+        <alias>storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2228,6 +2247,7 @@
       </object>
       <object name="tr_small21">
         <inherit name="editor_room" />
+        <alias>storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2249,9 +2269,13 @@
       <inherit name="editor_room" />
       <object name="tr_large00">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
+        <firstenter type="script">
+          msg ("This room has a cold draft. You hate cold drafts.")
+        </firstenter>
         <exit alias="east" to="tr_large01">
           <inherit name="eastdirection" />
           <look type="script">
@@ -2273,6 +2297,7 @@
       </object>
       <object name="tr_large01">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2291,6 +2316,7 @@
       </object>
       <object name="tr_large10">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2334,6 +2360,7 @@
       </object>
       <object name="tr_large11">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2358,6 +2385,7 @@
       </object>
       <object name="tr_large20">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2382,6 +2410,7 @@
       </object>
       <object name="tr_large21">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2406,6 +2435,7 @@
       </object>
       <object name="tr_large30">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2424,6 +2454,7 @@
       </object>
       <object name="tr_large31">
         <inherit name="editor_room" />
+        <alias>large cold-storage room</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2449,6 +2480,10 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
+      <firstenter type="script">
+        msg ("This space is....huge. Yet really dark. Palpably dark. You could almost eat the darkness like cotton candy.")
+      </firstenter>
       <exit alias="east" to="t_torches01">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2506,6 +2541,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches00">
         <inherit name="westdirection" />
         <look type="script">
@@ -2530,6 +2566,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches01">
         <inherit name="westdirection" />
         <look type="script">
@@ -2548,6 +2585,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches11">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2572,6 +2610,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches10">
         <inherit name="westdirection" />
         <look type="script">
@@ -2614,6 +2653,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches11">
         <inherit name="westdirection" />
         <look type="script">
@@ -2650,6 +2690,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches21">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2686,6 +2727,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches20">
         <inherit name="westdirection" />
         <look type="script">
@@ -2716,6 +2758,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches21">
         <inherit name="westdirection" />
         <look type="script">
@@ -2740,6 +2783,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches31">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2764,6 +2808,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches30">
         <inherit name="westdirection" />
         <look type="script">
@@ -2806,6 +2851,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches31">
         <inherit name="westdirection" />
         <look type="script">
@@ -2842,6 +2888,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches41">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2878,6 +2925,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches40">
         <inherit name="westdirection" />
         <look type="script">
@@ -2908,6 +2956,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches41">
         <inherit name="westdirection" />
         <look type="script">
@@ -2932,6 +2981,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches51">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2956,6 +3006,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches50">
         <inherit name="westdirection" />
         <look type="script">
@@ -2998,6 +3049,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches51">
         <inherit name="westdirection" />
         <look type="script">
@@ -3034,6 +3086,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches61">
         <inherit name="eastdirection" />
         <look type="script">
@@ -3064,6 +3117,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches60">
         <inherit name="westdirection" />
         <look type="script">
@@ -3088,6 +3142,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches61">
         <inherit name="westdirection" />
         <look type="script">
@@ -3120,6 +3175,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>study</alias>
       <exit alias="east" to="i01">
         <inherit name="eastdirection" />
         <look type="script">
@@ -3144,6 +3200,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>study</alias>
       <exit alias="west" to="i00">
         <inherit name="westdirection" />
         <look type="script">
@@ -3162,6 +3219,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>study</alias>
       <exit alias="east" to="i11">
         <inherit name="eastdirection" />
         <runscript />
@@ -3293,6 +3351,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>study</alias>
       <exit alias="west" to="i10">
         <inherit name="westdirection" />
         <look type="script">
