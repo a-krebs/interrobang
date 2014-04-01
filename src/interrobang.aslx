@@ -23,7 +23,7 @@
       for (index, 0, player.length-1) {
         list add (player.snake_rooms, curRoom)
       }
-      msg ("Groggy, you awaken in an unfamiliar room on a cold tile floor of green. You feel slimy and realize you have no idea how you got here. Your blood runs cold.Pushing away the regret of whatever you may have done last night, you first notice the emptiness of the place, and the foreboding feeling that something is coming after you.")
+      get_name
     </start>
   </game>
   <object name="Prototype">
@@ -2477,10 +2477,10 @@
     <inherit name="editor_room" />
     <object name="t_torches00">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <firstenter type="script">
         msg ("This space is....huge. Yet really dark. Palpably dark. You could almost eat the darkness like cotton candy.")
       </firstenter>
@@ -2538,10 +2538,10 @@
     </object>
     <object name="t_torches01">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches00">
         <inherit name="westdirection" />
         <look type="script">
@@ -2563,10 +2563,10 @@
     </object>
     <object name="t_torches02">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches01">
         <inherit name="westdirection" />
         <look type="script">
@@ -2582,10 +2582,10 @@
     </object>
     <object name="t_torches10">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches11">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2607,10 +2607,10 @@
     </object>
     <object name="t_torches11">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches10">
         <inherit name="westdirection" />
         <look type="script">
@@ -2650,10 +2650,10 @@
     </object>
     <object name="t_torches12">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches11">
         <inherit name="westdirection" />
         <look type="script">
@@ -2687,10 +2687,10 @@
     </object>
     <object name="t_torches20">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches21">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2724,10 +2724,10 @@
     </object>
     <object name="t_torches21">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches20">
         <inherit name="westdirection" />
         <look type="script">
@@ -2755,10 +2755,10 @@
     </object>
     <object name="t_torches22">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches21">
         <inherit name="westdirection" />
         <look type="script">
@@ -2780,10 +2780,10 @@
     </object>
     <object name="t_torches30">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches31">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2805,10 +2805,10 @@
     </object>
     <object name="t_torches31">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches30">
         <inherit name="westdirection" />
         <look type="script">
@@ -2848,10 +2848,10 @@
     </object>
     <object name="t_torches32">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches31">
         <inherit name="westdirection" />
         <look type="script">
@@ -2885,10 +2885,10 @@
     </object>
     <object name="t_torches40">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches41">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2922,10 +2922,10 @@
     </object>
     <object name="t_torches41">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches40">
         <inherit name="westdirection" />
         <look type="script">
@@ -2953,10 +2953,10 @@
     </object>
     <object name="t_torches42">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches41">
         <inherit name="westdirection" />
         <look type="script">
@@ -2978,10 +2978,10 @@
     </object>
     <object name="t_torches50">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches51">
         <inherit name="eastdirection" />
         <look type="script">
@@ -3003,10 +3003,10 @@
     </object>
     <object name="t_torches51">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches50">
         <inherit name="westdirection" />
         <look type="script">
@@ -3046,10 +3046,10 @@
     </object>
     <object name="t_torches52">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches51">
         <inherit name="westdirection" />
         <look type="script">
@@ -3083,10 +3083,10 @@
     </object>
     <object name="t_torches60">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="east" to="t_torches61">
         <inherit name="eastdirection" />
         <look type="script">
@@ -3114,10 +3114,10 @@
     </object>
     <object name="t_torches61">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches60">
         <inherit name="westdirection" />
         <look type="script">
@@ -3139,10 +3139,10 @@
     </object>
     <object name="t_torches62">
       <inherit name="editor_room" />
+      <alias>oppresively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>oppresively dark room</alias>
       <exit alias="west" to="t_torches61">
         <inherit name="westdirection" />
         <look type="script">
@@ -3172,10 +3172,10 @@
     <inherit name="editor_object" />
     <object name="i00">
       <inherit name="editor_room" />
+      <alias>study</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>study</alias>
       <exit alias="east" to="i01">
         <inherit name="eastdirection" />
         <look type="script">
@@ -3197,11 +3197,11 @@
     </object>
     <object name="i01">
       <inherit name="editor_room" />
+      <alias>study</alias>
+      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy european houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the painting.<br/>]]></description>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>study</alias>
-      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy european houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the painting.<br/>]]></description>
       <exit alias="west" to="i00">
         <inherit name="westdirection" />
         <look type="script">
@@ -3225,10 +3225,10 @@
     </object>
     <object name="i10">
       <inherit name="editor_room" />
+      <alias>study</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>study</alias>
       <exit alias="east" to="i11">
         <inherit name="eastdirection" />
         <runscript />
@@ -3357,10 +3357,10 @@
     </object>
     <object name="i11">
       <inherit name="editor_room" />
+      <alias>study</alias>
       <enter type="script">
         change_rooms
       </enter>
-      <alias>study</alias>
       <exit alias="west" to="i10">
         <inherit name="westdirection" />
         <look type="script">
@@ -3584,6 +3584,79 @@
       }
     }
   ]]></function>
+  <function name="get_name">
+    msg ("What is your name? 0: Aaron 1: Aedan")
+    get input {
+      if (result = "0") {
+        msg ("My name is Aedan, and I don't know where I am.")
+        msg ("")
+        msg ("Let me back up.")
+        msg ("")
+        msg ("I grew up on the streets of Touboro, a small commune along the eastern border of Cameroon. It was hot, dry, and quiet. In a word, paradise.")
+        msg ("")
+        msg ("Now don't get me wrong, I've lived a life far from perfect. My father died when I was six months old, and the locals like to joke that my mother didn't even stick around for my birth. Had I been born into a colder climate I probably would've died before I learned to crawl. As it is, however, I learned to raise myself, and over time I've discovered three rules for surviving on the streets:")
+        msg ("")
+        msg ("   1. Stay warm")
+        msg ("   2. Eat slowly")
+        msg ("   3. Keep your head low to the ground")
+        msg ("")
+        msg ("If you keep to these, there's nothing on earth that you can't squirm out of. Unfortunately, as I've discovered, there are other things to worry about.")
+        msg ("")
+        msg ("Last night I laid under the stars, the world around me calm, still. Even the lark stays its cry come nightfall, and only the southern river separates a minute from an instant. But ashes to ashes, as the proverbs say, and peace soon came to pass. A bright light appeared in the sky above me, and a shapeless black mass lifted me from where I'd lain. Slate gray walls enclosed around me, and the world went black.")
+        msg ("")
+        msg ("Time went by. Perhaps minutes. Perhaps days. Sleep and wake blend together when the world disappears. Eventually the walls were lifted, and I woke up here.")
+        msg ("")
+        msg ("My name is Aedan, and I don't know where I am. But I do know that something brought me here, and that it's going to come back for me. I can't stay here. It's coming.")
+        msg ("")
+      }
+      else if (result = "1") {
+        msg ("My name is Aaron, and I don't know where I am.")
+        msg ("")
+        msg ("Let me back up.")
+        msg ("")
+        msg ("I grew up on the streets of Touboro, a small commune along the eastern border of Cameroon. It was hot, dry, and quiet. In a word, paradise.")
+        msg ("")
+        msg ("Now don't get me wrong, I've lived a life far from perfect. My father died when I was six months old, and the locals like to joke that my mother didn't even stick around for my birth. Had I been born into a colder climate I probably would've died before I learned to crawl. As it is, however, I learned to raise myself, and over time I've discovered three rules for surviving on the streets:")
+        msg ("")
+        msg ("   1. Stay warm")
+        msg ("   2. Eat slowly")
+        msg ("   3. Keep your head low to the ground")
+        msg ("")
+        msg ("If you keep to these, there's nothing on earth that you can't squirm out of. Unfortunately, as I've discovered, there are other things to worry about.")
+        msg ("")
+        msg ("Last night I laid under the stars, the world around me calm, still. Even the lark stays its cry come nightfall, and only the southern river separates a minute from an instant. But ashes to ashes, as the proverbs say, and peace soon came to pass. A bright light appeared in the sky above me, and a shapeless black mass lifted me from where I'd lain. Slate gray walls enclosed around me, and the world went black.")
+        msg ("")
+        msg ("Time went by. Perhaps minutes. Perhaps days. Sleep and wake blend together when the world disappears. Eventually the walls were lifted, and I woke up here.")
+        msg ("")
+        msg ("My name is Aaron, and I don't know where I am. But I do know that something brought me here, and that it's going to come back for me. I can't stay here. It's coming.")
+        msg ("")
+      }
+      else {
+        msg ("Your options were 0 and 1. Your name is now Dingus.")
+        msg ("")
+        msg ("My name is Dingus, and I don't know where I am.")
+        msg ("")
+        msg ("Let me back up.")
+        msg ("")
+        msg ("I grew up on the streets of Touboro, a small commune along the eastern border of Cameroon. It was hot, dry, and quiet. In a word, paradise.")
+        msg ("")
+        msg ("Now don't get me wrong, I've lived a life far from perfect. My father died when I was six months old, and the locals like to joke that my mother didn't even stick around for my birth. Had I been born into a colder climate I probably would've died before I learned to crawl. As it is, however, I learned to raise myself, and over time I've discovered three rules for surviving on the streets:")
+        msg ("")
+        msg ("   1. Stay warm")
+        msg ("   2. Eat slowly")
+        msg ("   3. Keep your head low to the ground")
+        msg ("")
+        msg ("If you keep to these, there's nothing on earth that you can't squirm out of. Unfortunately, as I've discovered, there are other things to worry about.")
+        msg ("")
+        msg ("Last night I laid under the stars, the world around me calm, still. Even the lark stays its cry come nightfall, and only the southern river separates a minute from an instant. But ashes to ashes, as the proverbs say, and peace soon came to pass. A bright light appeared in the sky above me, and a shapeless black mass lifted me from where I'd lain. Slate gray walls enclosed around me, and the world went black.")
+        msg ("")
+        msg ("Time went by. Perhaps minutes. Perhaps days. Sleep and wake blend together when the world disappears. Eventually the walls were lifted, and I woke up here.")
+        msg ("")
+        msg ("My name is Dingus, and I don't know where I am. But I do know that something brought me here, and that it's going to come back for me. I can't stay here. It's coming.")
+        msg ("")
+      }
+    }
+  </function>
   <walkthrough name="prototypeWalk">
     <steps type="simplestringlist">
       go north
