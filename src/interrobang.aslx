@@ -3201,6 +3201,7 @@
         change_rooms
       </enter>
       <alias>study</alias>
+      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy european houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the painting.<br/>]]></description>
       <exit alias="west" to="i00">
         <inherit name="westdirection" />
         <look type="script">
@@ -3213,6 +3214,14 @@
           look_room (i11)
         </look>
       </exit>
+      <object name="painting">
+        <inherit name="editor_object" />
+        <alt type="stringlist">
+          <value>painting</value>
+        </alt>
+        <look>The painting is a portrait of Troy Pavlek. He appears to be the biggest thing in the world right now.</look>
+        <takemsg>You think about stealing the painting, but you can't shake the thought "What would Troy do?"</takemsg>
+      </object>
     </object>
     <object name="i10">
       <inherit name="editor_room" />
