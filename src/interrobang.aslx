@@ -347,6 +347,7 @@
         <enter type="script">
           change_rooms
         </enter>
+        <description>The duct ahead of you looks like it curves back up, and it will probably end in one of the rooms above you.</description>
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
           <look type="script">
@@ -371,6 +372,7 @@
           }
           change_rooms
         </enter>
+        <description>It's dark.</description>
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
           <look type="script">
@@ -415,6 +417,7 @@
         <enter type="script">
           change_rooms
         </enter>
+        <description>It slopes down on a curve. It probably goes under the floor and to the north.</description>
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
           <look type="script">
