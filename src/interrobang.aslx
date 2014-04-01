@@ -51,7 +51,7 @@
           look_room (r10)
         </look>
       </exit>
-      <exit name="Out Vent" alias="in" to="r22">
+      <exit name="Out Vent" alias="into vent" to="r22">
         <inherit name="indirection" />
         <locked />
         <lockmessage>It looks like it opens from the inside.</lockmessage>
@@ -241,7 +241,7 @@
           look_room (r21)
         </look>
       </exit>
-      <exit name="vent20in" alias="in" to="vent20">
+      <exit name="vent20in" alias="into vent" to="vent20">
         <inherit name="indirection" />
         <locked />
         <runscript type="boolean">false</runscript>
@@ -1667,6 +1667,7 @@
       <inherit name="editor_room" />
       <description><![CDATA[This room has grey walls, a grey floor, and a grey ceiling. There is literally nothing in this room. Were you to spend a weekend here, it would not be a weekend well spent.<br/><br/>Oh wait, it's just smoky from the fire you made. Once the smoke clears, you can see a bit more.<br/><br/>You're in a small room. It feels humid, like a green house. Shelves line the north east wall. To the west are more shelves and a sink. Just ahead of you, you can see an open window with bright light shining in. The fresh air is the most pleasant thing you've smelled all day!]]></description>
       <alias>greenhouse room</alias>
+      <has_humans />
       <beforefirstenter type="script">
       </beforefirstenter>
       <enter type="script">
@@ -1675,7 +1676,6 @@
       <firstenter type="script">
         humans_caught
       </firstenter>
-      <has_humans />
       <exit alias="south" to="f03">
         <inherit name="southdirection" />
         <look type="script">
@@ -1706,6 +1706,7 @@
       <inherit name="editor_room" />
       <description><![CDATA[This room has grey walls, a grey floor, and a grey ceiling. There is literally nothing in this room. Were you to spend a weekend here, it would not be a weekend well spent.<br/><br/>Oh wait, it's just smoky from the fire you made. Once the smoke clears, you can see a bit more.<br/><br/>You're in a small room. It feels humid, like a green house. Shelves line the north east wall. To the west are more shelves and a sink. Just ahead of you, you can see an open window with bright light shining in. The fresh air is the most pleasant thing you've smelled all day!]]></description>
       <alias>greenhouse room</alias>
+      <has_humans />
       <beforefirstenter type="script">
       </beforefirstenter>
       <enter type="script">
@@ -1714,7 +1715,6 @@
       <firstenter type="script">
         humans_caught
       </firstenter>
-      <has_humans />
       <exit alias="north" to="p12">
         <inherit name="northdirection" />
         <look type="script">
@@ -2467,12 +2467,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">3</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
       <object name="photoreceptor0">
         <inherit name="editor_object" />
@@ -2598,12 +2598,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">3</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches12">
@@ -2634,12 +2634,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">6</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches20">
@@ -2670,12 +2670,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">5</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches21">
@@ -2790,12 +2790,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">7</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches32">
@@ -2826,12 +2826,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">2</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches40">
@@ -2862,12 +2862,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">9</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches41">
@@ -2982,12 +2982,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">11</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches52">
@@ -3018,12 +3018,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">2</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches60">
@@ -3048,12 +3048,12 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">13</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
           <value>Shake</value>
         </displayverbs>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches61">
@@ -3161,10 +3161,10 @@
       </enter>
       <exit alias="east" to="i11">
         <inherit name="eastdirection" />
+        <runscript />
         <look type="script">
           look_room (i11)
         </look>
-        <runscript />
         <script type="script">
           if (GetBoolean(ikeaShelf, "on")) {
             msg ("You're going to have to climb off of the shelf first.")
@@ -3176,10 +3176,10 @@
       </exit>
       <exit alias="north" to="i00">
         <inherit name="northdirection" />
+        <runscript />
         <look type="script">
           look_room (i00)
         </look>
-        <runscript />
         <script type="script">
           if (GetBoolean(ikeaShelf, "on")) {
             msg ("You're going to have to climb off of the shelf first.")
@@ -3197,6 +3197,11 @@
         <hidechildren type="boolean">false</hidechildren>
         <open type="boolean">false</open>
         <close type="boolean">false</close>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+          <value>Take</value>
+          <value>Climb</value>
+        </displayverbs>
         <drag type="script">
           if (GetBoolean(ikeaShelf, "broken")) {
             msg ("You snatch the shelf and begin to drag it.")
@@ -3238,11 +3243,6 @@
           msg ("You climb down off the shelf.")
           SetObjectFlagOff (ikeaShelf, "on")
         </climbdown>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Climb</value>
-        </displayverbs>
         <object name="snack0">
           <inherit name="editor_object" />
           <alias>brightly coloured candy</alias>
