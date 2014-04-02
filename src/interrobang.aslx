@@ -1975,6 +1975,10 @@
         <enter type="script">
           change_rooms
         </enter>
+        <beforeenter type="script">
+          picture ("door_fleur.png")
+        </beforeenter>
+        <description>There's a door on the south wall here with a large fleur-de-lis on it. Seriously, this place uses large icons to match doors to keys? Oh well, easier for you...</description>
         <exit alias="west" to="tr_start10">
           <inherit name="westdirection" />
           <look type="script">
@@ -2043,6 +2047,10 @@
         <enter type="script">
           change_rooms
         </enter>
+        <description>There's a door on the south wall here with a large fleur-de-lis on it. You mumble something clever to yourself about the French.</description>
+        <beforeenter type="script">
+          picture ("door_fleur.png")
+        </beforeenter>
         <exit alias="west" to="tr_start12">
           <inherit name="westdirection" />
           <look type="script">
