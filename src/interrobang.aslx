@@ -42,13 +42,13 @@
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (r01)
+          look_room (r01, this)
         </look>
       </exit>
       <exit alias="south" to="r10">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (r10)
+          look_room (r10, this)
         </look>
       </exit>
       <exit name="Out Vent" alias="into vent" to="r22">
@@ -56,7 +56,7 @@
         <locked />
         <lockmessage>It looks like it opens from the inside.</lockmessage>
         <look type="script">
-          look_room (vent00)
+          look_room (vent00, this)
         </look>
       </exit>
     </object>
@@ -71,19 +71,19 @@
       <exit alias="west" to="r00">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r00)
+          look_room (r00, this)
         </look>
       </exit>
       <exit alias="east" to="r02">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (r02)
+          look_room (r02, this)
         </look>
       </exit>
       <exit alias="south" to="r11">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (r11)
+          look_room (r11, this)
         </look>
       </exit>
     </object>
@@ -98,13 +98,13 @@
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r01)
+          look_room (r01, this)
         </look>
       </exit>
       <exit alias="south" to="r12">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (r12)
+          look_room (r12, this)
         </look>
       </exit>
     </object>
@@ -137,25 +137,25 @@
       <exit alias="north" to="r01">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (r01)
+          look_room (r01, this)
         </look>
       </exit>
       <exit alias="west" to="r10">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r10)
+          look_room (r10, this)
         </look>
       </exit>
       <exit alias="east" to="r12">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (r12)
+          look_room (r12, this)
         </look>
       </exit>
       <exit alias="south" to="r21">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (r21)
+          look_room (r21, this)
         </look>
       </exit>
       <object name="player">
@@ -179,19 +179,19 @@
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (r02)
+          look_room (r02, this)
         </look>
       </exit>
       <exit alias="west" to="r11">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r11)
+          look_room (r11, this)
         </look>
       </exit>
       <exit alias="south" to="r22">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (r22)
+          look_room (r22, this)
         </look>
       </exit>
       <exit name="prototypeFinishExit" alias="east" to="i00">
@@ -202,7 +202,7 @@
           ClearFramePicture
         </script>
         <look type="script">
-          look_room (i00)
+          look_room (i00, this)
         </look>
       </exit>
       <object name="cardReader">
@@ -232,13 +232,13 @@
       <exit alias="north" to="r10">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (r10)
+          look_room (r10, this)
         </look>
       </exit>
       <exit alias="east" to="r21">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (r21)
+          look_room (r21, this)
         </look>
       </exit>
       <exit name="vent20in" alias="into vent" to="vent20">
@@ -247,7 +247,7 @@
         <runscript type="boolean">false</runscript>
         <lockmessage>The box is blocking the vent.</lockmessage>
         <look type="script">
-          look_room (vent20)
+          look_room (vent20, this)
         </look>
       </exit>
       <object name="box">
@@ -277,19 +277,19 @@
       <exit alias="north" to="r11">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (r11)
+          look_room (r11, this)
         </look>
       </exit>
       <exit alias="east" to="r22">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (r22)
+          look_room (r22, this)
         </look>
       </exit>
       <exit alias="west" to="r20">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r20)
+          look_room (r20, this)
         </look>
       </exit>
     </object>
@@ -308,13 +308,13 @@
       <exit alias="north" to="r12">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (r12)
+          look_room (r12, this)
         </look>
       </exit>
       <exit alias="west" to="r21">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r21)
+          look_room (r21, this)
         </look>
       </exit>
       <object name="deadRat">
@@ -351,13 +351,13 @@
         <exit alias="south" to="vent10">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (vent10)
+            look_room (vent10, this)
           </look>
         </exit>
         <exit alias="out" to="r00">
           <inherit name="outdirection" />
           <look type="script">
-            look_room (r00)
+            look_room (r00, this)
           </look>
         </exit>
       </object>
@@ -376,13 +376,13 @@
         <exit alias="north" to="vent00">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (vent00)
+            look_room (vent00, this)
           </look>
         </exit>
         <exit alias="south" to="vent20">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (vent20)
+            look_room (vent20, this)
           </look>
         </exit>
         <object name="keyCard">
@@ -421,13 +421,13 @@
         <exit alias="north" to="vent10">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (vent10)
+            look_room (vent10, this)
           </look>
         </exit>
         <exit alias="out" to="r20">
           <inherit name="outdirection" />
           <look type="script">
-            look_room (r20)
+            look_room (r20, this)
           </look>
         </exit>
       </object>
@@ -494,7 +494,7 @@
       <exit alias="south" to="f10">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f10)
+          look_room (f10, this)
         </look>
       </exit>
       <object name="typewriter">
@@ -545,7 +545,7 @@
       <exit alias="east" to="f01">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f01)
+          look_room (f01, this)
         </look>
       </exit>
     </object>
@@ -561,19 +561,19 @@
       <exit alias="east" to="f02">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f02)
+          look_room (f02, this)
         </look>
       </exit>
       <exit alias="south" to="f11">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f11)
+          look_room (f11, this)
         </look>
       </exit>
       <exit alias="west" to="f00">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f00)
+          look_room (f00, this)
         </look>
       </exit>
       <object name="tinted window1">
@@ -601,19 +601,19 @@
       <exit alias="east" to="f03">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f03)
+          look_room (f03, this)
         </look>
       </exit>
       <exit alias="west" to="f01">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f01)
+          look_room (f01, this)
         </look>
       </exit>
       <exit alias="south" to="f12">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f12)
+          look_room (f12, this)
         </look>
       </exit>
       <object name="tinted window2">
@@ -641,25 +641,25 @@
       <exit alias="east" to="f04">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f04)
+          look_room (f04, this)
         </look>
       </exit>
       <exit alias="west" to="f02">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f02)
+          look_room (f02, this)
         </look>
       </exit>
       <exit alias="south" to="f14">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f13)
+          look_room (f13, this)
         </look>
       </exit>
       <exit alias="north" to="p21">
         <inherit name="northdirection" />
         <look type="script"><![CDATA[
-          look_room (p21)
+          look_room (p21, this)
           if (thesis.wasburned = false) {
             msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
           }
@@ -694,19 +694,19 @@
       <exit alias="west" to="f03">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f03)
+          look_room (f03, this)
         </look>
       </exit>
       <exit alias="south" to="f14">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f14)
+          look_room (f14, this)
         </look>
       </exit>
       <exit alias="north" to="p22">
         <inherit name="northdirection" />
         <look type="script"><![CDATA[
-          look_room (p22)
+          look_room (p22, this)
           if (thesis.wasburned = false) {
             msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
           }
@@ -742,19 +742,19 @@
       <exit alias="north" to="f00">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f00)
+          look_room (f00, this)
         </look>
       </exit>
       <exit alias="south" to="f20">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f20)
+          look_room (f20, this)
         </look>
       </exit>
       <exit alias="east" to="f11">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f11)
+          look_room (f11, this)
         </look>
       </exit>
       <object name="photo">
@@ -800,25 +800,25 @@
       <exit alias="east" to="f12">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f12)
+          look_room (f12, this)
         </look>
       </exit>
       <exit alias="north" to="f01">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f01)
+          look_room (f01, this)
         </look>
       </exit>
       <exit alias="south" to="f21">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f21)
+          look_room (f21, this)
         </look>
       </exit>
       <exit alias="west" to="f10">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f10)
+          look_room (f10, this)
         </look>
       </exit>
     </object>
@@ -834,25 +834,25 @@
       <exit alias="north" to="f02">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f02)
+          look_room (f02, this)
         </look>
       </exit>
       <exit alias="south" to="f22">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f22)
+          look_room (f22, this)
         </look>
       </exit>
       <exit alias="west" to="f11">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f11)
+          look_room (f11, this)
         </look>
       </exit>
       <exit alias="east" to="f13">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f13)
+          look_room (f13, this)
         </look>
       </exit>
       <object name="crumpled paper">
@@ -893,25 +893,25 @@
       <exit alias="east" to="f14">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f14)
+          look_room (f14, this)
         </look>
       </exit>
       <exit alias="west" to="f12">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f12)
+          look_room (f12, this)
         </look>
       </exit>
       <exit alias="south" to="f23">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f23)
+          look_room (f23, this)
         </look>
       </exit>
       <exit alias="north" to="f03">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f03)
+          look_room (f03, this)
         </look>
       </exit>
       <object name="bunsen burner">
@@ -1065,19 +1065,19 @@
       <exit alias="north" to="f04">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f04)
+          look_room (f04, this, this)
         </look>
       </exit>
       <exit alias="south" to="f24">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f24)
+          look_room (f24, this, this)
         </look>
       </exit>
       <exit alias="west" to="f13">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f13)
+          look_room (f13, this)
         </look>
       </exit>
       <object name="sign">
@@ -1108,13 +1108,13 @@
       <exit alias="north" to="f10">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f10)
+          look_room (f10, this)
         </look>
       </exit>
       <exit alias="east" to="f21">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f21)
+          look_room (f21, this)
         </look>
       </exit>
       <object name="cage">
@@ -1169,19 +1169,19 @@
       <exit alias="east" to="f22">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f22)
+          look_room (f22, this)
         </look>
       </exit>
       <exit alias="west" to="f20">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f20)
+          look_room (f20, this)
         </look>
       </exit>
       <exit alias="north" to="f11">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f11)
+          look_room (f11, this)
         </look>
       </exit>
     </object>
@@ -1197,19 +1197,19 @@
       <exit alias="east" to="f23">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f23)
+          look_room (f23, this)
         </look>
       </exit>
       <exit alias="west" to="f21">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f21)
+          look_room (f21, this)
         </look>
       </exit>
       <exit alias="north" to="f12">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f12)
+          look_room (f12, this)
         </look>
       </exit>
       <object name="poster">
@@ -1230,19 +1230,19 @@
       <exit alias="east" to="f24">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (f24)
+          look_room (f24, this)
         </look>
       </exit>
       <exit alias="west" to="f22">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f22)
+          look_room (f22, this)
         </look>
       </exit>
       <exit alias="north" to="f13">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f13)
+          look_room (f13, this)
         </look>
       </exit>
     </object>
@@ -1258,19 +1258,19 @@
       <exit alias="north" to="f14">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (f14)
+          look_room (f14, this)
         </look>
       </exit>
       <exit alias="west" to="f23">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (f23)
+          look_room (f23, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches00">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches00)
+          look_room (t_torches00, this)
         </look>
       </exit>
     </object>
@@ -1449,13 +1449,13 @@
       <exit alias="south" to="p11">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (p11)
+          look_room (p11, this)
         </look>
       </exit>
       <exit alias="east" to="p02">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (p02)
+          look_room (p02, this)
         </look>
       </exit>
       <object name="door">
@@ -1511,13 +1511,13 @@
       <exit alias="west" to="p01">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (p01)
+          look_room (p01, this)
         </look>
       </exit>
       <exit alias="south" to="p12">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (p12)
+          look_room (p12, this)
         </look>
       </exit>
     </object>
@@ -1557,13 +1557,13 @@
       <exit alias="east" to="p11">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (p11)
+          look_room (p11, this)
         </look>
       </exit>
       <exit alias="south" to="p20">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (p20)
+          look_room (p20, this)
         </look>
       </exit>
     </object>
@@ -1584,25 +1584,25 @@
       <exit alias="north" to="p01">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (p01)
+          look_room (p01, this)
         </look>
       </exit>
       <exit alias="east" to="p12">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (p12)
+          look_room (p12, this)
         </look>
       </exit>
       <exit alias="west" to="p10">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (p10)
+          look_room (p10, this)
         </look>
       </exit>
       <exit alias="south" to="p21">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (p21)
+          look_room (p21, this)
         </look>
       </exit>
     </object>
@@ -1617,19 +1617,19 @@
         <inherit name="northdirection" />
         <lookonly type="boolean">false</lookonly>
         <look type="script">
-          look_room (p02)
+          look_room (p02, this)
         </look>
       </exit>
       <exit alias="south" to="p22">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (p22)
+          look_room (p22, this)
         </look>
       </exit>
       <exit alias="west" to="p11">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (p11)
+          look_room (p11, this)
         </look>
       </exit>
     </object>
@@ -1656,13 +1656,13 @@
       <exit alias="north" to="p10">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (p11)
+          look_room (p11, this)
         </look>
       </exit>
       <exit alias="east" to="p21">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (p21)
+          look_room (p21, this)
         </look>
       </exit>
     </object>
@@ -1682,26 +1682,26 @@
       <exit alias="south" to="f03">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f03)
+          look_room (f03, this)
         </look>
       </exit>
       <exit alias="north" to="p11">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (p11)
+          look_room (p11, this)
         </look>
       </exit>
       <exit alias="west" to="p20">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (p20)
+          look_room (p20, this)
         </look>
       </exit>
       <exit alias="east" to="p22">
         <inherit name="eastdirection" />
         <runscript />
         <look type="script">
-          look_room (p22)
+          look_room (p22, this)
         </look>
       </exit>
     </object>
@@ -1721,19 +1721,19 @@
       <exit alias="north" to="p12">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (p12)
+          look_room (p12, this)
         </look>
       </exit>
       <exit alias="south" to="f04">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (f04)
+          look_room (f04, this)
         </look>
       </exit>
       <exit alias="west" to="p21">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (p21)
+          look_room (p21, this)
         </look>
       </exit>
     </object>
@@ -1796,13 +1796,13 @@
         <exit alias="east" to="tr_start01">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start01)
+            look_room (tr_start01, this)
           </look>
         </exit>
         <exit alias="south" to="tr_start10">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_start10)
+            look_room (tr_start10, this)
           </look>
         </exit>
       </object>
@@ -1815,19 +1815,19 @@
         <exit alias="west" to="tr_start00">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start00)
+            look_room (tr_start00, this)
           </look>
         </exit>
         <exit alias="east" to="tr_start02">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start02)
+            look_room (tr_start02, this)
           </look>
         </exit>
         <exit alias="south" to="tr_start11">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_start11)
+            look_room (tr_start11, this)
           </look>
         </exit>
       </object>
@@ -1843,26 +1843,26 @@
         <exit alias="west" to="tr_start01">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start01)
+            look_room (tr_start01, this)
           </look>
         </exit>
         <exit alias="east" to="tr_start03">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start03)
+            look_room (tr_start03, this)
           </look>
         </exit>
         <exit alias="south" to="tr_start12">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_start12)
+            look_room (tr_start12, this)
           </look>
         </exit>
         <exit alias="north" to="i11">
           <inherit name="northdirection" />
           <lookonly type="boolean">false</lookonly>
           <look type="script">
-            look_room (i11)
+            look_room (i11, this)
           </look>
         </exit>
       </object>
@@ -1875,19 +1875,19 @@
         <exit alias="west" to="tr_start02">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start02)
+            look_room (tr_start02, this)
           </look>
         </exit>
         <exit alias="east" to="tr_start04">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start04)
+            look_room (tr_start04, this)
           </look>
         </exit>
         <exit alias="south" to="tr_start13">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_start13)
+            look_room (tr_start13, this)
           </look>
         </exit>
       </object>
@@ -1900,13 +1900,13 @@
         <exit alias="west" to="tr_start03">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start03)
+            look_room (tr_start03, this)
           </look>
         </exit>
         <exit alias="south" to="tr_start14">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_start14)
+            look_room (tr_start14, this)
           </look>
         </exit>
       </object>
@@ -1919,13 +1919,13 @@
         <exit alias="east" to="tr_start11">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start11)
+            look_room (tr_start11, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start00">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start00)
+            look_room (tr_start00, this)
           </look>
         </exit>
         <object name="keyCard1">
@@ -1965,26 +1965,26 @@
         <exit alias="west" to="tr_start10">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start10)
+            look_room (tr_start10, this)
           </look>
         </exit>
         <exit alias="east" to="tr_start12">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start12)
+            look_room (tr_start12, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start01">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start01)
+            look_room (tr_start01, this)
           </look>
         </exit>
         <exit name="tr_star11_to_tr_small01" alias="south" to="tr_small01">
           <inherit name="southdirection" />
           <locked />
           <look type="script">
-            look_room (tr_small01)
+            look_room (tr_small01, this)
           </look>
         </exit>
         <object name="cardReader1">
@@ -2008,19 +2008,19 @@
         <exit alias="west" to="tr_start11">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start11)
+            look_room (tr_start11, this)
           </look>
         </exit>
         <exit alias="east" to="tr_start13">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start13)
+            look_room (tr_start13, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start02">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start02)
+            look_room (tr_start02, this)
           </look>
         </exit>
       </object>
@@ -2033,26 +2033,26 @@
         <exit alias="west" to="tr_start12">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start12)
+            look_room (tr_start12, this)
           </look>
         </exit>
         <exit alias="east" to="tr_start14">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_start14)
+            look_room (tr_start14, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start03">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start03)
+            look_room (tr_start03, this)
           </look>
         </exit>
         <exit name="tr_start13_to_tr_large00" alias="south" to="tr_large00">
           <inherit name="southdirection" />
           <locked />
           <look type="script">
-            look_room (tr_large00)
+            look_room (tr_large00, this)
           </look>
         </exit>
         <object name="cardReader2">
@@ -2076,13 +2076,13 @@
         <exit alias="west" to="tr_start13">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_start13)
+            look_room (tr_start13, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start04">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start04)
+            look_room (tr_start04, this)
           </look>
         </exit>
         <object name="scale">
@@ -2119,13 +2119,13 @@
         <exit alias="east" to="tr_small01">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_small01)
+            look_room (tr_small01, this)
           </look>
         </exit>
         <exit alias="south" to="tr_small10">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_small10)
+            look_room (tr_small10, this)
           </look>
         </exit>
       </object>
@@ -2141,19 +2141,19 @@
         <exit alias="west" to="tr_small00">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_small00)
+            look_room (tr_small00, this)
           </look>
         </exit>
         <exit alias="south" to="tr_small11">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_small11)
+            look_room (tr_small11, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start11">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start11)
+            look_room (tr_start11, this)
           </look>
         </exit>
         <object name="deadRat1">
@@ -2185,19 +2185,19 @@
         <exit alias="east" to="tr_small11">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_small11)
+            look_room (tr_small11, this)
           </look>
         </exit>
         <exit alias="north" to="tr_small00">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_small00)
+            look_room (tr_small00, this)
           </look>
         </exit>
         <exit alias="south" to="tr_small20">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_small20)
+            look_room (tr_small20, this)
           </look>
         </exit>
       </object>
@@ -2210,19 +2210,19 @@
         <exit alias="west" to="tr_small10">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_small10)
+            look_room (tr_small10, this)
           </look>
         </exit>
         <exit alias="north" to="tr_small01">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_small01)
+            look_room (tr_small01, this)
           </look>
         </exit>
         <exit alias="south" to="tr_small21">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_small21)
+            look_room (tr_small21, this)
           </look>
         </exit>
       </object>
@@ -2235,13 +2235,13 @@
         <exit alias="east" to="tr_small21">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_small21)
+            look_room (tr_small21, this)
           </look>
         </exit>
         <exit alias="north" to="tr_small10">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_small10)
+            look_room (tr_small10, this)
           </look>
         </exit>
       </object>
@@ -2254,13 +2254,13 @@
         <exit alias="west" to="tr_small20">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_small20)
+            look_room (tr_small20, this)
           </look>
         </exit>
         <exit alias="north" to="tr_small11">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_small11)
+            look_room (tr_small11, this)
           </look>
         </exit>
       </object>
@@ -2279,19 +2279,19 @@
         <exit alias="east" to="tr_large01">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_large01)
+            look_room (tr_large01, this)
           </look>
         </exit>
         <exit alias="south" to="tr_large10">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_large10)
+            look_room (tr_large10, this)
           </look>
         </exit>
         <exit alias="north" to="tr_start13">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_start13)
+            look_room (tr_start13, this)
           </look>
         </exit>
       </object>
@@ -2304,13 +2304,13 @@
         <exit alias="west" to="tr_large00">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_large00)
+            look_room (tr_large00, this)
           </look>
         </exit>
         <exit alias="south" to="tr_large11">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_large11)
+            look_room (tr_large11, this)
           </look>
         </exit>
       </object>
@@ -2323,19 +2323,19 @@
         <exit alias="east" to="tr_large11">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_large11)
+            look_room (tr_large11, this)
           </look>
         </exit>
         <exit alias="north" to="tr_large00">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_large00)
+            look_room (tr_large00, this)
           </look>
         </exit>
         <exit alias="south" to="tr_large20">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_large20)
+            look_room (tr_large20, this)
           </look>
         </exit>
         <object name="deadRat2">
@@ -2367,19 +2367,19 @@
         <exit alias="west" to="tr_large10">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_large10)
+            look_room (tr_large10, this)
           </look>
         </exit>
         <exit alias="north" to="tr_large01">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_large01)
+            look_room (tr_large01, this)
           </look>
         </exit>
         <exit alias="south" to="tr_large21">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_large21)
+            look_room (tr_large21, this)
           </look>
         </exit>
       </object>
@@ -2392,19 +2392,19 @@
         <exit alias="east" to="tr_large21">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_large21)
+            look_room (tr_large21, this)
           </look>
         </exit>
         <exit alias="north" to="tr_large10">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_large10)
+            look_room (tr_large10, this)
           </look>
         </exit>
         <exit alias="south" to="tr_large30">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_large30)
+            look_room (tr_large30, this)
           </look>
         </exit>
       </object>
@@ -2417,19 +2417,19 @@
         <exit alias="west" to="tr_large20">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_large20)
+            look_room (tr_large20, this)
           </look>
         </exit>
         <exit alias="north" to="tr_large11">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_large11)
+            look_room (tr_large11, this)
           </look>
         </exit>
         <exit alias="south" to="tr_large31">
           <inherit name="southdirection" />
           <look type="script">
-            look_room (tr_large31)
+            look_room (tr_large31, this)
           </look>
         </exit>
       </object>
@@ -2442,13 +2442,13 @@
         <exit alias="east" to="tr_large31">
           <inherit name="eastdirection" />
           <look type="script">
-            look_room (tr_large31)
+            look_room (tr_large31, this)
           </look>
         </exit>
         <exit alias="north" to="tr_large20">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_large20)
+            look_room (tr_large20, this)
           </look>
         </exit>
       </object>
@@ -2461,13 +2461,13 @@
         <exit alias="west" to="tr_large30">
           <inherit name="westdirection" />
           <look type="script">
-            look_room (tr_large30)
+            look_room (tr_large30, this)
           </look>
         </exit>
         <exit alias="north" to="tr_large21">
           <inherit name="northdirection" />
           <look type="script">
-            look_room (tr_large21)
+            look_room (tr_large21, this)
           </look>
         </exit>
       </object>
@@ -2487,13 +2487,13 @@
       <exit alias="east" to="t_torches01">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches01)
+          look_room (t_torches01, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches10">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches10)
+          look_room (t_torches10, this)
         </look>
       </exit>
       <exit alias="west" to="tr_start14">
@@ -2524,7 +2524,7 @@
         <runscript />
         <attr name="grid_length" type="int">7</attr>
         <look type="script">
-          look_room (f24)
+          look_room (f24, this)
         </look>
         <script type="script"><![CDATA[
           if (player.length < 9) {
@@ -2545,19 +2545,19 @@
       <exit alias="west" to="t_torches00">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches00)
+          look_room (t_torches00, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches02">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches02)
+          look_room (t_torches02, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches11">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches11)
+          look_room (t_torches11, this)
         </look>
       </exit>
     </object>
@@ -2570,13 +2570,13 @@
       <exit alias="west" to="t_torches01">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches01)
+          look_room (t_torches01, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches12">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches12)
+          look_room (t_torches12, this)
         </look>
       </exit>
     </object>
@@ -2589,19 +2589,19 @@
       <exit alias="east" to="t_torches11">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches11)
+          look_room (t_torches11, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches00">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches00)
+          look_room (t_torches00, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches20">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches20)
+          look_room (t_torches20, this)
         </look>
       </exit>
     </object>
@@ -2614,25 +2614,25 @@
       <exit alias="west" to="t_torches10">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches10)
+          look_room (t_torches10, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches12">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches12)
+          look_room (t_torches12, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches01">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches01)
+          look_room (t_torches01, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches21">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches21)
+          look_room (t_torches21, this)
         </look>
       </exit>
       <object name="light3_1">
@@ -2657,19 +2657,19 @@
       <exit alias="west" to="t_torches11">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches11)
+          look_room (t_torches11, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches02">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches02)
+          look_room (t_torches02, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches22">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches22)
+          look_room (t_torches22, this)
         </look>
       </exit>
       <object name="light6_0">
@@ -2694,19 +2694,19 @@
       <exit alias="east" to="t_torches21">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches21)
+          look_room (t_torches21, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches10">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches10)
+          look_room (t_torches10, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches30">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches30)
+          look_room (t_torches30, this)
         </look>
       </exit>
       <object name="light5_0">
@@ -2731,25 +2731,25 @@
       <exit alias="west" to="t_torches20">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches20)
+          look_room (t_torches20, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches22">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches22)
+          look_room (t_torches22, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches11">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches11)
+          look_room (t_torches11, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches31">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches31)
+          look_room (t_torches31, this)
         </look>
       </exit>
     </object>
@@ -2762,19 +2762,19 @@
       <exit alias="west" to="t_torches21">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches21)
+          look_room (t_torches21, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches12">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches12)
+          look_room (t_torches12, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches32">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches32)
+          look_room (t_torches32, this)
         </look>
       </exit>
     </object>
@@ -2787,19 +2787,19 @@
       <exit alias="east" to="t_torches31">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches31)
+          look_room (t_torches31, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches20">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches20)
+          look_room (t_torches20, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches40">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches40)
+          look_room (t_torches40, this)
         </look>
       </exit>
     </object>
@@ -2812,25 +2812,25 @@
       <exit alias="west" to="t_torches30">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches30)
+          look_room (t_torches30, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches32">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches32)
+          look_room (t_torches32, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches21">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches21)
+          look_room (t_torches21, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches41">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches41)
+          look_room (t_torches41, this)
         </look>
       </exit>
       <object name="light7_0">
@@ -2855,19 +2855,19 @@
       <exit alias="west" to="t_torches31">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches31)
+          look_room (t_torches31, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches22">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches22)
+          look_room (t_torches22, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches42">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches42)
+          look_room (t_torches42, this)
         </look>
       </exit>
       <object name="light2_0">
@@ -2892,19 +2892,19 @@
       <exit alias="east" to="t_torches41">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches41)
+          look_room (t_torches41, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches30">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches30)
+          look_room (t_torches30, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches50">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches50)
+          look_room (t_torches50, this)
         </look>
       </exit>
       <object name="light9_0">
@@ -2929,25 +2929,25 @@
       <exit alias="west" to="t_torches40">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches40)
+          look_room (t_torches40, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches42">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches42)
+          look_room (t_torches42, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches31">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches31)
+          look_room (t_torches31, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches51">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches51)
+          look_room (t_torches51, this)
         </look>
       </exit>
     </object>
@@ -2960,19 +2960,19 @@
       <exit alias="west" to="t_torches41">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches41)
+          look_room (t_torches41, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches32">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches32)
+          look_room (t_torches32, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches52">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches52)
+          look_room (t_torches52, this)
         </look>
       </exit>
     </object>
@@ -2985,19 +2985,19 @@
       <exit alias="east" to="t_torches51">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches51)
+          look_room (t_torches51, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches40">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches40)
+          look_room (t_torches40, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches60">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches60)
+          look_room (t_torches60, this)
         </look>
       </exit>
     </object>
@@ -3010,25 +3010,25 @@
       <exit alias="west" to="t_torches50">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches50)
+          look_room (t_torches50, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches52">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches52)
+          look_room (t_torches52, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches41">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches41)
+          look_room (t_torches41, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches61">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches61)
+          look_room (t_torches61, this)
         </look>
       </exit>
       <object name="light11_0">
@@ -3053,19 +3053,19 @@
       <exit alias="west" to="t_torches51">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches51)
+          look_room (t_torches51, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches42">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches42)
+          look_room (t_torches42, this)
         </look>
       </exit>
       <exit alias="south" to="t_torches62">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (t_torches62)
+          look_room (t_torches62, this)
         </look>
       </exit>
       <object name="light2_1">
@@ -3090,13 +3090,13 @@
       <exit alias="east" to="t_torches61">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches61)
+          look_room (t_torches61, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches50">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches50)
+          look_room (t_torches50, this)
         </look>
       </exit>
       <object name="light13_0">
@@ -3121,19 +3121,19 @@
       <exit alias="west" to="t_torches60">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches60)
+          look_room (t_torches60, this)
         </look>
       </exit>
       <exit alias="east" to="t_torches62">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (t_torches62)
+          look_room (t_torches62, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches51">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches51)
+          look_room (t_torches51, this)
         </look>
       </exit>
     </object>
@@ -3146,13 +3146,13 @@
       <exit alias="west" to="t_torches61">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (t_torches61)
+          look_room (t_torches61, this)
         </look>
       </exit>
       <exit alias="north" to="t_torches52">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (t_torches52)
+          look_room (t_torches52, this)
         </look>
       </exit>
     </object>
@@ -3179,19 +3179,19 @@
       <exit alias="east" to="i01">
         <inherit name="eastdirection" />
         <look type="script">
-          look_room (i01)
+          look_room (i01, this)
         </look>
       </exit>
       <exit alias="south" to="i10">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (i10)
+          look_room (i10, this)
         </look>
       </exit>
       <exit alias="west" to="r12">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (r12)
+          look_room (r12, this)
         </look>
       </exit>
     </object>
@@ -3205,13 +3205,13 @@
       <exit alias="west" to="i00">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (i00)
+          look_room (i00, this)
         </look>
       </exit>
       <exit alias="south" to="i11">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (i11)
+          look_room (i11, this)
         </look>
       </exit>
       <object name="painting">
@@ -3233,7 +3233,7 @@
         <inherit name="eastdirection" />
         <runscript />
         <look type="script">
-          look_room (i11)
+          look_room (i11, this)
         </look>
         <script type="script">
           if (GetBoolean(ikeaShelf, "on")) {
@@ -3248,7 +3248,7 @@
         <inherit name="northdirection" />
         <runscript />
         <look type="script">
-          look_room (i00)
+          look_room (i00, this)
         </look>
         <script type="script">
           if (GetBoolean(ikeaShelf, "on")) {
@@ -3364,19 +3364,19 @@
       <exit alias="west" to="i10">
         <inherit name="westdirection" />
         <look type="script">
-          look_room (i10)
+          look_room (i10, this)
         </look>
       </exit>
       <exit alias="north" to="i01">
         <inherit name="northdirection" />
         <look type="script">
-          look_room (i01)
+          look_room (i01, this)
         </look>
       </exit>
       <exit alias="south" to="tr_start02">
         <inherit name="southdirection" />
         <look type="script">
-          look_room (tr_start02)
+          look_room (tr_start02, this)
         </look>
       </exit>
     </object>
@@ -3448,37 +3448,42 @@
     change_rooms_snake
     change_rooms_shake_lights (photoreceptor0)
   </function>
-  <function name="look_room" parameters="lookRoom"><![CDATA[
+  <function name="look_room" parameters="lookRoom, exit"><![CDATA[
     // This function is called when we look into a room. Test if that room is in our list.
     // indexHit corresponds to the snake's body part that we see, if we see it
-    count = 0
-    indexHit = 0
-    foreach (rm, player.snake_rooms) {
-      count = count + 1
-      if (rm.name = lookRoom.name) {
-        indexHit = count
-      }
-    }
-    if (indexHit = player.length-1) {
-      // We see our own body at the head, give a no turn back message
-      msg ("You've just come from there. You wouldn't want to risk running into anything that may be following you...would you?")
-    }
-    else if (indexHit > 1) {
-      // We see our own body in the middle, give a warning message
-      msg ("You see a slimy, scaly body stretching across that room, nearly filling it. What a monstrosity!")
-    }
-    else if (indexHit = 1) {
-      // We see our own tail, give an okay message
-      msg ("You see the tip of a slimy, scaly tail. It looks like the monster is passing through. You're probably clear to go this way.")
-    }
-    else if (HasAttribute(lookRoom, "has_humans")) {
-      if (thesis.wasburned = false) {
-        msg ("You see some strange creatures milling about.")
-      }
+    if (exit.locked) {
+      msg ("You activate your x-ray vision and look through the locked door. Wait. No you don't.")
     }
     else {
-      // No snake to see, give an all clear message
-      msg ("That way is dark, empty and quiet. Not unlike your heart, you monster! Sorry.That was inappropriate.")
+      count = 0
+      indexHit = 0
+      foreach (rm, player.snake_rooms) {
+        count = count + 1
+        if (rm.name = lookRoom.name) {
+          indexHit = count
+        }
+      }
+      if (indexHit = player.length-1) {
+        // We see our own body at the head, give a no turn back message
+        msg ("You've just come from there. You wouldn't want to risk running into anything that may be following you...would you?")
+      }
+      else if (indexHit > 1) {
+        // We see our own body in the middle, give a warning message
+        msg ("You see a slimy, scaly body stretching across that room, nearly filling it. What a monstrosity!")
+      }
+      else if (indexHit = 1) {
+        // We see our own tail, give an okay message
+        msg ("You see the tip of a slimy, scaly tail. It looks like the monster is passing through. You're probably clear to go this way.")
+      }
+      else if (HasAttribute(lookRoom, "has_humans")) {
+        if (thesis.wasburned = false) {
+          msg ("You see some strange creatures milling about.")
+        }
+      }
+      else {
+        // No snake to see, give an all clear message
+        msg ("That way is dark, empty and quiet. Not unlike your heart, you monster! Sorry.That was inappropriate.")
+      }
     }
   ]]></function>
   <function name="clear_rooms">

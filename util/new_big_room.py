@@ -14,7 +14,7 @@ EXIT_FORMAT_STRING = "\
   <exit alias=\"{room_alias}\" to=\"{exit_target}\">\n\
     <inherit name=\"{direction}direction\" />\n\
     <look type=\"script\">\n\
-      look_room ({exit_target})\n\
+      look_room ({exit_target}, this)\n\
     </look>\n\
   </exit>\
 "
