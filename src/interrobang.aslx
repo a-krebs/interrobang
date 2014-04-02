@@ -372,7 +372,7 @@
         </onexit>
         <beforeenter type="script">
           if (Contains (vent10,keyCard)) {
-            picture ("keycard1.png")
+            picture ("keycard_heart1.png")
           }
         </beforeenter>
         <enter type="script">
