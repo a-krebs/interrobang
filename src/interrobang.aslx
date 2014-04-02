@@ -1930,6 +1930,11 @@
         <enter type="script">
           change_rooms
         </enter>
+        <beforeenter type="script">
+          if (Contains (tr_start10,keyCard1)) {
+            picture ("keycard_fleur1.png")
+          }
+        </beforeenter>
         <exit alias="east" to="tr_start11">
           <inherit name="eastdirection" />
           <look type="script">
@@ -1944,17 +1949,22 @@
         </exit>
         <object name="keyCard1">
           <inherit name="editor_object" />
-          <alias>Key Card</alias>
+          <alias>Fleur-De-Lis Key Card</alias>
           <take />
           <alt type="stringlist">
             <value>key</value>
             <value>keycard</value>
             <value>card</value>
             <value>key card</value>
+            <value>fleur-de-lis key card</value>
+            <value>fleur-de-lis key</value>
+            <value>fleur key</value>
+            <value>fleu key card</value>
           </alt>
           <takemsg>You pick up the key card.</takemsg>
           <use />
           <look type="script">
+            picture ("keycard_fleur1.png")
             msg ("The key card shines with a familiar glisten. It brings back memories of...memories. You're in some sort of quantum loop, obviously. ARE YOU TRIPPING OUT YET?!?")
           </look>
           <selfuseon type="scriptdictionary">
@@ -1966,19 +1976,22 @@
               msg ("The reader accepts the card, sucking it in; out of the slot is unleashed a flood of wailing, tormented screams: the sound of thousands of souls who have died in previous save files, trying in vain to escape the eternal prison that is this puzzle room, never to find solace.No pressure.")
               UnlockExit (tr_start13_to_tr_large00)
             </item>
+            <item key="cardReader">
+              msg ("You insert the card into the reader, it makes an angry noise and spits the card back at you.")
+            </item>
           </selfuseon>
         </object>
       </object>
       <object name="tr_start11">
         <inherit name="editor_room" />
         <alias>large, empty room</alias>
+        <description>There's a door on the south wall here with a large fleur-de-lis on it. Seriously, this place uses large icons to match doors to keys? Oh well, easier for you...</description>
         <enter type="script">
           change_rooms
         </enter>
         <beforeenter type="script">
           picture ("door_fleur.png")
         </beforeenter>
-        <description>There's a door on the south wall here with a large fleur-de-lis on it. Seriously, this place uses large icons to match doors to keys? Oh well, easier for you...</description>
         <exit alias="west" to="tr_start10">
           <inherit name="westdirection" />
           <look type="script">
@@ -2006,7 +2019,7 @@
         </exit>
         <object name="cardReader1">
           <inherit name="editor_object" />
-          <alias>Key Card Reader</alias>
+          <alias>Key Card Reader connected to Fleur-De-Lis Door</alias>
           <alt type="stringlist">
             <value>reader</value>
             <value>key card reader</value>
@@ -2044,10 +2057,10 @@
       <object name="tr_start13">
         <inherit name="editor_room" />
         <alias>large, empty room</alias>
+        <description>There's a door on the south wall here with a large fleur-de-lis on it. You mumble something clever to yourself about the French.</description>
         <enter type="script">
           change_rooms
         </enter>
-        <description>There's a door on the south wall here with a large fleur-de-lis on it. You mumble something clever to yourself about the French.</description>
         <beforeenter type="script">
           picture ("door_fleur.png")
         </beforeenter>
@@ -2078,7 +2091,7 @@
         </exit>
         <object name="cardReader2">
           <inherit name="editor_object" />
-          <alias>Key Card Reader</alias>
+          <alias>Key Card Reader connected to Fleur-De-Lis Door</alias>
           <alt type="stringlist">
             <value>reader</value>
             <value>key card reader</value>
