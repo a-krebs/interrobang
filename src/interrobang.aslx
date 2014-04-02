@@ -225,10 +225,12 @@
       <alias>room</alias>
       <onexit type="script">
       </onexit>
-      <enter type="script">
+      <beforeenter type="script">
         if (Contains (r20,box)) {
           picture ("crate vent.png")
         }
+      </beforeenter>
+      <enter type="script">
         change_rooms
       </enter>
       <exit alias="north" to="r10">
@@ -299,10 +301,12 @@
       <alias>room</alias>
       <onexit type="script">
       </onexit>
-      <enter type="script">
+      <beforeenter type="script">
         if (Contains (r22,deadRat)) {
           picture ("deadrat.png")
         }
+      </beforeenter>
+      <enter type="script">
         change_rooms
       </enter>
       <exit alias="north" to="r12">
@@ -366,10 +370,12 @@
         <description>It's dark.</description>
         <onexit type="script">
         </onexit>
-        <enter type="script">
+        <beforeenter type="script">
           if (Contains (vent10,keyCard)) {
             picture ("keycard1.png")
           }
+        </beforeenter>
+        <enter type="script">
           change_rooms
         </enter>
         <exit alias="north" to="vent00">
