@@ -766,8 +766,8 @@
         <take />
         <takemsg>Clumsily, you knock the frame over and shatter it—not unlike Lennie, unaware of your own strength, only desiring to...what? You haven't read “Of Mice and Men”? Come on. Well, you've got the photo now. It's all papery.</takemsg>
         <look type="script"><![CDATA[
-          msg ("Oh gawd, oh, ugh, just, you can't even...<br/>It's worse than you thought. The scaly-tentacled superflously-optacled meat beasts that inhabit this place are truly a terror. You wouldn't be surprised if, slightly after this image was taken, the matriarch of the brood mercilessly devoured the young.<br/>Ugh, it's unspeakable.")
           picture ("family_photo.png")
+          msg ("Oh gawd, oh, ugh, just, you can't even...<br/>It's worse than you thought. The scaly-tentacled superflously-optacled meat beasts that inhabit this place are truly a terror. You wouldn't be surprised if, slightly after this image was taken, the matriarch of the brood mercilessly devoured the young.<br/>Ugh, it's unspeakable.")
         ]]></look>
         <burn type="script">
           if (Got(crumpled paper)) {
@@ -933,8 +933,8 @@
           if (bunsen burner.flame = false) {
             msg ("There's no fire.")
             if (bunsen burner.tipped = true) {
-              msg ("It's been tipped onto its side.")
               picture ("bunsen_tipped.png")
+              msg ("It's been tipped onto its side.")
             }
             else {
               picture ("bunsen_off.png")
@@ -943,8 +943,8 @@
           else {
             msg ("A hot, blue flame is burning at its tip.")
             if (bunsen burner.tipped = true) {
-              msg ("It's been tipped onto its side.")
               picture ("bunsen_tipped_on.png")
+              msg ("It's been tipped onto its side.")
             }
             else {
               picture ("bunsen_on.png")
@@ -1143,8 +1143,8 @@
           </displayverbs>
           <takemsg>The little scamp wriggles away and into a corner. Looks like Mr. Pippy is a strong, beautiful hamster who don't need nobody to take him nowhere.</takemsg>
           <look type="script"><![CDATA[
-            msg ("The small, brown lump looks back at you... Aww, look at his wittle snubby wubby face! He's probably got a cute name like Mr. Pippy or Captain Butternut Pluffles or Terence Peterson the Nibble Nabster. Someone probably loves him very, very much. It would be a tragedy if something awful were to happen to him.<br/><br/>Is that a stomach rumbling you hear?")
             picture ("mrpippy.png")
+            msg ("The small, brown lump looks back at you... Aww, look at his wittle snubby wubby face! He's probably got a cute name like Mr. Pippy or Captain Butternut Pluffles or Terence Peterson the Nibble Nabster. Someone probably loves him very, very much. It would be a tragedy if something awful were to happen to him.<br/><br/>Is that a stomach rumbling you hear?")
           ]]></look>
           <eat type="script">
             if (cage.isopen) {
@@ -1642,8 +1642,8 @@
         change_rooms
       </enter>
       <description type="script">
-        msg ("There's a shelf against the wall here, on which sits a number of plants in pots and containers. ")
         picture ("meatplant.png")
+        msg ("There's a shelf against the wall here, on which sits a number of plants in pots and containers. ")
       </description>
       <object name="meat plant">
         <inherit name="editor_object" />
