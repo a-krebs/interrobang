@@ -169,13 +169,17 @@
     </object>
     <object name="r12">
       <inherit name="editor_room" />
-      <picture>card reader.png</picture>
+      <picture type="string"></picture>
       <alias>room</alias>
+      <description>There's a door on the east wall with a large heart on it. Connected to the door is a key card reader.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
         change_rooms
       </enter>
+      <beforeenter type="script">
+        picture ("door_heart.png")
+      </beforeenter>
       <exit alias="north" to="r02">
         <inherit name="northdirection" />
         <look type="script">
@@ -214,7 +218,10 @@
           <value>card reader</value>
         </alt>
         <takemsg>It's bolted to the wall. Also, why would you want it, anyway?</takemsg>
-        <look>The key card reader glistens with the sheen of new plastic. It looks like state-of-the-art technology.</look>
+        <look type="script">
+          picture ("card reader.png")
+          msg ("The key card reader glistens with the sheen of new plastic. It looks like state-of-the-art technology.")
+        </look>
       </object>
     </object>
     <object name="r20">
@@ -369,7 +376,7 @@
         </onexit>
         <enter type="script">
           if (Contains (vent10,keyCard)) {
-            SetFramePicture ("keycard.png")
+            SetFramePicture ("keycard1.png")
           }
           change_rooms
         </enter>
@@ -387,17 +394,23 @@
         </exit>
         <object name="keyCard">
           <inherit name="editor_object" />
-          <alias>Key Card</alias>
+          <alias>Heart Key Card</alias>
           <take />
           <alt type="stringlist">
             <value>key</value>
             <value>keycard</value>
             <value>card</value>
             <value>key card</value>
+            <value>heart key card</value>
+            <value>heart key</value>
+            <value>heart keycard</value>
           </alt>
           <takemsg>You pick up the key card.</takemsg>
           <use />
-          <look>The key card shines with a familiar glisten. It brings back memories of a key card reader you've seen in your travels, back in the old country: like Mama used to make. Or maybe that was elsewhere in this room. You're still filling the holes in your swiss-cheese memory.</look>
+          <look type="script">
+            picture ("keycard_heart1.png")
+            msg ("The key card shines with a familiar glisten. It brings back memories of a key card reader you've seen in your travels, back in the old country: like Mama used to make. Or maybe that was elsewhere in this room. You're still filling the holes in your swiss-cheese memory.")
+          </look>
           <ontake type="script">
             ClearFramePicture
           </ontake>
@@ -1940,7 +1953,11 @@
           </alt>
           <takemsg>You pick up the key card.</takemsg>
           <use />
-          <look>The key card shines with a familiar glisten. It brings back memories of...memories. You're in some sort of quantum loop, obviously. ARE YOU TRIPPING OUT YET?!?</look>
+          <look type="script">
+            picture ("")
+            msg ("The key card shines with a familiar glisten. It brings back memories of...memories. You're in some sort of quantum loop, obviously. ARE YOU TRIPPING OUT YET?!?")
+            SetFramePicture ("")
+          </look>
           <ontake type="script">
             ClearFramePicture
           </ontake>
