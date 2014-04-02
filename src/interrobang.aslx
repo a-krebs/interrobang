@@ -169,7 +169,6 @@
     </object>
     <object name="r12">
       <inherit name="editor_room" />
-      <picture type="string"></picture>
       <alias>room</alias>
       <description>There's a door on the east wall with a large heart on it. Connected to the door is a key card reader.</description>
       <onexit type="script">
@@ -202,9 +201,6 @@
         <inherit name="eastdirection" />
         <locked />
         <runscript type="boolean">false</runscript>
-        <script type="script">
-          ClearFramePicture
-        </script>
         <look type="script">
           look_room (i00, this)
         </look>
@@ -226,13 +222,12 @@
     </object>
     <object name="r20">
       <inherit name="editor_room" />
-      <picture type="string"></picture>
       <alias>room</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
         if (Contains (r20,box)) {
-          SetFramePicture ("crate vent.png")
+          picture ("crate vent.png")
         }
         change_rooms
       </enter>
@@ -264,7 +259,6 @@
           if (player.length >= 5) {
             msg ("You slam into the box with all of your weight, and manage to push it aside. You feel a sense of accomplishment somewhat disproportionate to the task of moving a box.")
             UnlockExit (vent20in)
-            ClearFramePicture
             RemoveObject (box)
           }
           else {
@@ -302,13 +296,12 @@
     </object>
     <object name="r22">
       <inherit name="editor_room" />
-      <picture type="string"></picture>
       <alias>room</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
         if (Contains (r22,deadRat)) {
-          SetFramePicture ("deadrat.png")
+          picture ("deadrat.png")
         }
         change_rooms
       </enter>
@@ -339,7 +332,6 @@
         <eat type="script">
           grow_snake
           msg ("Delicious! You feel...invigorated. Virile. Voluptuous......you're starting to make yourself uncomfortable.")
-          ClearFramePicture
           RemoveObject (deadRat)
         </eat>
       </object>
@@ -376,7 +368,7 @@
         </onexit>
         <enter type="script">
           if (Contains (vent10,keyCard)) {
-            SetFramePicture ("keycard1.png")
+            picture ("keycard1.png")
           }
           change_rooms
         </enter>
@@ -411,9 +403,6 @@
             picture ("keycard_heart1.png")
             msg ("The key card shines with a familiar glisten. It brings back memories of a key card reader you've seen in your travels, back in the old country: like Mama used to make. Or maybe that was elsewhere in this room. You're still filling the holes in your swiss-cheese memory.")
           </look>
-          <ontake type="script">
-            ClearFramePicture
-          </ontake>
           <selfuseon type="scriptdictionary">
             <item key="cardReader">
               msg ("Bleep, boop, doop! Now that you're done scat singing, you use the key card in the reader, and the door opens silently.")
@@ -1954,13 +1943,8 @@
           <takemsg>You pick up the key card.</takemsg>
           <use />
           <look type="script">
-            picture ("")
             msg ("The key card shines with a familiar glisten. It brings back memories of...memories. You're in some sort of quantum loop, obviously. ARE YOU TRIPPING OUT YET?!?")
-            SetFramePicture ("")
           </look>
-          <ontake type="script">
-            ClearFramePicture
-          </ontake>
           <selfuseon type="scriptdictionary">
             <item key="cardReader1">
               msg ("The card reader signals its approval with a noise inimitable through onomatopoeia.")
@@ -2188,7 +2172,6 @@
           <eat type="script">
             grow_snake
             msg ("Packing on the pounds, there, aren't you? Look, someone had to tell you. Really, you should be thankful. Don't get so damn emotional!")
-            ClearFramePicture
             RemoveObject (deadRat1)
           </eat>
         </object>
@@ -2370,7 +2353,6 @@
           <eat type="script">
             grow_snake
             msg ("The rat goes straight to your ample midsection as you put it out of its misery....or maybe that rat was just getting better, and you've swooped in and taken its life before it could even tell its family it loved them. Looks like you'll just have to spend the rest of your days wondering: what if?")
-            ClearFramePicture
             RemoveObject (deadRat2)
           </eat>
         </object>
@@ -3346,7 +3328,6 @@
           <eat type="script">
             grow_snake
             msg ("It tastes so good, but the shame burns so badly. Not that you care. You're just taking up ever more space as you go.")
-            ClearFramePicture
             RemoveObject (this)
           </eat>
         </object>
@@ -3366,7 +3347,6 @@
           <eat type="script">
             grow_snake
             msg ("You down it all like nothing. Did your parents teach you no manners? You are grown now, but only in size.")
-            ClearFramePicture
             RemoveObject (this)
           </eat>
         </object>
@@ -3536,7 +3516,6 @@
   </function>
   <function name="game_over">
     msg ("A slimy, scaly body spans the room. The pursuing creature and the one fleeing have come to a head, it seems! It's a flurry of fangs and blood as you try to defend yourself...and you fight valiantly, but are ultimately torn apart.Hint: You can look into a room before entering it. Remember to save!")
-    ClearFramePicture
     finish
   </function>
   <function name="game_win">
