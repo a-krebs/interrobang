@@ -170,7 +170,7 @@
     <object name="r12">
       <inherit name="editor_room" />
       <alias>room</alias>
-      <description>There's a door on the east wall with a large heart on it. Connected to the door is a key card reader.</description>
+      <description>There's a door on the east wall with a large heart on it.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -207,7 +207,7 @@
       </exit>
       <object name="cardReader">
         <inherit name="editor_object" />
-        <alias>Key Card Reader</alias>
+        <alias>Key Card Reader connected to Heart Door</alias>
         <alt type="stringlist">
           <value>reader</value>
           <value>key card reader</value>
@@ -413,6 +413,12 @@
             <item key="cardReader">
               msg ("Bleep, boop, doop! Now that you're done scat singing, you use the key card in the reader, and the door opens silently.")
               UnlockExit (prototypeFinishExit)
+            </item>
+            <item key="cardReader1">
+              msg ("This card doesn't appear to work on this reader. Maybe there are some kind of markings on the card that indicate what door it unlocks...")
+            </item>
+            <item key="cardReader2">
+              msg ("This card doesn't appear to work on this reader. Maybe there are some kind of markings on the card that indicate what door it unlocks...")
             </item>
           </selfuseon>
         </object>
