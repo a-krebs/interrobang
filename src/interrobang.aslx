@@ -3579,7 +3579,7 @@
       if (light.remaining_dur > 0) {
         light.remaining_dur = (light.remaining_dur - 1)
         if (light.remaining_dur = 0) {
-          msg ("A light has turned off.")
+          msg ("A light turns off in the distance. It's probably one of those flashlights you turned on a minute ago.")
         }
       }
     }
