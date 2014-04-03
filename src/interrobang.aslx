@@ -2411,7 +2411,7 @@
           <drink type="script"><![CDATA[
             grow_snake
             if (player.length < 6) {
-              msg ("You drink the milk but feel more bloated than ususal.")
+              msg ("You drink the milk but feel more bloated than you usually do after eating.")
             }
             else {
               msg ("The rich whole-fat goodness goes straight to your ample midsection as you drink....")
@@ -3472,8 +3472,8 @@
     // This function should be called at all transitions between rooms.
     // It handles the snake length as well as any other events that need
     // to be triggered at after each room transition
-    change_rooms_shake_lights (photoreceptor0)
     change_rooms_snake
+    change_rooms_shake_lights (photoreceptor0)
   </function>
   <function name="look_room" parameters="lookRoom, exit"><![CDATA[
     // This function is called when we look into a room. Test if that room is in our list.
@@ -3545,7 +3545,6 @@
     }
   </function>
   <function name="game_over">
-    picture ("snake_body.png")
     msg ("A slimy, scaly body spans the room. The pursuing creature and the one fleeing have come to a head, it seems! It's a flurry of fangs and blood as you try to defend yourself...and you fight valiantly, but are ultimately torn apart.Hint: You can look into a room before entering it. Remember to save!")
     finish
   </function>
