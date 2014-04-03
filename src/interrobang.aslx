@@ -3472,8 +3472,8 @@
     // This function should be called at all transitions between rooms.
     // It handles the snake length as well as any other events that need
     // to be triggered at after each room transition
-    change_rooms_snake
     change_rooms_shake_lights (photoreceptor0)
+    change_rooms_snake
   </function>
   <function name="look_room" parameters="lookRoom, exit"><![CDATA[
     // This function is called when we look into a room. Test if that room is in our list.
