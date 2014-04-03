@@ -2104,13 +2104,13 @@
       <object name="tr_start14">
         <inherit name="editor_room" />
         <alias>large, empty room</alias>
+        <description>This is the south-east corner of the room. You see a door on the east wall, and a scale attached to the locking mechanism. They sure do secure their doors in strange ways here.</description>
         <enter type="script">
           change_rooms
         </enter>
         <beforeenter type="script">
           picture ("door.png")
         </beforeenter>
-        <description>This is the south-east corner of the room. You see a door on the east wall, and a scale attached to the locking mechanism. They sure do secure their doors in strange ways here.</description>
         <exit alias="west" to="tr_start13">
           <inherit name="westdirection" />
           <look type="script">
@@ -2130,6 +2130,8 @@
             <value>Look at</value>
             <value>Take</value>
           </displayverbs>
+          <alias>Scale</alias>
+          <takemsg>Better not rip the scale out of the wall, then the door won't work.</takemsg>
           <lie type="script"><![CDATA[
             if (player.length < 7) {
               msg ("The scale beeps. The display shows " + player.length + ". Nothing happens. Clearly, you have not satisfied the almighty guardian device.")
@@ -2139,9 +2141,10 @@
               msg ("The scale beeps. Just as you give up hope and go to look for another dirty rat to eat, you hear the clicking noise of a door unlocking.")
             }
           ]]></lie>
-          <alias>Scale</alias>
-          <takemsg>Better not rip the scale out of the wall, then the door won't work.</takemsg>
-          <look>You look at the scale. It looks back at you, almost daring you to call it fat. You know it would call you any number of names if given the chance.</look>
+          <look type="script">
+            picture ("scale.png")
+            msg ("You look at the scale. It looks back at you, almost daring you to call it fat. You know it would call you any number of names if given the chance.")
+          </look>
         </object>
         <exit name="tr_start14_to_t_torches00" alias="east" to="t_torches00">
           <inherit name="eastdirection" />
@@ -3395,6 +3398,11 @@
     <attr name="max_dur" type="int">0</attr>
     <attr name="remaining_dur" type="int">0</attr>
     <alias>shake-powered flashlight</alias>
+    <displayverbs type="stringlist">
+      <value>Look at</value>
+      <value>Shake</value>
+    </displayverbs>
+    <look>It's a mechanically powered flashlight. You can shake it to charge the battery for a short time. At least there's nobody around to make fun of how you look when you shake it.</look>
     <target type="object">player</target>
     <shake type="script">
       msg ("You shake the flashlight. It's a bit awkward. " + this.max_dur + " little lights blink on the side to indicate the amount of charge. You set it down and point it at the photoreceptor on the door control.")
@@ -3409,11 +3417,6 @@
       }
       this.remaining_dur = this.max_dur
     </shake>
-    <displayverbs type="stringlist">
-      <value>Look at</value>
-      <value>Shake</value>
-    </displayverbs>
-    <look>It's a mechanically powered flashlight. You can shake it to charge the battery for a short time. At least there's nobody around to make fun of how you look when you shake it.</look>
   </type>
   <type name="photoreceptor_base">
     <attr name="light_req" type="int">0</attr>
