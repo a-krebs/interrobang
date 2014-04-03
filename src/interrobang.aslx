@@ -2541,18 +2541,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">3</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
-        <target type="object">photoreceptor0</target>
-        <inventoryverbs type="stringlist">
-          <value>Look at</value>
-          <value>Use</value>
-          <value>Drop</value>
-        </inventoryverbs>
         <use type="boolean">false</use>
+        <target type="object">photoreceptor0</target>
       </object>
       <object name="photoreceptor0">
         <inherit name="editor_object" />
@@ -2689,11 +2679,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">3</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -2726,11 +2711,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">6</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -2763,11 +2743,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">5</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -2887,11 +2862,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">7</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -2924,11 +2894,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">2</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -2961,11 +2926,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">9</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -3085,11 +3045,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">11</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -3122,11 +3077,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">2</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -3153,11 +3103,6 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">13</attr>
         <lightsource type="boolean">false</lightsource>
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-          <value>Take</value>
-          <value>Shake</value>
-        </displayverbs>
         <target type="object">photoreceptor0</target>
       </object>
     </object>
@@ -3442,7 +3387,7 @@
   <type name="shake_light_base">
     <attr name="max_dur" type="int">0</attr>
     <attr name="remaining_dur" type="int">0</attr>
-    <alias>flashlight</alias>
+    <alias>shake-powered flashlight</alias>
     <target type="object">player</target>
     <shake type="script">
       msg ("You shake the flashlight. It's a bit awkward. " + this.max_dur + " little lights blink on the side to indicate the amount of charge. You set it down and point it at the photoreceptor on the door control.")
@@ -3457,6 +3402,11 @@
       }
       this.remaining_dur = this.max_dur
     </shake>
+    <displayverbs type="stringlist">
+      <value>Look at</value>
+      <value>Shake</value>
+    </displayverbs>
+    <look>It's a mechanically powered flashlight. You can shake it to charge the battery for a short time. At least there's nobody around to make fun of how you look when you shake it.</look>
   </type>
   <type name="photoreceptor_base">
     <attr name="light_req" type="int">0</attr>
