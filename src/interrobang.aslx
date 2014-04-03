@@ -2547,6 +2547,12 @@
           <value>Shake</value>
         </displayverbs>
         <target type="object">photoreceptor0</target>
+        <inventoryverbs type="stringlist">
+          <value>Look at</value>
+          <value>Use</value>
+          <value>Drop</value>
+        </inventoryverbs>
+        <use type="boolean">false</use>
       </object>
       <object name="photoreceptor0">
         <inherit name="editor_object" />
@@ -3439,7 +3445,7 @@
     <alias>flashlight</alias>
     <target type="object">player</target>
     <shake type="script">
-      msg ("You shake the flashlight. " + this.max_dur + " little lights blink on the side. What could they mean...?")
+      msg ("You shake the flashlight. It's a bit awkward. " + this.max_dur + " little lights blink on the side to indicate the amount of charge. You set it down and point it at the photoreceptor on the door control.")
       in_list = false
       foreach (light, this.target.lights_list) {
         if (light = this) {
