@@ -3545,6 +3545,7 @@
     }
   </function>
   <function name="game_over">
+    picture ("snake_body.png")
     msg ("A slimy, scaly body spans the room. The pursuing creature and the one fleeing have come to a head, it seems! It's a flurry of fangs and blood as you try to defend yourself...and you fight valiantly, but are ultimately torn apart.Hint: You can look into a room before entering it. Remember to save!")
     finish
   </function>
