@@ -13,6 +13,11 @@
     <attr name="autodescription_description" type="int">2</attr>
     <attr name="autodescription_youcansee" type="int">3</attr>
     <attr name="autodescription_youcango" type="int">4</attr>
+    <defaultfont>Georgia, serif</defaultfont>
+    <defaultbackground>#9CBA7F</defaultbackground>
+    <backgroundimage type="string"></backgroundimage>
+    <setbackgroundopacity type="boolean">false</setbackgroundopacity>
+    <defaultwebfont>Press Start 2P</defaultwebfont>
     <start type="script">
       // set up all the photorecepots in the game
       init_photoreceptor (photoreceptor0)
@@ -25,6 +30,7 @@
       }
       get_name
     </start>
+    <defaultfontsize type="int">12</defaultfontsize>
   </game>
   <object name="Prototype">
     <inherit name="editor_room" />
@@ -2132,6 +2138,7 @@
           </displayverbs>
           <alias>Scale</alias>
           <takemsg>Better not rip the scale out of the wall, then the door won't work.</takemsg>
+          <useon>It doesn't even trigger the scale.</useon>
           <lie type="script">
             use_scale (tr_start14_to_t_torches00, 7)
           </lie>
@@ -2142,7 +2149,6 @@
           <use type="script">
             use_scale (tr_start14_to_t_torches00, 7)
           </use>
-          <useon>It doesn't even trigger the scale.</useon>
         </object>
         <exit name="tr_start14_to_t_torches00" alias="east" to="t_torches00">
           <inherit name="eastdirection" />
