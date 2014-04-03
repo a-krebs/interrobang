@@ -2555,7 +2555,7 @@
           <value>Power On</value>
           <value>Use</value>
         </displayverbs>
-        <look>The door control is hooked up to the door on the north wall. It's a bit odd looking. Almost as though it were an undergraduate computer engineering project. There's a photoreceptor....? Like on a calculator? And a power button? Wires sticking out every which way, and some decidedly prototype-looking wiring. You need to power it on before it'll do anything, that's for sure.</look>
+        <look>The door control is hooked up to the door on the north wall. It's the oddest-looking example of a door control you've ever seen, and you've seen a lot of door controls. Almost as though it were an undergraduate computer engineering project. There's a photoreceptor....? Like on a calculator? And a power button? Wires sticking out every which way, and some decidedly sketchy-looking use of electrical tape and solder. You need to power it on before it'll do anything, that's for sure.</look>
       </object>
       <exit name="t_torches00_to_f24" alias="north" to="f24">
         <inherit name="northdirection" />
