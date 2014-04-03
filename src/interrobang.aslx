@@ -2132,19 +2132,17 @@
           </displayverbs>
           <alias>Scale</alias>
           <takemsg>Better not rip the scale out of the wall, then the door won't work.</takemsg>
-          <lie type="script"><![CDATA[
-            if (player.length < 7) {
-              msg ("The scale beeps. The display shows " + player.length + ". Nothing happens. Clearly, you have not satisfied the almighty guardian device.")
-            }
-            else {
-              UnlockExit (tr_start14_to_t_torches00)
-              msg ("The scale beeps. Just as you give up hope and go to look for another dirty rat to eat, you hear the clicking noise of a door unlocking.")
-            }
-          ]]></lie>
+          <lie type="script">
+            use_scale (tr_start14_to_t_torches00, 7)
+          </lie>
           <look type="script">
             picture ("scale.png")
             msg ("You look at the scale. It looks back at you, almost daring you to call it fat. You know it would call you any number of names if given the chance.")
           </look>
+          <use type="script">
+            use_scale (tr_start14_to_t_torches00, 7)
+          </use>
+          <useon>It doesn't even trigger the scale.</useon>
         </object>
         <exit name="tr_start14_to_t_torches00" alias="east" to="t_torches00">
           <inherit name="eastdirection" />
@@ -3668,6 +3666,15 @@
       }
     }
   </function>
+  <function name="use_scale" parameters="exit, req_length"><![CDATA[
+    if (player.length < req_length) {
+      msg ("The scale beeps. The display shows " + player.length + ". Nothing happens. Clearly, you have not satisfied the almighty guardian device.")
+    }
+    else {
+      UnlockExit (exit)
+      msg ("The scale beeps. Just as you give up hope and go to look for another dirty rat to eat, you hear the clicking noise of a door unlocking.")
+    }
+  ]]></function>
   <walkthrough name="prototypeWalk">
     <steps type="simplestringlist">
       go north
