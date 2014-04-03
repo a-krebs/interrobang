@@ -18,6 +18,7 @@
     <backgroundimage type="string"></backgroundimage>
     <setbackgroundopacity type="boolean">false</setbackgroundopacity>
     <defaultwebfont>Press Start 2P</defaultwebfont>
+    <defaultfontsize type="int">12</defaultfontsize>
     <start type="script">
       // set up all the photorecepots in the game
       init_photoreceptor (photoreceptor0)
@@ -30,7 +31,6 @@
       }
       get_name
     </start>
-    <defaultfontsize type="int">12</defaultfontsize>
   </game>
   <object name="Prototype">
     <inherit name="editor_room" />
@@ -2206,16 +2206,20 @@
         </exit>
         <object name="deadRat1">
           <inherit name="editor_object" />
-          <alias>dead rat</alias>
+          <alias>Lactase Enzyime Pills</alias>
           <alt type="stringlist">
-            <value>rat</value>
-            <value>dead rat</value>
+            <value>pills</value>
+            <value>lactase</value>
+            <value>lactase pills</value>
           </alt>
           <take type="boolean">false</take>
-          <look>A dead, but perfectly edible rat. Only a fool would pass up such a rat.</look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <look type="script">
+            picture ("lactase.png")
+            msg ("Pills here!")
+          </look>
           <eat type="script">
             grow_snake
             msg ("Packing on the pounds, there, aren't you? Look, someone had to tell you. Really, you should be thankful. Don't get so damn emotional!")
@@ -2387,21 +2391,33 @@
         </exit>
         <object name="deadRat2">
           <inherit name="editor_object" />
-          <alias>dead rat</alias>
+          <alias>Glass of Milk</alias>
           <alt type="stringlist">
-            <value>rat</value>
-            <value>dead rat</value>
+            <value>milk</value>
           </alt>
           <take type="boolean">false</take>
-          <look>A less-dead, but equally edible rat. You're not going to let it suffer, are you?</look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
-          <eat type="script">
+          <look type="script"><![CDATA[
+            picture ("milk.png")
+            if (player.length < 6) {
+              msg ("It's a glass of milk. You're lactose intolerant though, so it's likely to make you feel a little ill if you drink it.")
+            }
+            else {
+              msg ("Good thing you found those lactase pills!")
+            }
+          ]]></look>
+          <drink type="script"><![CDATA[
             grow_snake
-            msg ("The rat goes straight to your ample midsection as you put it out of its misery....or maybe that rat was just getting better, and you've swooped in and taken its life before it could even tell its family it loved them. Looks like you'll just have to spend the rest of your days wondering: what if?")
+            if (player.length < 6) {
+              msg ("You drink the milk but feel more bloated than ususal.")
+            }
+            else {
+              msg ("The rich whole-fat goodness goes straight to your ample midsection as you drink....")
+            }
             RemoveObject (deadRat2)
-          </eat>
+          ]]></drink>
         </object>
       </object>
       <object name="tr_large11">
