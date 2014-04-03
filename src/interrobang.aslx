@@ -3430,7 +3430,7 @@
     ]]></poweron>
     <use type="script">
       if (this.powered_on) {
-        msg ("The door control indicates the door is unlocked.")
+        msg ("The door control indicates the door is now unlocked.")
         UnlockExit (t_torches00_to_f24)
       }
       else {
