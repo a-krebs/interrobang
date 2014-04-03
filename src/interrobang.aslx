@@ -2510,12 +2510,16 @@
     <object name="t_torches00">
       <inherit name="editor_room" />
       <alias>oppresively dark room</alias>
+      <description>This is the north-west corner of a huge space. There's a door that goes north here. The lock on this door is very odd looking indeed.</description>
       <enter type="script">
         change_rooms
       </enter>
       <firstenter type="script">
         msg ("This space is....huge. Yet really dark. Palpably dark. You could almost eat the darkness like cotton candy.")
       </firstenter>
+      <beforeenter type="script">
+        picture ("door.png")
+      </beforeenter>
       <exit alias="east" to="t_torches01">
         <inherit name="eastdirection" />
         <look type="script">
@@ -2549,6 +2553,13 @@
         <inherit name="photoreceptor_base" />
         <attr name="light_req" type="int">6</attr>
         <alias>door control</alias>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+          <value>Take</value>
+          <value>Power On</value>
+          <value>Use</value>
+        </displayverbs>
+        <look>The door control is hooked up to the door on the north wall. It's a bit odd looking. Almost as though it were an undergraduate computer engineering project. There's a photoreceptor....? Like on a calculator? And a power button? Wires sticking out every which way, and some decidedly prototype-looking wiring. You need to power it on before it'll do anything, that's for sure.</look>
       </object>
       <exit name="t_torches00_to_f24" alias="north" to="f24">
         <inherit name="northdirection" />
