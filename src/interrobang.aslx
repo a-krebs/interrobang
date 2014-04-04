@@ -3536,6 +3536,7 @@
       }
       else if (indexHit > 1) {
         // We see our own body in the middle, give a warning message
+        picture ("snake_body.png")
         msg ("You see a slimy, scaly body stretching across that room, nearly filling it. What a monstrosity!")
       }
       else if (indexHit = 1) {
@@ -3549,7 +3550,7 @@
       }
       else {
         // No snake to see, give an all clear message
-        msg ("That way is dark, empty and quiet. Not unlike your heart, you monster! Sorry.That was inappropriate.")
+        msg ("That way is dark, empty and quiet. Not unlike your heart, you monster! Sorry. That was inappropriate.")
       }
     }
   ]]></function>
