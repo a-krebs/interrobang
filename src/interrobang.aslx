@@ -549,7 +549,7 @@
             if (game.pov.parent = f13) {
               if (bunsen burner.tipped = true) {
                 if (bunsen burner.flame = true) {
-                  msg ("You drop the thesis into the fire, watching the tendrils lick at it until it becomes a tiny inferno. You try (in vain) to remember the last time you saw Flames overwhelm anything.The thesis fire begins to fill the room with smoke. “Thesis making it really hard to see/breathe!” you exclaim (you dork). How did you even speak that kind of punctuation? The fire alarm is going off, by the way.<br/><br/>You hear some shuffling and some meat monster noises in the room to the north. After awhile, the noises stop. Except for the fire alarm. That will never stop.")
+                  msg ("You drop the thesis into the fire, watching the tendrils lick at it until it becomes a tiny inferno. You try (in vain) to remember the last time you saw Flames overwhelm anything.The thesis fire begins to fill the room with smoke. “Thesis making it really hard to see/breathe!” you exclaim (you dork). How did you even speak that kind of punctuation? The fire alarm is going off, by the way.<br/><br/>You hear some shuffling and some meat monster noises in the room to the north. After a while, the noises stop. Except for the fire alarm. That will never stop.")
                   set (thesis, "wasburned", true)
                   RemoveObject (thesis)
                 }
@@ -609,10 +609,10 @@
         <alias>tinted window</alias>
         <look type="script">
           if (thesis.wasburned = false) {
-            msg ("You look north into the next room through the tinted glass. A large, monstrous figure is hunched over a desk with a big stack of papers in a small room no bigger than a broom closet. It appears to be grading them. There doesnt' seem to be any doors on any of the walls. There's no telling how long the creature has been there, or how it will ever escape.")
+            msg ("You look north into the next room through the tinted glass. A large, monstrous figure is hunched over a desk with a big stack of papers in a small room no bigger than a broom closet. It appears to be grading them. There doesn't seem to be any doors on any of the walls. There's no telling how long the creature has been there, or how it will ever escape.")
           }
           else {
-            msg ("You look north into the next room through the tinted glass. A large, monstrous figure is hunched over a desk with a big stack of papers in a small room no bigger than a broom closet. It appears to be grading them. There doesnt' seem to be any doors on any of the walls. There's no telling how long the creature has been there, or how it will ever escape.")
+            msg ("You look north into the next room through the tinted glass. A large, monstrous figure is hunched over a desk with a big stack of papers in a small room no bigger than a broom closet. It appears to be grading them. There doesn't seem to be any doors on any of the walls. There's no telling how long the creature has been there, or how it will ever escape.")
           }
         </look>
         <takemsg>You're literally trying to take a window. Think about that for a second.</takemsg>
@@ -662,7 +662,7 @@
     <object name="f03">
       <inherit name="editor_room" />
       <alias>lab room</alias>
-      <description><![CDATA[To the south is the lab bench. To the north is one side of a double door. The doors are swung shut. As you gaze towards the doors, a nostalgic phrase rushes into your mind: "Haste makes waste!"<br/><br/>Psh. Everyone knows that the egregrious over-production of goods rampant in our consumer-centric society is what makes waste. Thanks for nothing, brain.]]></description>
+      <description><![CDATA[To the south is the lab bench. To the north is one side of a double door. The doors are swung shut. As you gaze towards the doors, a nostalgic phrase rushes into your mind: "Haste makes waste!"<br/><br/>Psh. Everyone knows that the egregious over-production of goods rampant in our consumer-centric society is what makes waste. Thanks for nothing, brain.]]></description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -763,7 +763,7 @@
     <object name="f10">
       <inherit name="editor_room" />
       <alias>lab room</alias>
-      <description>You move over to take a look at the center of the desk. The space is generally bare, save for a small coffee pot that a lazy programmer has glued down so that you can't interact with it. You don't even feel like affirming the existence of such a mundane applliance by looking at it.</description>
+      <description>You move over to take a look at the center of the desk. The space is generally bare, save for a small coffee pot that a lazy programmer has glued down so that you can't interact with it. You don't even feel like affirming the existence of such a mundane appliance by looking at it.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -809,7 +809,7 @@
               }
             }
             else {
-              msg ("You take a deep breath...and blow flaming hot air at the photo...and it bursts into flames!Just kidding. You're not quite a dragon.")
+              msg ("You take a deep breath...and blow flaming hot air at the photo...and it bursts into flames! Just kidding. You're not quite a dragon.")
             }
           }
           else {
@@ -902,11 +902,11 @@
               }
             }
             else {
-              msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
+              msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame! Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
             }
           }
           else {
-            msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame!Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
+            msg ("You focus your Superman eyes on the paper. Squinting until it hurts, you finally see a flash of red flame! Oh, wait. No, you just popped a blood vessel...you should probably stop. You don't actually have heat vision.")
           }
         </burn>
       </object>
@@ -1557,7 +1557,7 @@
     <object name="p10">
       <inherit name="editor_room" />
       <alias>greenhouse room</alias>
-      <description>In this corner of the room, wedged between the wall and the shelves of plants, is a sink. The sound of running water is almost as soothing as the noise made by a japanese shishi-odoshi. Well, not really. You just really wanted a chance to say the word "shishi-odoshi."</description>
+      <description>In this corner of the room, wedged between the wall and the shelves of plants, is a sink. The sound of running water is almost as soothing as the noise made by a Japanese shishi-odoshi. Well, not really. You just really wanted a chance to say the word "shishi-odoshi."</description>
       <enter type="script">
         change_rooms
       </enter>
@@ -1683,7 +1683,7 @@
         <alias>meaty plant</alias>
         <look><![CDATA[The label on one of the plants says "Experimental DNA hybrid for Synthetic Meat Production." Its leaves look like tasty little steaks. Has science gone too far?!?!<br/><br/><br/>"No," you think. "Steaks are friggin delicious."]]></look>
         <eat type="script">
-          msg ("You swallow that meat plant whole!That's not a sentence you read every day.")
+          msg ("You swallow that meat plant whole! That's not a sentence you read every day.")
           grow_snake
           RemoveObject (meat plant)
         </eat>
@@ -2564,7 +2564,7 @@
     <inherit name="editor_room" />
     <object name="t_torches00">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <description>This is the north-west corner of a huge space. There's a door that goes north here. The lock on this door is very odd looking indeed.</description>
       <enter type="script">
         change_rooms
@@ -2633,7 +2633,7 @@
     </object>
     <object name="t_torches01">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2658,7 +2658,7 @@
     </object>
     <object name="t_torches02">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2677,7 +2677,7 @@
     </object>
     <object name="t_torches10">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2702,7 +2702,7 @@
     </object>
     <object name="t_torches11">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2741,7 +2741,7 @@
     </object>
     <object name="t_torches12">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2774,7 +2774,7 @@
     </object>
     <object name="t_torches20">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2807,7 +2807,7 @@
     </object>
     <object name="t_torches21">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2838,7 +2838,7 @@
     </object>
     <object name="t_torches22">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2863,7 +2863,7 @@
     </object>
     <object name="t_torches30">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2888,7 +2888,7 @@
     </object>
     <object name="t_torches31">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2927,7 +2927,7 @@
     </object>
     <object name="t_torches32">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2960,7 +2960,7 @@
     </object>
     <object name="t_torches40">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -2993,7 +2993,7 @@
     </object>
     <object name="t_torches41">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3024,7 +3024,7 @@
     </object>
     <object name="t_torches42">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3049,7 +3049,7 @@
     </object>
     <object name="t_torches50">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3074,7 +3074,7 @@
     </object>
     <object name="t_torches51">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3113,7 +3113,7 @@
     </object>
     <object name="t_torches52">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3146,7 +3146,7 @@
     </object>
     <object name="t_torches60">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3173,7 +3173,7 @@
     </object>
     <object name="t_torches61">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3198,7 +3198,7 @@
     </object>
     <object name="t_torches62">
       <inherit name="editor_room" />
-      <alias>oppresively dark room</alias>
+      <alias>oppressively dark room</alias>
       <enter type="script">
         change_rooms
       </enter>
@@ -3257,7 +3257,7 @@
     <object name="i01">
       <inherit name="editor_room" />
       <alias>study</alias>
-      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy european houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the fire.<br/>]]></description>
+      <description><![CDATA[This side of the room is ornately detailed. Thick red carpets line the floor, and gilded bookcases stand floor to ceiling on each side. Velvet banners hang from the walls, brandishing the seals of wealthy European houses. Architectural cues guide your eyes to the meeting of the two walls, the center of which houses an enormous fireplace. Atop the fireplace sits a handpainted oil painting, that shimmers from the glow of the fire.<br/>]]></description>
       <enter type="script">
         change_rooms
       </enter>
@@ -3372,7 +3372,7 @@
           msg ("You climb down off the shelf.")
           SetObjectFlagOff (ikeaShelf, "on")
         </climbdown>
-        <takemsg>Thinking about taking the fine piece of Swedish craft you see before you? Think again! For only $29.99 you can purchase your own stylish yet functional Fjalkinge shelving unit, complete with sliding drawers, pronounciation guide, and partial instructions.</takemsg>
+        <takemsg>Thinking about taking the fine piece of Swedish craft you see before you? Think again! For only $29.99 you can purchase your own stylish yet functional Fjalkinge shelving unit, complete with sliding drawers, pronunciation guide, and partial instructions.</takemsg>
         <object name="snack0">
           <inherit name="editor_object" />
           <alias>brightly coloured candy</alias>
@@ -3487,7 +3487,7 @@
           curr_light = curr_light + 1
         }
       }
-      msg ("It looks like this unit is powerd by light. Reading the panel, it looks like it requires " + this.light_req + " light sources to fully power on,")
+      msg ("It looks like this unit is powered by light. Reading the panel, it looks like it requires " + this.light_req + " light sources to fully power on,")
       if (curr_light < this.light_req) {
         msg ("but there are " + curr_light + " lights on in the room.")
       }
