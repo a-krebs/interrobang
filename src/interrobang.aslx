@@ -96,12 +96,12 @@
     <object name="r02">
       <inherit name="editor_room" />
       <alias>room</alias>
+      <description>A TV blares noisily in the corner of the room.</description>
       <onexit type="script">
       </onexit>
       <enter type="script">
         change_rooms
       </enter>
-      <description>A TV blares noisily in the corner of the room.</description>
       <exit alias="west" to="r01">
         <inherit name="westdirection" />
         <look type="script">
@@ -269,6 +269,7 @@
       <object name="box">
         <inherit name="editor_object" />
         <look>The large box appears to be very heavy. There doesn't seem to be a way to open it, but if you had to hazard a guess as to the nature of its contents, you'd probably go with...spiders? Very dense spiders.</look>
+        <takemsg>This is a heavy box. If you struggled to even push it, what makes you think you'll be able to take it?</takemsg>
         <push type="script"><![CDATA[
           if (player.length >= 5) {
             msg ("You slam into the box with all of your weight, and manage to push it aside. You feel a sense of accomplishment somewhat disproportionate to the task of moving a box.")
@@ -279,7 +280,6 @@
             msg ("You feel exhausted, too weak to even push a box. You're so hungry you could eat a grue, and you don't even know what that is.")
           }
         ]]></push>
-        <takemsg>This is a heavy box. If you struggled to even push it, what makes you think you'll be able to take it?</takemsg>
       </object>
     </object>
     <object name="r21">
@@ -346,12 +346,12 @@
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
+        <takemsg>Why take, when you can eat?</takemsg>
         <eat type="script">
           grow_snake
           msg ("Delicious! You feel...invigorated. Virile. Voluptuous......you're starting to make yourself uncomfortable.")
           RemoveObject (deadRat)
         </eat>
-        <takemsg>Why take, when you can eat?</takemsg>
       </object>
     </object>
     <object name="vent">
@@ -607,6 +607,7 @@
       <object name="tinted window1">
         <inherit name="editor_object" />
         <alias>tinted window</alias>
+        <takemsg>You're literally trying to take a window. Think about that for a second.</takemsg>
         <look type="script">
           if (thesis.wasburned = false) {
             msg ("You look north into the next room through the tinted glass. A large, monstrous figure is hunched over a desk with a big stack of papers in a small room no bigger than a broom closet. It appears to be grading them. There doesn't seem to be any doors on any of the walls. There's no telling how long the creature has been there, or how it will ever escape.")
@@ -615,7 +616,6 @@
             msg ("You look north into the next room through the tinted glass. A large, monstrous figure is hunched over a desk with a big stack of papers in a small room no bigger than a broom closet. It appears to be grading them. There doesn't seem to be any doors on any of the walls. There's no telling how long the creature has been there, or how it will ever escape.")
           }
         </look>
-        <takemsg>You're literally trying to take a window. Think about that for a second.</takemsg>
       </object>
     </object>
     <object name="f02">
@@ -648,6 +648,7 @@
       <object name="tinted window2">
         <inherit name="editor_object" />
         <alias>tinted window</alias>
+        <takemsg>You're literally trying to take a window. Think about that for a second.</takemsg>
         <look type="script">
           if (thesis.wasburned = false) {
             msg ("You look north into the next room through the tinted glass. You can see large, monstrous shapes moving in there. It looks dangerous...but you're not afraid of anything! Right, champ?")
@@ -656,7 +657,6 @@
             msg ("You look north into the next room, through the tinted glass. It looks unoccupied, but you can see a bright light.")
           }
         </look>
-        <takemsg>You're literally trying to take a window. Think about that for a second.</takemsg>
       </object>
     </object>
     <object name="f03">
@@ -1051,6 +1051,7 @@
           <value>valve</value>
           <value>gas</value>
         </alt>
+        <takemsg>You take the gas valve. Just kidding, it's attached to a gas main. You may just be a lowly snaaa...ck eater... but you know better than that.</takemsg>
         <look type="script">
           if (IsSwitchedOn(gas valve)) {
             msg ("It says it's on, which probably explains the hissing sound. Maybe.")
@@ -1081,7 +1082,6 @@
             this.switchedon = true
           }
         </use>
-        <takemsg>You take the gas valve. Just kidding, it's attached to a gas main. You may just be a lowly snaaa...ck eater... but you know better than that.</takemsg>
       </object>
     </object>
     <object name="f14">
@@ -1576,6 +1576,7 @@
         <switchonmsg>The handle sticks a little, but you manage to turn the faucet on, and water is rushing out. Better hope this place is rent-controlled.</switchonmsg>
         <switchoffmsg>You shut the water off. Only YOU can protect the environment!</switchoffmsg>
         <switchedon />
+        <takemsg>If you take the faucets, the sink won't work!</takemsg>
         <look type="script">
           if (IsSwitchedOn(faucet)) {
             msg ("It's a faucet. Water is pouring out. The water is draining down into the sink below, but maybe there's a way that you can direct it? You think you may have seen something a little earlier that you could use to direct the flow of fluids.")
@@ -1587,7 +1588,6 @@
             msg ("There is a rubber hose attached to the nozzle. ")
           }
         </look>
-        <takemsg>If you take the faucets, the sink won't work!</takemsg>
       </object>
       <exit alias="east" to="p11">
         <inherit name="eastdirection" />
@@ -1682,12 +1682,12 @@
         <inherit name="editor_object" />
         <alias>meaty plant</alias>
         <look><![CDATA[The label on one of the plants says "Experimental DNA hybrid for Synthetic Meat Production." Its leaves look like tasty little steaks. Has science gone too far?!?!<br/><br/><br/>"No," you think. "Steaks are friggin delicious."]]></look>
+        <takemsg>Why take what you can eat? That's what my granpappy used to say, before twinkies became widely available.</takemsg>
         <eat type="script">
           msg ("You swallow that meat plant whole! That's not a sentence you read every day.")
           grow_snake
           RemoveObject (meat plant)
         </eat>
-        <takemsg>Why take what you can eat? That's what my granpappy used to say, before twinkies became widely available.</takemsg>
       </object>
       <exit alias="north" to="p10">
         <inherit name="northdirection" />
@@ -2232,6 +2232,7 @@
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <takemsg>Why bother taking it when you can eat the entire bottle right now? Just in case you have to drink a lot of milk later.</takemsg>
           <look type="script">
             picture ("lactase.png")
             msg ("Pills here!")
@@ -2241,7 +2242,6 @@
             msg ("Packing on the pounds, there, aren't you? Look, someone had to tell you. Really, you should be thankful. Don't get so damn emotional!")
             RemoveObject (deadRat1)
           </eat>
-          <takemsg>Why bother taking it when you can eat the entire bottle right now? Just in case you have to drink a lot of milk later.</takemsg>
         </object>
       </object>
       <object name="tr_small10">
@@ -2297,10 +2297,10 @@
       <object name="tr_small20">
         <inherit name="editor_room" />
         <alias>storage room</alias>
+        <description>A small lamp sits atop a plain wooden desk. Were this room any less remarkable, Dominos would make it their walk-in special.</description>
         <enter type="script">
           change_rooms
         </enter>
-        <description>A small lamp sits atop a plain wooden desk. Were this room any less remarkable, Dominos would make it their walk-in special.</description>
         <exit alias="east" to="tr_small21">
           <inherit name="eastdirection" />
           <look type="script">
@@ -2350,6 +2350,7 @@
         <firstenter type="script">
           msg ("This room has a cold draft. You hate cold drafts.")
         </firstenter>
+        <description>The walls of this room are jet black. A single light flickers dimly on the ceiling, but you can only see a few feet in front of you.</description>
         <exit alias="east" to="tr_large01">
           <inherit name="eastdirection" />
           <look type="script">
@@ -2394,6 +2395,7 @@
         <enter type="script">
           change_rooms
         </enter>
+        <description>Through the darkness you glimpse a glass of milk, just sitting there on the floor. How odd.</description>
         <exit alias="east" to="tr_large11">
           <inherit name="eastdirection" />
           <look type="script">
@@ -2422,6 +2424,7 @@
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <takemsg>It's pretty full. You hate to admit it, but you wouldn't be able to carry it without spilling. Best to drink it now.</takemsg>
           <look type="script"><![CDATA[
             picture ("milk.png")
             if (player.length < 6) {
@@ -2441,7 +2444,6 @@
             }
             RemoveObject (deadRat2)
           ]]></drink>
-          <takemsg>It's pretty full. You hate to admit it, but you wouldn't be able to carry it without spilling. Best to drink it now.</takemsg>
         </object>
       </object>
       <object name="tr_large11">
@@ -2522,10 +2524,10 @@
       <object name="tr_large30">
         <inherit name="editor_room" />
         <alias>large cold-storage room</alias>
+        <description>On the wall at the end of the room are three glowing square boxes, each of equal shape, size and colour. From left to right, the boxes have inscribed on them "11" , "89" , and "clockwise". Below the boxes is a large wheel with a black button at its middle. Along the wheel is a silver engraving that reads "All will open and seas will fall, when numbers become words, and words become scrawl."  Whatever is going on here, it's too damn complicated for a text adventure, and is certainly not worth your time.</description>
         <enter type="script">
           change_rooms
         </enter>
-        <description>On the wall of this room are three square boxes, each of equal shape, size and colour. From left to right, the boxes have inscribed on them "11" , "89" , and "clockwise". Below the boxes is a large wheel with a black button at its middle. Along the wheel is a silver engraving that reads "All will open and seas will fall, when numbers become words, and words become scrawl."  Whatever is going on here, it's too damn complicated for a text adventure, and is certainly not worth your time.</description>
         <exit alias="east" to="tr_large31">
           <inherit name="eastdirection" />
           <look type="script">
@@ -2735,8 +2737,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">3</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches12">
@@ -2768,8 +2770,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">6</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches20">
@@ -2801,8 +2803,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">5</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches21">
@@ -2921,8 +2923,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">7</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches32">
@@ -2954,8 +2956,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">2</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches40">
@@ -2987,8 +2989,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">9</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches41">
@@ -3107,8 +3109,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">11</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches52">
@@ -3140,8 +3142,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">2</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches60">
@@ -3167,8 +3169,8 @@
         <inherit name="shake_light_base" />
         <attr name="max_dur" type="int">13</attr>
         <lightsource type="boolean">false</lightsource>
-        <target type="object">photoreceptor0</target>
         <takemsg>You feel a strange compulsion not to take this flashlight... Maybe you'll have better luck with a different one. But probably not.</takemsg>
+        <target type="object">photoreceptor0</target>
       </object>
     </object>
     <object name="t_torches61">
@@ -3331,6 +3333,7 @@
           <value>Take</value>
           <value>Climb</value>
         </displayverbs>
+        <takemsg>Thinking about taking the fine piece of Swedish craft you see before you? Think again! For only $29.99 you can purchase your own stylish yet functional Fjalkinge shelving unit, complete with sliding drawers, pronunciation guide, and partial instructions.</takemsg>
         <drag type="script">
           if (GetBoolean(ikeaShelf, "broken")) {
             msg ("You snatch the shelf and begin to drag it.")
@@ -3372,7 +3375,6 @@
           msg ("You climb down off the shelf.")
           SetObjectFlagOff (ikeaShelf, "on")
         </climbdown>
-        <takemsg>Thinking about taking the fine piece of Swedish craft you see before you? Think again! For only $29.99 you can purchase your own stylish yet functional Fjalkinge shelving unit, complete with sliding drawers, pronunciation guide, and partial instructions.</takemsg>
         <object name="snack0">
           <inherit name="editor_object" />
           <alias>brightly coloured candy</alias>
@@ -3386,12 +3388,12 @@
             <value>Look at</value>
           </displayverbs>
           <visible />
+          <takemsg>Candy doesn't travel well. You don't want it to get stale, do you?</takemsg>
           <eat type="script">
             grow_snake
             msg ("It tastes so good, but the shame burns so badly. Not that you care. You're just taking up ever more space as you go.")
             RemoveObject (this)
           </eat>
-          <takemsg>Candy doesn't travel well. You don't want it to get stale, do you?</takemsg>
         </object>
         <object name="snack1">
           <inherit name="editor_object" />
@@ -3406,12 +3408,12 @@
             <value>Look at</value>
           </displayverbs>
           <visible />
+          <takemsg>Candy doesn't travel well. You don't want it to get stale, do you?</takemsg>
           <eat type="script">
             grow_snake
             msg ("You down it all like nothing. Did your parents teach you no manners? You are grown now, but only in size.")
             RemoveObject (this)
           </eat>
-          <takemsg>Candy doesn't travel well. You don't want it to get stale, do you?</takemsg>
         </object>
       </object>
     </object>
