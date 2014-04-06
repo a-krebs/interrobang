@@ -721,6 +721,7 @@
       <enter type="script">
         change_rooms
       </enter>
+      <alias>lab room</alias>
       <exit alias="west" to="f03">
         <inherit name="westdirection" />
         <look type="script">
@@ -798,10 +799,10 @@
           msg ("Oh gawd, oh, ugh, just, you can't even...<br/>It's worse than you thought. The scaly-tentacled superflously-optacled meat beasts that inhabit this place are truly a terror. You wouldn't be surprised if, slightly after this image was taken, the matriarch of the brood mercilessly devoured the young.<br/>Ugh, it's unspeakable.")
         ]]></look>
         <burn type="script">
-          if (Got(crumpled paper)) {
+          if (Got(photo)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.flame = true) {
-                msg ("You lift the photo into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead, but it just stares back blankly...which is even worse than saying something negative, you know?")
+                msg ("You lift the photo into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance nervously at the smoke detector overhead.")
                 destroy ("crumpled paper")
               }
               else {
@@ -894,7 +895,7 @@
           if (Got(crumpled paper)) {
             if (game.pov.parent = f13) {
               if (bunsen burner.flame = true) {
-                msg ("You lift the crumpled paper into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance anxiously at the smoke detector overhead, but it's quiet. A little too quiet.")
+                msg ("You lift the crumpled paper into the flame. It quickly begins to burn, and a small amount of smoke comes out. You glance anxiously at the smoke detector overhead.")
                 destroy ("crumpled paper")
               }
               else {
