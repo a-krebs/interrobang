@@ -3378,7 +3378,7 @@
         </climbdown>
         <object name="snack0">
           <inherit name="editor_object" />
-          <alias>brightly coloured candy</alias>
+          <alias>Brightly Coloured Candy</alias>
           <alt type="stringlist">
             <value>snack</value>
             <value>candy</value>
@@ -3398,7 +3398,7 @@
         </object>
         <object name="snack1">
           <inherit name="editor_object" />
-          <alias>dull boring candy</alias>
+          <alias>Dull Boring Candy</alias>
           <alt type="stringlist">
             <value>snack</value>
             <value>candy</value>
@@ -3792,8 +3792,8 @@
       go east
       go south
       look at shelf
-      eat brightly coloured candy
-      eat dull boring candy
+      eat Brightly Coloured Candy
+      eat Dull Boring Candy
       go east
       go south
       go east
