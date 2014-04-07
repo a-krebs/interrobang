@@ -3741,6 +3741,7 @@
   ]]></function>
   <walkthrough name="prototypeWalk">
     <steps type="simplestringlist">
+      0
       go north
       go east
       go south
@@ -3777,7 +3778,6 @@
       go north
       go north
       go west
-      drag shelf
       go north
       go west
       go north
@@ -3789,17 +3789,16 @@
       go east
       go north
       go east
-      go east
       go south
-      go south
-      go east
-      go east
-      go south
-      go east
-      drop shelf
-      climb up shelf
+      look at shelf
       eat brightly coloured candy
       eat dull boring candy
+      go east
+      go south
+      go east
+      go east
+      go south
+      go east
       go north
     </steps>
   </walkthrough>
@@ -3824,7 +3823,7 @@
       go west
       use key card on key card reader
       go south
-      eat rat
+      eat pills
       go south
       go south
       go west
@@ -3837,7 +3836,7 @@
       use key card on key card reader
       go south
       go south
-      eat rat
+      drink milk
       go south
       go south
       go east
@@ -3885,139 +3884,6 @@
       shake flashlight
       power on door control
       use door control
-      go north
-    </steps>
-  </walkthrough>
-  <walkthrough name="toFinalLevel">
-    <steps type="simplestringlist">
-      go north
-      go east
-      go south
-      go south
-      eat rat
-      go west
-      go west
-      push box
-      go in
-      go north
-      take key card
-      go north
-      go out
-      go east
-      go east
-      go south
-      use key card on key card reader
-      drop key card
-      go east
-      go east
-      go south
-      go south
-      go east
-      go east
-      go south
-      go west
-      go west
-      go west
-      go west
-      pick up key card
-      go north
-      go east
-      go east
-      go east
-      go east
-      go south
-      go west
-      go west
-      go west
-      use key card on key card reader
-      go south
-      eat rat
-      go south
-      go south
-      go west
-      go north
-      go north
-      go east
-      go north
-      go east
-      go east
-      use key card on key card reader
-      go south
-      go south
-      eat rat
-      go south
-      go south
-      go east
-      go north
-      go north
-      go north
-      go west
-      go north
-      go east
-      lie on scale
-      drop key card
-      go east
-      go east
-      go east
-      go south
-      go south
-      go south
-      go south
-      go south
-      go south
-      go west
-      go west
-      shake flashlight
-      go north
-      go east
-      shake flashlight
-      go north
-      go west
-      shake flashlight
-      go north
-      go east
-      shake flashlight
-      go north
-      go west
-      shake flashlight
-      go north
-      go east
-      shake flashlight
-      go north
-      go west
-      shake flashlight
-      power on door control
-      use door control
-      go north
-      go west
-      go west
-      go west
-      go north
-      go north
-      go west
-      drag shelf
-      go north
-      go west
-      go north
-      go west
-      go west
-      go south
-      go south
-      go east
-      go east
-      go north
-      go east
-      go east
-      go south
-      go south
-      go east
-      go east
-      go south
-      go east
-      drop shelf
-      climb up shelf
-      eat brightly coloured candy
-      eat dull boring candy
       go north
     </steps>
   </walkthrough>
