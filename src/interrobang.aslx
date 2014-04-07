@@ -2626,9 +2626,10 @@
         </look>
         <script type="script"><![CDATA[
           if (player.length < 9) {
-            msg ("The door rattles as you push it, but it's still latched. Oh, there's a handle! It's too bad you can't reach it. Maybe you can find a way to get up there...")
+            msg ("The door moves a little and you lean against it, but it's really heavy. You're pretty weighty after eating all those snacks, so you'd think you're heavy enough to push it. You could look for a something to pry it with. Something modern and stylish. That should do it.")
           }
           else {
+			msg ("Eating that candy gave you the extra burst of energy you needed to push the door.")
             MoveObject (player, f24)
           }
         ]]></script>
