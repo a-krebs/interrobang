@@ -536,11 +536,11 @@
       </object>
       <object name="thesis">
         <inherit name="editor_object" />
+        <wasburned type="boolean">false</wasburned>
         <look type="script">
           picture ("thesis.png")
           msg ("This thesis looks like it's the product of months—possibly years—of work, slavishly hammering away at the typewriter. That's a LOT of paper. It would be a shame if something were to happen to it!")
         </look>
-        <wasburned type="boolean">false</wasburned>
         <take type="script">
           if (player.length = 10) {
             msg ("You stretch out and clamp down on it. You've got it securely. You ought to do something with it right away; there's no time to talk!")
@@ -3612,7 +3612,8 @@
     finish
   </function>
   <function name="game_win">
-    msg ("You slither up the beanstalk and out the window—out to freedom in the long, cool grass where you feel most at home.Congratulations: you have won Snake!")
+    picture ("snake_window.png")
+    msg ("You slither up the beanstalk and out the window, seeing your reflection as you pass — out to freedom in the long, cool grass where you feel most at home. Congratulations: you have won Snake!")
     finish
   </function>
   <function name="humans_caught"><![CDATA[
