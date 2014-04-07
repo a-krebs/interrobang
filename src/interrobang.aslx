@@ -712,6 +712,7 @@
         <look type="script"><![CDATA[
           if (thesis.wasburned = false) {
             msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
+            picture ("door to humaliens.png")
           }
           else {
             msg ("You peer through the crack between the double doors. No more meat noises!")
@@ -760,6 +761,7 @@
         <look type="script"><![CDATA[
           if (thesis.wasburned = false) {
             msg ("You peer through the crack between the double doors. You can see movement. You hear stomping. Some sort of fleshy, smelly meat beasts are on the other side of these doors. They're producing some sort of ghastly meat noises by squeezing air through their meat. You know how when you slap or flap meat, it makes a noise? They're talking by flapping their meat at each other.<br/><br/>The scene makes you retch and feel faint. But there doesn't seem anywhere else to go except through these doors. Maybe there's a way to use the technology of these foul creatures against them, to make them vacate their room?")
+            picture ("door to humaliens.png")
           }
           else {
             msg ("You peer through the crack between the double doors. No more meat noises!")
@@ -1413,6 +1415,7 @@
               if (IsSwitchedOn(faucet)) {
                 msg ("The water runs out of the end of the hose, and starts forming a puddle on the floor. As the puddle spreads across the room, the dirt begins to moisten. You soon hear a sharp crunching noise as something within the dirt springs to life. Suddenly, a huge plant coils out of the dirt, and grows upwards in a spiral, reaching towards the light streaming in through the open window.Wonderful what science can do these days, no?")
                 MakeObjectVisible (plant)
+                picture ("grown beanstalk.png")
               }
               else {
                 msg ("The end of the hose is pointing toward the pile of dry dirt, but nothing is coming out. It's almost as if the hose on its own is not a source of water.")
@@ -1513,7 +1516,10 @@
       </enter>
       <object name="bean plant">
         <inherit name="editor_object" />
-        <look>Its label says "Superior-growth, military-strength developmental prototype beanstalk". It's in a clay pot (which doesn't look military-strength) on the top of this shelf.There doesn't appear to be anything growing in the pot, and the soil is dry.</look>
+        <look type="script">
+          msg ("Its label says \"Superior-growth, military-strength developmental prototype beanstalk\". It's in a clay pot (which doesn't look military-strength) on the top of this shelf.There doesn't appear to be anything growing in the pot, and the soil is dry.")
+          picture ("sprout.png")
+        </look>
         <alt type="stringlist">
           <value>pot</value>
           <value>clay pot</value>
@@ -1532,6 +1538,7 @@
             msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below the window to the west.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
+            picture ("shattered plant.png")
           }
           else {
             msg ("You push as hard as you can against the heavy pot, but it doesn't budge. What would your old Italian grandmother say? “You're getting too skinny!” in that comical accent of hers. And then she'd basically dump a vat of pasta in front of you. Remember that?")
@@ -1542,6 +1549,7 @@
             msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below the window to the west.")
             MakeObjectVisible (pile of dirt)
             destroy ("bean plant")
+            picture ("shattered plant.png")
           }
           else {
             msg ("You push as hard as you can against the heavy pot, but it doesn't budge. What would your old Italian grandmother say? “You're getting too skinny!” in that comical accent of hers. And then she'd basically dump a vat of pasta in front of you. Remember that?")
@@ -1570,7 +1578,10 @@
       </enter>
       <object name="sink">
         <inherit name="editor_object" />
-        <look><![CDATA[The sink is slightly filled with water, but is draining steadily. You consider three options for getting water out of this sink:<br/>1) Plug up the drain<br/>2) Carry the water in a vessel<br/>3) Redirect the water coming from the tap.<br/>You focus all of your psychic powers into trying to determine the answer. It's foggy...  you see... that only one option will work... and its number rhymes with "shmee"...]]></look>
+        <look type="script"><![CDATA[
+          msg ("The sink is slightly filled with water, but is draining steadily. You consider three options for getting water out of this sink:<br/>1) Plug up the drain<br/>2) Carry the water in a vessel<br/>3) Redirect the water coming from the tap.<br/>You focus all of your psychic powers into trying to determine the answer. It's foggy...  you see... that only one option will work... and its number rhymes with \"shmee\"...")
+          picture ("sink.png")
+        ]]></look>
         <takemsg>Remember what happened the last time you pulled a sink off a wall? Yeah. Yeah you do.</takemsg>
       </object>
       <object name="faucet">
@@ -3483,11 +3494,11 @@
       <value>Look at</value>
       <value>Shake</value>
     </displayverbs>
+    <target type="object">player</target>
     <look type="script">
       picture ("flashlight.png")
       msg ("It's a mechanically powered flashlight. You can shake it to charge the battery for a short time. At least there's nobody around to make fun of how you look when you shake it.")
     </look>
-    <target type="object">player</target>
     <shake type="script">
       msg ("You shake the flashlight. It's a bit awkward. " + this.max_dur + " little lights blink on the side to indicate the amount of charge. You set it down and point it at the photoreceptor on the door control.")
       in_list = false
