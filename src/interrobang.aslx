@@ -45,6 +45,9 @@
       <enter type="script">
         change_rooms
       </enter>
+      <beforeenter type="script">
+        picture ("vent.png")
+      </beforeenter>
       <exit alias="east" to="r01">
         <inherit name="eastdirection" />
         <look type="script">
