@@ -536,7 +536,10 @@
       </object>
       <object name="thesis">
         <inherit name="editor_object" />
-        <look>This thesis looks like it's the product of months—possibly years—of work, slavishly hammering away at the typewriter. That's a LOT of paper. It would be a shame if something were to happen to it!</look>
+        <look type="script">
+          picture ("thesis.png")
+          msg ("This thesis looks like it's the product of months—possibly years—of work, slavishly hammering away at the typewriter. That's a LOT of paper. It would be a shame if something were to happen to it!")
+        </look>
         <wasburned type="boolean">false</wasburned>
         <take type="script">
           if (player.length = 10) {
@@ -3418,15 +3421,15 @@
             <value>candy</value>
           </alt>
           <take type="boolean">false</take>
-          <look type="script">
-            picture ("fat_rat.png")
-            msg ("Fine, it's not candy. It's a rat. A big juicy one though! Snack time!")
-          </look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
           <visible />
           <takemsg>Candy doesn't travel well. You don't want it to get stale, do you?</takemsg>
+          <look type="script">
+            picture ("fat_rat.png")
+            msg ("Fine, it's not candy. It's a rat. A big juicy one though! Snack time!")
+          </look>
           <eat type="script">
             grow_snake
             msg ("You down it all like nothing. Did your parents teach you no manners? You are grown now, but only in size.")
