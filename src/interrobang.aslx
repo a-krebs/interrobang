@@ -2049,7 +2049,10 @@
             <value>card reader</value>
           </alt>
           <takemsg>It's...glued to the wall. But, like, a really strong glue. Never you mind.</takemsg>
-          <look>The key card reader glistens with the sheen of new—no, wait. Ew, gross, what IS that? Never mind. The device appears to be operational.</look>
+          <look type="script">
+            picture ("card reader.png")
+            msg ("The key card reader glistens with the sheen of new—no, wait. Ew, gross, what IS that? Never mind. The device appears to be operational.")
+          </look>
         </object>
       </object>
       <object name="tr_start12">
@@ -2121,7 +2124,10 @@
             <value>card reader</value>
           </alt>
           <takemsg>It's cemented to the wall, and you forgot your jackhammer. Nice going.</takemsg>
-          <look>The key card reader glistens with the sheen of new metal (not to be confused with nu metal, which is a pretentious way of saying "alternative" metal, and is a garbage genre anyhow).</look>
+          <look type="script">
+            picture ("card reader.png")
+            msg ("The key card reader glistens with the sheen of new metal (not to be confused with nu metal, which is a pretentious way of saying \"alternative\" metal, and is a garbage genre anyhow).")
+          </look>
         </object>
       </object>
       <object name="tr_start14">
@@ -2629,7 +2635,7 @@
             msg ("The door moves a little and you lean against it, but it's really heavy. You're pretty weighty after eating all those snacks, so you'd think you're heavy enough to push it. You could look for a something to pry it with. Something modern and stylish. That should do it.")
           }
           else {
-			msg ("Eating that candy gave you the extra burst of energy you needed to push the door.")
+            msg ("Eating that candy gave you the extra burst of energy you needed to push the door.")
             MoveObject (player, f24)
           }
         ]]></script>
