@@ -39,7 +39,7 @@
       <inherit name="editor_room" />
       <description>You can see a vent on the wall, but the room is otherwise unremarkable.</description>
       <descprefix>You are in</descprefix>
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -68,7 +68,7 @@
     </object>
     <object name="r01">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -95,7 +95,7 @@
     </object>
     <object name="r02">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <description>A TV blares noisily in the corner of the room.</description>
       <onexit type="script">
       </onexit>
@@ -122,7 +122,7 @@
     </object>
     <object name="r10">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -140,7 +140,7 @@
     </object>
     <object name="r11">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -181,7 +181,7 @@
     </object>
     <object name="r12">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <description>There's a door on the east wall with a large heart on it.</description>
       <onexit type="script">
       </onexit>
@@ -234,7 +234,7 @@
     </object>
     <object name="r20">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <beforeenter type="script">
@@ -284,7 +284,7 @@
     </object>
     <object name="r21">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <enter type="script">
@@ -311,7 +311,7 @@
     </object>
     <object name="r22">
       <inherit name="editor_room" />
-      <alias>room</alias>
+      <alias>office</alias>
       <onexit type="script">
       </onexit>
       <beforeenter type="script">
@@ -2344,7 +2344,7 @@
       <inherit name="editor_room" />
       <object name="tr_large00">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <description>The walls of this room are jet black. A single light flickers dimly on the ceiling, but you can only see a few feet in front of you.</description>
         <enter type="script">
           change_rooms
@@ -2373,7 +2373,7 @@
       </object>
       <object name="tr_large01">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2392,7 +2392,7 @@
       </object>
       <object name="tr_large10">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <description>Through the darkness you glimpse a glass of milk, just sitting there on the floor. How odd.</description>
         <enter type="script">
           change_rooms
@@ -2449,7 +2449,7 @@
       </object>
       <object name="tr_large11">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2474,7 +2474,7 @@
       </object>
       <object name="tr_large20">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2499,7 +2499,7 @@
       </object>
       <object name="tr_large21">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <enter type="script">
           change_rooms
         </enter>
@@ -2524,7 +2524,7 @@
       </object>
       <object name="tr_large30">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <description>On the wall at the end of the room are three glowing square boxes, each of equal shape, size and colour. From left to right, the boxes have inscribed on them "11" , "89" , and "clockwise". Below the boxes is a large wheel with a black button at its middle. Along the wheel is a silver engraving that reads "All will open and seas will fall, when numbers become words, and words become scrawl."  Whatever is going on here, it's too damn complicated for a text adventure, and is certainly not worth your time.</description>
         <enter type="script">
           change_rooms
@@ -2544,7 +2544,7 @@
       </object>
       <object name="tr_large31">
         <inherit name="editor_room" />
-        <alias>large cold-storage room</alias>
+        <alias>utility closet</alias>
         <enter type="script">
           change_rooms
         </enter>
