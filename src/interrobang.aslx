@@ -3398,7 +3398,7 @@
             <value>candy</value>
           </alt>
           <take type="boolean">false</take>
-          <look>Ooh! Candy!</look>
+          <look>Ooh! Candy! What, did you expect a picture? Just it eat.</look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
@@ -3418,7 +3418,10 @@
             <value>candy</value>
           </alt>
           <take type="boolean">false</take>
-          <look>Ooh! Candy!</look>
+          <look type="script">
+            picture ("fat_rat.png")
+            msg ("Fine, it's not candy. It's a rat. A big juicy one though! Snack time!")
+          </look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
