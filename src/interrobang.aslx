@@ -1045,6 +1045,9 @@
             msg ("It's a rubber hose. One end is connected to the tap, and the other end is hanging off the counter.")
           }
         </look>
+        <use type="script">
+          msg ("No hints here, you'll have to try a few things.")
+        </use>
       </object>
       <object name="gas valve">
         <inherit name="editor_object" />
