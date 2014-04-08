@@ -3385,24 +3385,35 @@
           }
         ]]></look>
         <climbup type="script"><![CDATA[
-          if (player.length < 7) {
-            msg ("You climb on the shelf. It is rickety, but it just barely manages to hold your weight.")
-            SetObjectFlagOn (ikeaShelf, "on")
-          }
-          else if (GetBoolean(ikeaShelf, "broken")) {
-            msg ("The shelf is already broken. You can't climb it.")
+          if (ikeaShelf.on = true) {
+            msg ("You are already on the shelf.")
           }
           else {
-            msg ("You look at " + this.alias + " with the intent to climb it. It is intimidated by your size and collapses immediately. Several wrapped food items fall out of one of the drawers.")
-            MoveObject (snack0, this.parent)
-            MoveObject (snack1, this.parent)
-            SetObjectFlagOn (ikeaShelf, "broken")
+            if (player.length < 7) {
+              msg ("You climb on the shelf. It is rickety, but it just barely manages to hold your weight.")
+              SetObjectFlagOn (ikeaShelf, "on")
+            }
+            else if (GetBoolean(ikeaShelf, "broken")) {
+              msg ("The shelf is already broken. You can't climb it.")
+            }
+            else {
+              msg ("You look at " + this.alias + " with the intent to climb it. It is intimidated by your size and collapses immediately. Several wrapped food items fall out of one of the drawers.")
+              MoveObject (snack0, this.parent)
+              MoveObject (snack1, this.parent)
+              SetObjectFlagOn (ikeaShelf, "broken")
+            }
           }
         ]]></climbup>
         <climbdown type="script">
-          msg ("You climb down off the shelf.")
-          SetObjectFlagOff (ikeaShelf, "on")
+          if (ikeaShelf.on = true) {
+            msg ("You climb down off the shelf.")
+            SetObjectFlagOff (ikeaShelf, "on")
+          }
+          else {
+            msg ("You are not on the shelf.")
+          }
         </climbdown>
+        <on type="boolean">false</on>
         <object name="snack0">
           <inherit name="editor_object" />
           <alias>Brightly Coloured Candy</alias>
