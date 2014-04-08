@@ -1516,10 +1516,6 @@
       </enter>
       <object name="bean plant">
         <inherit name="editor_object" />
-        <look type="script">
-          msg ("Its label says \"Superior-growth, military-strength developmental prototype beanstalk\". It's in a clay pot (which doesn't look military-strength) on the top of this shelf.There doesn't appear to be anything growing in the pot, and the soil is dry.")
-          picture ("sprout.png")
-        </look>
         <alt type="stringlist">
           <value>pot</value>
           <value>clay pot</value>
@@ -1533,6 +1529,10 @@
           <value>Throw</value>
         </displayverbs>
         <takemsg>You don't want that pot. Just say no.</takemsg>
+        <look type="script">
+          msg ("Its label says \"Superior-growth, military-strength developmental prototype beanstalk\". It's in a clay pot (which doesn't look military-strength) on the top of this shelf.There doesn't appear to be anything growing in the pot, and the soil is dry.")
+          picture ("sprout.png")
+        </look>
         <throw type="script">
           if (player.length = 11) {
             msg ("You throw your weight against the pot, and it tips off the shelf. It smashes on the unforgiving tile below the window to the west.")
@@ -1578,11 +1578,11 @@
       </enter>
       <object name="sink">
         <inherit name="editor_object" />
+        <takemsg>Remember what happened the last time you pulled a sink off a wall? Yeah. Yeah you do.</takemsg>
         <look type="script"><![CDATA[
           msg ("The sink is slightly filled with water, but is draining steadily. You consider three options for getting water out of this sink:<br/>1) Plug up the drain<br/>2) Carry the water in a vessel<br/>3) Redirect the water coming from the tap.<br/>You focus all of your psychic powers into trying to determine the answer. It's foggy...  you see... that only one option will work... and its number rhymes with \"shmee\"...")
           picture ("sink.png")
         ]]></look>
-        <takemsg>Remember what happened the last time you pulled a sink off a wall? Yeah. Yeah you do.</takemsg>
       </object>
       <object name="faucet">
         <inherit name="editor_object" />
@@ -3356,7 +3356,6 @@
         <displayverbs type="stringlist">
           <value>Look at</value>
           <value>Take</value>
-          <value>Climb</value>
         </displayverbs>
         <takemsg>Thinking about taking the fine piece of Swedish craft you see before you? Think again! For only $29.99 you can purchase your own stylish yet functional Fjalkinge shelving unit, complete with sliding drawers, pronunciation guide, and partial instructions.</takemsg>
         <drag type="script">
