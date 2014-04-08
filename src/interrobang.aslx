@@ -241,7 +241,7 @@
       <onexit type="script">
       </onexit>
       <beforeenter type="script">
-        if (Contains (r20,box)) {
+        if (ListContains(ScopeReachableNotHeld(), box)) {
           picture ("crate vent.png")
         }
       </beforeenter>
@@ -318,7 +318,7 @@
       <onexit type="script">
       </onexit>
       <beforeenter type="script">
-        if (Contains (r22,deadRat)) {
+        if (ListContains(ScopeReachableNotHeld(), deadRat)) {
           picture ("deadrat.png")
         }
       </beforeenter>
@@ -388,7 +388,7 @@
         <onexit type="script">
         </onexit>
         <beforeenter type="script">
-          if (Contains (vent10,keyCard)) {
+          if (ListContains(ScopeReachableNotHeld(), keyCard)) {
             picture ("keycard_heart1.png")
           }
         </beforeenter>
@@ -1971,7 +1971,7 @@
           change_rooms
         </enter>
         <beforeenter type="script">
-          if (Contains (tr_start10,keyCard1)) {
+          if (ListContains(ScopeReachableNotHeld(), keyCard1)) {
             picture ("keycard_fleur1.png")
           }
         </beforeenter>
@@ -3358,6 +3358,7 @@
           <value>Take</value>
         </displayverbs>
         <takemsg>Thinking about taking the fine piece of Swedish craft you see before you? Think again! For only $29.99 you can purchase your own stylish yet functional Fjalkinge shelving unit, complete with sliding drawers, pronunciation guide, and partial instructions.</takemsg>
+        <on type="boolean">false</on>
         <drag type="script">
           if (GetBoolean(ikeaShelf, "broken")) {
             msg ("You snatch the shelf and begin to drag it.")
@@ -3413,7 +3414,6 @@
             msg ("You are not on the shelf.")
           }
         </climbdown>
-        <on type="boolean">false</on>
         <object name="snack0">
           <inherit name="editor_object" />
           <alias>Brightly Coloured Candy</alias>
